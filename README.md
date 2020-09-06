@@ -1,4 +1,12 @@
 # Recess
+## Recess - A Social Media Platform for students to share their experience/knowledge they gained  in their free time. 
+
+### Existing Ids:
+1. ID: `student.1@gmail.com`
+   password: `123456`
+   
+2. ID: `avinash@gmail.com`
+   Password: `123456`
 
 ### `npm start`
 
