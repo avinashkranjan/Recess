@@ -49,3 +49,8 @@
   background-color: transparent;
   border-top: 1px solid lightgray;
 }
+
+.login__button {
+  margin: 10px;
+  justify-content: space-between;
+}

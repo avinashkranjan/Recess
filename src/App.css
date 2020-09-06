@@ -35,3 +35,8 @@
 .app__postsRight {
   margin-left: 20px;
 }
+
+.login__val {
+  text-align: center;
+  padding: 20px;
+}

@@ -6,7 +6,7 @@ import Post from "./Post";
 import ImageUpload from "./ImageUpload";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import { Button, Input } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import InstagramEmbed from "react-instagram-embed";
 
 function getModalStyle() {
@@ -102,36 +102,49 @@ function App() {
     <div className="app">
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
-          <form className="app__signup">
+          {/* <form className="app__signup">
+            <center>
+              <img className="app__headerImage" src={Logo} alt="logo" />
+            </center> */}
+
+          <form className="app__signup" noValidate autoComplete="off">
             <center>
               <img className="app__headerImage" src={Logo} alt="logo" />
             </center>
-            <Input
-              placeholder="username"
+            <br />
+            <TextField
+              id="username"
+              label="Username"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-            />
-
-            <Input
-              placeholder="email"
-              type="text"
+              variant="outlined"
+            />{" "}
+            <br />
+            <TextField
+              id="email"
+              label="Email"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            />
-
-            <Input
-              placeholder="password"
+              variant="outlined"
+            />{" "}
+            <br />
+            <TextField
+              id="password"
+              label="Password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            />
+              variant="outlined"
+            />{" "}
+            <br />
             <Button
               type="submit"
               onClick={signUp}
               variant="contained"
               color="primary"
-              className={classes.button}
+              className="login__button"
             >
               Sign Up
             </Button>
@@ -141,31 +154,35 @@ function App() {
 
       <Modal open={openSignIn} onClose={() => setOpenSignIn(false)}>
         <div style={modalStyle} className={classes.paper}>
-          <form className="app__signup">
+          <form className="app__signup" noValidate autoComplete="off">
             <center>
               <img className="app__headerImage" src={Logo} alt="logo" />
             </center>
-
-            <Input
-              placeholder="email"
-              type="text"
+            <br />
+            <TextField
+              id="email"
+              label="Email"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            />
-
-            <Input
-              placeholder="password"
+              variant="outlined"
+            />{" "}
+            <br />
+            <TextField
+              id="password"
+              label="Password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            />
-
+              variant="outlined"
+            />{" "}
+            <br />
             <Button
               type="submit"
               onClick={signIn}
               variant="contained"
               color="primary"
-              className={classes.button}
+              className="login__button"
             >
               Sign In
             </Button>
@@ -238,9 +255,7 @@ function App() {
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
       ) : (
-        <center>
-          <h3>You need to Login to Upload</h3>
-        </center>
+        <h3 className="login__val">You need to Login to Upload</h3>
       )}
     </div>
   );
