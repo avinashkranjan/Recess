@@ -10,6 +10,7 @@
     "firebase": "^7.19.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-instagram-embed": "^1.5.0",
     "react-scripts": "3.4.3"
   },
   "scripts": {
