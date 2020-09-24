@@ -1,5 +1,5 @@
 # Recess
-## Recess - A Social Media Platform for students to share their experience/knowledge they gained  in their free time. 
+## Recess - A Social Media Platform for students to share their experience/knowledge they gained in their free time. 
 
 ## [LiveLink](https://recess-it.web.app/)
 ## [VideoDemo](https://vimeo.com/455212027)
