@@ -1,5 +1,4 @@
-# Recess
-## Recess - A Social Media Platform for students to share their experience/knowledge they gained in their free time. 
+![recess](https://socialify.git.ci/avinashkranjan/recess/image?description=1&forks=1&issues=1&language=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Light)
 
 ## [LiveLink](https://recess-it.web.app/)
 ## [VideoDemo](https://vimeo.com/455212027)
