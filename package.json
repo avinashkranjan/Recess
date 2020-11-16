@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "firebase": "^8.0.2",
     "react": "^16.14.0",
-    "react-dom": "^16.13.1",
+    "react-dom": "^16.14.0",
     "react-instagram-embed": "^2.0.0",
     "react-scripts": "4.0.0"
   },
