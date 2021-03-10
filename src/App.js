@@ -8,6 +8,7 @@ import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Button, TextField } from "@material-ui/core";
 import InstagramEmbed from "react-instagram-embed";
+import { useToasts } from "react-toast-notifications";
 
 function getModalStyle() {
   const top = 50;
@@ -44,6 +45,7 @@ function App() {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
 
+  const { addToast } = useToasts();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
@@ -79,11 +81,20 @@ function App() {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
+        addToast("SignUp Successfull !", {
+          appearance: "success",
+          autoDismiss: true,
+        });
         return authUser.user.updateProfile({
           displayName: username,
         });
       })
-      .catch((error) => alert(error.message));
+      .catch((error) =>
+        addToast(`${error.message}`, {
+          appearance: "error",
+          autoDismiss: true,
+        })
+      );
 
     setOpen(false);
   };
@@ -93,7 +104,18 @@ function App() {
 
     auth
       .signInWithEmailAndPassword(email, password)
-      .catch((error) => alert(error.message));
+      .then((result) =>
+        addToast("SignIn Successfull !", {
+          appearance: "success",
+          autoDismiss: true,
+        })
+      )
+      .catch((error) =>
+        addToast(`${error.message}`, {
+          appearance: "error",
+          autoDismiss: true,
+        })
+      );
 
     setOpenSignIn(false);
   };
