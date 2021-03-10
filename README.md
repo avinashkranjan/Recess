@@ -34,7 +34,7 @@ Your app is ready to be deployed!
 
 ### Contributing
 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat&logo=git&logoColor=white)](https://github.com/avinashkranjan/Recess/pulls) [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)]
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat&logo=git&logoColor=white)](https://github.com/avinashkranjan/Recess/pulls) [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/avinashkranjan/Recess)
 
 **We're accepting PRs for our open and unassigned [issues](https://github.com/avinashkranjan/Recess/issues)**. Please check [CONTRIBUTING.md](CONTRIBUTING.md). We'd love your contributions! **Kindly follow the steps below to get started:** 
 
@@ -55,7 +55,7 @@ cd Recess
 **4.** Create a new branch.
 
 ```bash
-git checkout -b <your_branch_name>
+git checkout -b "<your_branch_name>"
 ```
 
 **5.** Make changes in source code.
