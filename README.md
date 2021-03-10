@@ -36,7 +36,8 @@ Your app is ready to be deployed!
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat&logo=git&logoColor=white)](https://github.com/avinashkranjan/Recess/pulls) [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/avinashkranjan/Recess)
 
-**We're accepting PRs for our open and unassigned [issues](https://github.com/avinashkranjan/Recess/issues)**. Please check [CONTRIBUTING.md](CONTRIBUTING.md). We'd love your contributions! **Kindly follow the steps below to get started:** 
+**We're accepting PRs for our open and unassigned [issues](https://github.com/avinashkranjan/Recess/issues)**. We'd love your contributions! **Kindly follow the steps below to get started:** 
+
 
 **1.** Fork [this](https://github.com/avinashkranjan/Recess) repository.
 
