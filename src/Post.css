@@ -42,6 +42,14 @@
   padding: 10px;
 }
 
+.fa-comments{
+  font-size: 30px;
+  padding: 10px;
+}
+.fa-comments:hover{
+  cursor: pointer;
+}
+
 .post__button {
   flex: 0;
   border: none;
