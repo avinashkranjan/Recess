@@ -1,5 +1,7 @@
 .post__image {
   width: 100%;
+  max-height: 400px;
+  max-width: 400px;
   object-fit: contain;
 }
 
@@ -8,6 +10,7 @@
   max-width: 500px;
   border: 1px solid lightgray;
   margin-bottom: 45px;
+  display: inline-block;
 }
 
 .post__text {
