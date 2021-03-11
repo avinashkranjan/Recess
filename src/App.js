@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { db, auth } from "./firebase";
 import Logo from "./assets/logo.png";
@@ -41,74 +42,18 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
+=======
+import React from "react";
+import {BrowserRouter,Switch,Route} from 'react-router-dom';
+import Homepage from './pages/Homepage';
+import './App.css'
+
 
 function App() {
-  const classes = useStyles();
-  const [modalStyle] = React.useState(getModalStyle);
-  const [posts, setPosts] = useState([]);
-  const [open, setOpen] = useState(false);
-  const [openSignIn, setOpenSignIn] = useState(false);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        // User Logged In ...
-        console.log(authUser);
-        setUser(authUser);
-      } else {
-        //user Logged Out ...
-        setUser(null);
-      }
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, [user, username]);
-
-  useEffect(() => {
-    db.collection("posts")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((snapshot) => {
-        setPosts(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            post: doc.data(),
-          }))
-        );
-      });
-  }, []);
-
-  const signUp = (event) => {
-    event.preventDefault();
-
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((authUser) => {
-        return authUser.user.updateProfile({
-          displayName: username,
-        });
-      })
-      .catch((error) => alert(error.message));
-
-    setOpen(false);
-  };
-
-  const signIn = (event) => {
-    event.preventDefault();
-
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .catch((error) => alert(error.message));
-
-    setOpenSignIn(false);
-  };
 
   return (
     <div className="app">
+
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           {/* <form className="app__signup">
@@ -285,6 +230,14 @@ function App() {
       ) : (
         <h3 className="login__val">You need to Login to Upload</h3>
       )}
+
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/home" component={Homepage}/>
+          <Route component={Homepage} />
+        </Switch>
+      </BrowserRouter>
+
     </div>
   );
 }
