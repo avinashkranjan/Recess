@@ -15,7 +15,7 @@
   border-bottom: 1px solid lightgray;
   object-fit: contain;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .app__headerImage {
@@ -39,4 +39,46 @@
 .login__val {
   text-align: center;
   padding: 20px;
+}
+.app__header{
+  display: flex;
+}
+.header{
+  position: sticky;
+  top:0;
+  display: flex;
+  background-color: white;
+  justify-content: space-evenly;
+  border-bottom: 0.1px solid lightgray;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  z-index: 999;
+}
+.header__left{
+  display: flex;
+}
+.header__left > img {
+  object-fit: contain;
+  height: 40px;
+  margin-right: 10px;
+  padding-left: 20px;
+}
+
+.header__search{
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  height: 22px;
+  color: gray;
+  background-color: #eef3f8;
+}
+.header__search > input{
+  outline: none;
+  border: none;
+  background: none;
+}
+.header__right{
+  display: flex;
 }

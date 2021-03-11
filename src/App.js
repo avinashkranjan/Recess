@@ -2,12 +2,19 @@ import React, { useState, useEffect } from "react";
 import { db, auth } from "./firebase";
 import Logo from "./assets/logo.png";
 import "./App.css";
+import HeaderOption from './HeaderOption'
 import Post from "./Post";
 import ImageUpload from "./ImageUpload";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Button, TextField } from "@material-ui/core";
 import InstagramEmbed from "react-instagram-embed";
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter'
+import ChatIcon from '@material-ui/icons/Chat'
+import NotificationsIcon from '@material-ui/icons/Notifications'
+import HomeIcon from '@material-ui/icons/Home'
+import SearchIcon from '@material-ui/icons/Search'
 
 function getModalStyle() {
   const top = 50;
@@ -221,6 +228,24 @@ function App() {
             </Button>
           </div>
         )}
+        <div className="header__left">
+                <img src="https://www.flaticon.com/svg/vstatic/svg/174/174857.svg?token=exp=1614417530~hmac=8993d58cb66c325402997d0158282220" alt=""/>
+                <div className="header__search">
+                    <SearchIcon />
+                    <input type="text"/>
+
+                </div>
+
+            </div>
+        <div className="header__right">
+                <HeaderOption Icon={HomeIcon} title ="Home"/>
+                <HeaderOption Icon={SupervisorAccountIcon} title="Friends"/>
+                <HeaderOption Icon={BusinessCenterIcon} title ="Opportunities"/>
+                <HeaderOption Icon={ChatIcon} title ="Chat"/>
+                <HeaderOption Icon={NotificationsIcon} title ="Notifications"/>
+                <HeaderOption avatar="https://www.eirim.ie/eirim2017/wp-content/uploads/2016/09/dummy-profile-pic.jpg" title='me'/>
+
+            </div>
       </div>
 
       <div className="app__posts">
@@ -251,6 +276,7 @@ function App() {
           />
         </div>
       </div>
+      
 
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
