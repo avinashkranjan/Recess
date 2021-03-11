@@ -15,6 +15,8 @@ import ChatIcon from '@material-ui/icons/Chat'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import HomeIcon from '@material-ui/icons/Home'
 import SearchIcon from '@material-ui/icons/Search'
+import Sidebar from './Sidebar'
+
 
 function getModalStyle() {
   const top = 50;
@@ -247,7 +249,7 @@ function App() {
 
             </div>
       </div>
-
+      <Sidebar/>
       <div className="app__posts">
         <div className="app__postsLeft">
           {posts.map(({ id, post }) => (

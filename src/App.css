@@ -4,6 +4,7 @@
 
 .app {
   background-color: #fafafa;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .app__header {
@@ -16,6 +17,7 @@
   object-fit: contain;
   display: flex;
   justify-content: space-evenly;
+  line-height: normal;
 }
 
 .app__headerImage {
@@ -25,6 +27,7 @@
 .app__signup {
   display: flex;
   flex-direction: column;
+  color: #e50914;
 }
 .app__posts {
   padding: 25px;
