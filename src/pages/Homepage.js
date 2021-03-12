@@ -257,7 +257,7 @@ const classes = useStyles();
             {user?.displayName ? (
                 <ImageUpload username={user.displayName} />
             ) : (
-                <h4 className="login__val">You need to Login to Upload</h4>
+                <h3 className="login__val">You need to Login to Upload</h3>
             )}
             <Footer/>
         </>
