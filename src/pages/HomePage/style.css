@@ -29,6 +29,10 @@
   margin-left: 20px;
 }
 
+.app__loginContainer {
+  margin: auto 10px;
+}
+
 .login__val {
   text-align: center;
   padding: 20px;
