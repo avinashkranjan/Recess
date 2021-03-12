@@ -1,36 +1,35 @@
-
 .app__header {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background-color: white;
-    padding: 20px;
-    border-bottom: 1px solid lightgray;
-    object-fit: contain;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .app__headerImage {
-    object-fit: contain;
-  }
-  
-  .app__signup {
-    display: flex;
-    flex-direction: column;
-  }
-  .app__posts {
-    padding: 25px;
-    justify-content: center;
-    display: flex;
-  }
-  
-  .app__postsRight {
-    margin-left: 20px;
-  }
-  
-  .login__val {
-    text-align: center;
-    padding: 20px;
-  }
-  
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--secondary-app-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 20px;
+  object-fit: contain;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr auto auto;
+}
+
+.app__headerImage {
+  object-fit: contain;
+}
+
+.app__signup {
+  display: flex;
+  flex-direction: column;
+}
+.app__posts {
+  padding: 25px;
+  justify-content: center;
+  display: flex;
+}
+
+.app__postsRight {
+  margin-left: 20px;
+}
+
+.login__val {
+  text-align: center;
+  padding: 20px;
+}

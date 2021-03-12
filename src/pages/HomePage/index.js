@@ -3,9 +3,11 @@ import { db, auth } from "../../firebase";
 import Logo from "../../assets/logo.png";
 import Post from "../../components/Post";
 import ImageUpload from "../../components/ImageUploader";
+
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
-import { Button, TextField } from "@material-ui/core";
+import { Button, TextField, Modal, IconButton } from "@material-ui/core";
+import { WbSunnyRounded, Brightness2Rounded } from "@material-ui/icons";
+
 import InstagramEmbed from "react-instagram-embed";
 import "./style.css";
 
@@ -43,6 +45,7 @@ function Homepage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
+  const [darkModeOn, setDarkModeOn] = useState(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -72,6 +75,29 @@ function Homepage() {
         );
       });
   }, []);
+
+  useEffect(() => {
+    if (!darkModeOn) {
+      document.documentElement.style.setProperty("--primary-app-color", "#333");
+      document.documentElement.style.setProperty(
+        "--secondary-app-color",
+        "#1c1c1c"
+      );
+      document.documentElement.style.setProperty("--border-color", "#525252");
+      document.documentElement.style.setProperty("--text-color", "#fff");
+    } else {
+      document.documentElement.style.setProperty(
+        "--primary-app-color",
+        "#fafafa"
+      );
+      document.documentElement.style.setProperty(
+        "--secondary-app-color",
+        "#fff"
+      );
+      document.documentElement.style.setProperty("--border-color", "#d3d3d3");
+      document.documentElement.style.setProperty("--text-color", "#000");
+    }
+  }, [darkModeOn]);
 
   const signUp = (event) => {
     event.preventDefault();
@@ -189,9 +215,16 @@ function Homepage() {
           </form>
         </div>
       </Modal>
+
       <div className="app__header">
         <img className="app__headerImage" src={Logo} alt="logo" />
-
+        <IconButton onClick={() => setDarkModeOn(!darkModeOn)}>
+          {darkModeOn ? (
+            <Brightness2Rounded style={{ color: "#000" }} />
+          ) : (
+            <WbSunnyRounded style={{ color: "#fff" }} />
+          )}
+        </IconButton>
         {user ? (
           <Button
             onClick={() => auth.signOut()}
