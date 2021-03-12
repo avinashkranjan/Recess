@@ -8,7 +8,7 @@ import Modal from "@material-ui/core/Modal";
 import { Button, TextField } from "@material-ui/core";
 import InstagramEmbed from "react-instagram-embed";
 import './Homepage.css';
-
+import Footer from "./Footer";
 function getModalStyle() {
     const top = 50;
     const left = 50;
@@ -251,13 +251,15 @@ const classes = useStyles();
                     onFailure={() => {}}
                 />
                 </div>
+                
             </div>
-
+                  
             {user?.displayName ? (
                 <ImageUpload username={user.displayName} />
             ) : (
-                <h3 className="login__val">You need to Login to Upload</h3>
+                <h4 className="login__val">You need to Login to Upload</h4>
             )}
+            <Footer/>
         </>
     )
 }
