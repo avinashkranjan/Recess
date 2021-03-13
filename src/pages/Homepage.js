@@ -8,6 +8,8 @@ import Modal from "@material-ui/core/Modal";
 import { Button, TextField } from "@material-ui/core";
 import InstagramEmbed from "react-instagram-embed";
 import './Homepage.css';
+import Signup from './Signup';
+import Login from './Login';
 
 function getModalStyle() {
     const top = 50;
@@ -33,7 +35,7 @@ function getModalStyle() {
     })
   );
 
-function Homepage() {
+function Homepage(props) {
 
 const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
@@ -101,95 +103,6 @@ const classes = useStyles();
 
     return (
         <>
-            <Modal open={open} onClose={() => setOpen(false)}>
-                <div style={modalStyle} className={classes.paper}>
-                {/* <form className="app__signup">
-                    <center>
-                    <img className="app__headerImage" src={Logo} alt="logo" />
-                    </center> */}
-
-                <form className="app__signup" noValidate autoComplete="off">
-                    <center>
-                    <img className="app__headerImage" src={Logo} alt="logo" />
-                    </center>
-                    <br />
-                    <TextField
-                    id="username"
-                    label="Username"
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    variant="outlined"
-                    />{" "}
-                    <br />
-                    <TextField
-                    id="email"
-                    label="Email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    variant="outlined"
-                    />{" "}
-                    <br />
-                    <TextField
-                    id="password"
-                    label="Password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    variant="outlined"
-                    />{" "}
-                    <br />
-                    <Button
-                    type="submit"
-                    onClick={signUp}
-                    variant="contained"
-                    color="primary"
-                    className="login__button"
-                    >
-                    Sign Up
-                    </Button>
-                </form>
-                </div>
-            </Modal>
-
-            <Modal open={openSignIn} onClose={() => setOpenSignIn(false)}>
-                <div style={modalStyle} className={classes.paper}>
-                <form className="app__signup" noValidate autoComplete="off">
-                    <center>
-                    <img className="app__headerImage" src={Logo} alt="logo" />
-                    </center>
-                    <br />
-                    <TextField
-                    id="email"
-                    label="Email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    variant="outlined"
-                    />{" "}
-                    <br />
-                    <TextField
-                    id="password"
-                    label="Password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    variant="outlined"
-                    />{" "}
-                    <br />
-                    <Button
-                    type="submit"
-                    onClick={signIn}
-                    variant="contained"
-                    color="primary"
-                    className="login__button"
-                    >
-                    Sign In
-                    </Button>
-                </form>
-                </div>
-            </Modal>
             <div className="app__header">
                 <img className="app__headerImage" src={Logo} alt="logo" />
 
@@ -205,7 +118,7 @@ const classes = useStyles();
                 ) : (
                 <div className="app__loginContainer">
                     <Button
-                    onClick={() => setOpenSignIn(true)}
+                    onClick={() => window.location.href='/login'}
                     variant="contained"
                     color="primary"
                     className={classes.button}
@@ -213,7 +126,7 @@ const classes = useStyles();
                     Sign In
                     </Button>
                     <Button
-                    onClick={() => setOpen(true)}
+                    onClick={() => window.location.href='/signup'}
                     variant="contained"
                     color="secondary"
                     className={classes.button}
