@@ -1,15 +1,33 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { db, auth } from "../../firebase";
 import Logo from "../../assets/logo.png";
+
+import Header from "../../components/Header";
 import Post from "../../components/Post";
 import ImageUpload from "../../components/ImageUploader";
 
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import { Button, TextField, Modal, IconButton } from "@material-ui/core";
-import { WbSunnyRounded, Brightness2Rounded } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Button,
+  TextField,
+  Modal,
+  IconButton,
+  Grid,
+  Hidden,
+  Avatar,
+} from "@material-ui/core";
+import {
+  WbSunnyRounded,
+  Brightness2Rounded,
+  HomeRounded,
+  AddCircleRounded,
+  ExploreRounded,
+  AccountCircleRounded,
+  ExitToAppRounded,
+} from "@material-ui/icons";
 
-import InstagramEmbed from "react-instagram-embed";
-import "./style.css";
+import styles from "./style";
 
 function getModalStyle() {
   const top = 50;
@@ -22,18 +40,7 @@ function getModalStyle() {
   };
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    paper: {
-      position: "absolute",
-      width: 400,
-      backgroundColor: theme.palette.background.paper,
-      border: "2px solid #000",
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-    },
-  })
-);
+const useStyles = makeStyles(styles);
 
 function Homepage() {
   const classes = useStyles();
@@ -67,6 +74,7 @@ function Homepage() {
     db.collection("posts")
       .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
+        console.log(snapshot);
         setPosts(
           snapshot.docs.map((doc) => ({
             id: doc.id,
@@ -78,13 +86,23 @@ function Homepage() {
 
   useEffect(() => {
     if (!darkModeOn) {
-      document.documentElement.style.setProperty("--primary-app-color", "#333");
+      document.documentElement.style.setProperty(
+        "--primary-app-color",
+        "#121823"
+      );
       document.documentElement.style.setProperty(
         "--secondary-app-color",
-        "#1c1c1c"
+        "#41506B4f"
       );
-      document.documentElement.style.setProperty("--border-color", "#525252");
-      document.documentElement.style.setProperty("--text-color", "#fff");
+      document.documentElement.style.setProperty("--border-color", "#41506B");
+      document.documentElement.style.setProperty(
+        "--primary-text-color",
+        "#0cb7d3"
+      );
+      document.documentElement.style.setProperty(
+        "--secondary-text-color",
+        "#41506B"
+      );
     } else {
       document.documentElement.style.setProperty(
         "--primary-app-color",
@@ -95,7 +113,6 @@ function Homepage() {
         "#fff"
       );
       document.documentElement.style.setProperty("--border-color", "#d3d3d3");
-      document.documentElement.style.setProperty("--text-color", "#000");
     }
   }, [darkModeOn]);
 
@@ -122,6 +139,12 @@ function Homepage() {
       .catch((error) => alert(error.message));
 
     setOpenSignIn(false);
+  };
+
+  const checkPage = (pathname) => {
+    return window.location.pathname === pathname
+      ? "--primary-text-color"
+      : "--secondary-text-color";
   };
 
   return (
@@ -216,48 +239,68 @@ function Homepage() {
         </div>
       </Modal>
 
-      <div className="app__header">
-        <img className="app__headerImage" src={Logo} alt="logo" />
-        <IconButton onClick={() => setDarkModeOn(!darkModeOn)}>
-          {darkModeOn ? (
-            <Brightness2Rounded style={{ color: "#000" }} />
-          ) : (
-            <WbSunnyRounded style={{ color: "#fff" }} />
-          )}
-        </IconButton>
-        {user ? (
-          <Button
-            onClick={() => auth.signOut()}
-            variant="contained"
-            color="secondary"
-            className={classes.button}
-          >
-            Logout
-          </Button>
-        ) : (
-          <div className="app__loginContainer">
-            <Button
-              onClick={() => setOpenSignIn(true)}
-              variant="contained"
-              color="primary"
-              className={classes.button}
-            >
-              Sign In
-            </Button>
-            <Button
-              onClick={() => setOpen(true)}
-              variant="contained"
-              color="secondary"
-              className={classes.button}
-            >
-              Sign Up
-            </Button>
-          </div>
-        )}
-      </div>
+      <Header />
 
-      <div className="app__posts">
-        <div className="app__postsLeft">
+      <Grid container className={classes.homeBody} disableGutters={true}>
+        <Grid item xs={0} sm={4} className={classes.sidebar}>
+          <Hidden xsDown>
+            <Link
+              to="/"
+              className={classes.link}
+              style={{ color: `var(${checkPage("/")})` }}
+            >
+              <HomeRounded />
+              <span>Home</span>
+            </Link>
+
+            {user?.displayName ? (
+              <Link
+                to="/upload"
+                className={classes.link}
+                style={{ color: `var(${checkPage("/upload")})` }}
+              >
+                <AddCircleRounded />
+                <span>Upload</span>
+              </Link>
+            ) : null}
+
+            <Link
+              to="/explore"
+              className={classes.link}
+              style={{ color: `var(${checkPage("/explore")})` }}
+            >
+              <ExploreRounded />
+              <span>Explore</span>
+            </Link>
+
+            {user?.displayName ? (
+              <Link
+                to="/profile"
+                className={classes.link}
+                style={{ color: `var(${checkPage("/profile")})` }}
+              >
+                <AccountCircleRounded />
+                <span>Profile</span>
+              </Link>
+            ) : null}
+
+            <div className={classes.account}>
+              {user?.displayName ? (
+                <>
+                  <Avatar src="" alt="User" className={classes.userPhoto} />
+                  <span className={classes.username}>{user?.displayName}</span>
+                  <IconButton
+                    className={classes.logOutBtn}
+                    onClick={() => auth.signOut()}
+                  >
+                    <ExitToAppRounded className={classes.logOutIcon} />
+                  </IconButton>
+                </>
+              ) : null}
+            </div>
+          </Hidden>
+        </Grid>
+        <Grid container item xs={12} sm={8} className={classes.posts}>
           {posts.map(({ id, post }) => (
             <Post
               key={id}
@@ -268,28 +311,8 @@ function Homepage() {
               caption={post.caption}
             />
           ))}
-        </div>
-        <div className="app__postsRight">
-          <InstagramEmbed
-            url="https://www.instagram.com/p/CEmWM21A3wB/"
-            maxWidth={320}
-            hideCaption={false}
-            containerTagName="div"
-            protocol=""
-            injectScript
-            onLoading={() => {}}
-            onSuccess={() => {}}
-            onAfterRender={() => {}}
-            onFailure={() => {}}
-          />
-        </div>
-      </div>
-
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ) : (
-        <h3 className="login__val">You need to Login to Upload</h3>
-      )}
+        </Grid>
+      </Grid>
     </>
   );
 }

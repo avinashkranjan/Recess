@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
-import "./style.css";
+import { Link } from "react-router-dom";
+import styles from "./style.js";
 import { db } from "../../firebase";
 import firebase from "firebase";
 import { Avatar } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(styles);
 
 function Post({ postId, user, username, caption, imageUrl }) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
+  const classes = useStyles();
 
   useEffect(() => {
     let unsubscribe;
@@ -38,38 +43,38 @@ function Post({ postId, user, username, caption, imageUrl }) {
   };
 
   return (
-    <div className="post">
-      <div className="post__header">
-        <Avatar className="post__avatar" alt="Avinash" src="" />
-        <h3>{username}</h3>
-        {/* Header --> avatar + username */}
+    <div className={classes.post}>
+      <div className={classes.postHeader}>
+        <Avatar className={classes.avatar} alt="Avinash" src="" />
+        <h3 className={classes.username}>{username}</h3>
       </div>
 
-      <img className="post__image" src={imageUrl} alt="PostImage" />
+      <img className={classes.postImage} src={imageUrl} alt="PostImage" />
 
-      <h4 className="post__text">
+      <h4 className={classes.postText}>
         <strong>{username}</strong> {caption}
       </h4>
 
-      <div className="post__comments">
-        {comments.map((comment) => (
-          <p>
-            <strong> {comment.username} </strong> {comment.text}
-          </p>
-        ))}
+      <div className={classes.postComments}>
+        {comments &&
+          comments.map((comment, index) => (
+            <p key={`comment-index-${index}`}>
+              <strong> {comment.username} </strong> {comment.text}
+            </p>
+          ))}
       </div>
 
       {user && (
-        <form className="post__commentBox">
+        <form className={classes.postCommentBox}>
           <input
-            className="post__input"
+            className={classes.postCommentInput}
             type="text"
             placeholder="Add a comment.."
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
           <button
-            className="post__button"
+            className={classes.postCommentButton}
             type="submit"
             disabled={!comment}
             onClick={postComment}
@@ -78,6 +83,10 @@ function Post({ postId, user, username, caption, imageUrl }) {
           </button>
         </form>
       )}
+
+      <Link to="/p" className={classes.viewPostBtn}>
+        View Post
+      </Link>
     </div>
   );
 }
