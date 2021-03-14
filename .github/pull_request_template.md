@@ -1,33 +1,42 @@
-<!--
-Thank you for sending the PR! We appreciate you spending the time to work on these changes.
-Help us understand your motivation by explaining why you decided to make this change.
-Happy Contributing!
--->
+## Related Issue 
 
-# Description
+- Info about the related issue 
 
-Please include a summary of the change and which issue is fixed. List any dependencies that are required for this change.
+Closes: #[issue number that will be closed through this PR]
 
-## Fixes #(issue_no)
+### Describe the changes you've made
 
-Replace `issue_no` with the issue number which is fixed in this PR
-
-## Have you read the [Contributing Guidelines on Pull Requests](https://github.com/avinashkranjan/Friday/blob/master/CONTRIBUTING.md)?
-
-- [ ] Yes
-- [ ] No
+Give a clear description what modifications you have made
 
 ## Type of change
 
-_Please delete options that are not relevant._
-
+What sort of change have you made:
+<!--
+Example how to mark a checkbox:-
+- [x] My code follows the code style of this project.
+-->
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
+- [ ] Code style update (formatting, local variables)
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] This change requires a documentation update
+
+## Mention any unusual behaviour of your code (Write NA if not)
+Any unusual behaviour of your code
 
 ## Checklist:
+<!--
+Example how to mark a checkbox:-
+- [x] My code follows the code style of this project.
+-->
+- [ ] My code follows the guidelines of this project.
+- [ ] I have performed a self-review of my own code.
+- [ ] I have commented my code, particularly whereever it was hard to understand.
+- [ ] My changes generate no new warnings.
+- [ ] Any dependent changes have been merged and published in downstream modules.
 
-- [ ] My code follows the style guidelines(Clean Code) of this project
-- [ ] I have performed a self-review of my own code
-- [ ] My changes generate no new warnings
-- [ ] I have added tests/screenshots(if any) that prove my fix is effective or that my feature works.
+## Screenshots
+Add Screenshots to show your changes 
+
+## Additional Info (optional)
+Any additional information you want to give
