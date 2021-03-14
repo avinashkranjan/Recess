@@ -1,0 +1,33 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "saikeshari",
+      "name": "Sai Keshari",
+      "avatar_url": "https://avatars.githubusercontent.com/u/68103466?v=4",
+      "profile": "https://github.com/saikeshari",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "khareyash05",
+      "name": "Yash Khare",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60147732?v=4",
+      "profile": "https://khareyash05.github.io/cv-css-js/",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "Recess",
+  "projectOwner": "avinashkranjan",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
