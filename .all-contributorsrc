@@ -22,6 +22,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "lavanya243",
+      "name": "Lavanya Narayanan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/69483128?v=4",
+      "profile": "https://www.linkedin.com/in/lavanya-narayanan-5ba797168/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
