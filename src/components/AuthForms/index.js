@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useToasts } from "react-toast-notifications";
 
 import Logo from "../../assets/logo.png";
 
@@ -29,17 +30,27 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
+  const { addToast } = useToasts();
   const signUp = (event) => {
     event.preventDefault();
 
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
+        addToast("SignUp Successfull !", {
+          appearance: "success",
+          autoDismiss: true,
+        });
         return authUser.user.updateProfile({
           displayName: username,
         });
       })
-      .catch((error) => alert(error.message));
+      .catch((error) =>
+        addToast(`${error.message}`, {
+          appearance: "error",
+          autoDismiss: true,
+        })
+      );
 
     setOpenSignUp(false);
   };
@@ -107,12 +118,24 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { addToast } = useToasts();
   const signIn = (event) => {
     event.preventDefault();
 
     auth
       .signInWithEmailAndPassword(email, password)
-      .catch((error) => alert(error.message));
+      .then((result) =>
+        addToast("SignIn Successfull !", {
+          appearance: "success",
+          autoDismiss: true,
+        })
+      )
+      .catch((error) =>
+        addToast(`${error.message}`, {
+          appearance: "error",
+          autoDismiss: true,
+        })
+      );
 
     setOpenSignIn(false);
   };

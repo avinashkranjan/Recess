@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { db, auth } from "./firebase";
+import { ToastProvider } from "react-toast-notifications";
 
 import Homepage from "./pages/HomePage";
 import Uploadpage from "./pages/UploadPage";
@@ -158,11 +159,16 @@ function Content({ isLightTheme, setIsLightTheme }) {
 function App() {
   const [isLightTheme, setIsLightTheme] = useState(false);
   return (
-    <ThemeProvider
-      theme={createMuiTheme(isLightTheme ? lightTheme : darkTheme)}
-    >
-      <Content isLightTheme={isLightTheme} setIsLightTheme={setIsLightTheme} />
-    </ThemeProvider>
+    <ToastProvider>
+      <ThemeProvider
+        theme={createMuiTheme(isLightTheme ? lightTheme : darkTheme)}
+      >
+        <Content
+          isLightTheme={isLightTheme}
+          setIsLightTheme={setIsLightTheme}
+        />
+      </ThemeProvider>
+    </ToastProvider>
   );
 }
 
