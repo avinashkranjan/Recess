@@ -1,6 +1,6 @@
 ![recess](https://socialify.git.ci/avinashkranjan/recess/image?description=1&forks=1&issues=1&language=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Light)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
@@ -47,6 +47,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/saikeshari"><img src="https://avatars.githubusercontent.com/u/68103466?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sai Keshari</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=saikeshari" title="Code">💻</a></td>
+    <td align="center"><a href="https://khareyash05.github.io/cv-css-js/"><img src="https://avatars.githubusercontent.com/u/60147732?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yash Khare</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=khareyash05" title="Documentation">📖</a></td>
   </tr>
 </table>
 
