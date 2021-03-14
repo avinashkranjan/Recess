@@ -3,6 +3,12 @@ import "./Post.css";
 import { db } from "./firebase";
 import firebase from "firebase";
 import Avatar from "@material-ui/core/Avatar";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Typography,
+} from "@material-ui/core";
 
 function Post({ postId, user, username, caption, imageUrl }) {
   const [comments, setComments] = useState([]);
@@ -52,11 +58,20 @@ function Post({ postId, user, username, caption, imageUrl }) {
       </h4>
 
       <div className="post__comments">
-        {comments.map((comment) => (
-          <p>
-            <strong> {comment.username} </strong> {comment.text}
-          </p>
-        ))}
+        <Accordion square>
+          <AccordionSummary>
+            <Typography variant="caption">comments</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <p>
+              {comments.map((comment) => (
+                <p>
+                  <strong> {comment.username} </strong> {comment.text}
+                </p>
+              ))}
+            </p>
+          </AccordionDetails>
+        </Accordion>
       </div>
 
       {user && (
