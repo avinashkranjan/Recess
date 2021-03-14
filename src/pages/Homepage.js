@@ -11,6 +11,7 @@ import './Homepage.css';
 import Signup from './Signup';
 import Login from './Login';
 
+import Footer from "./Footer";
 function getModalStyle() {
     const top = 50;
     const left = 50;
@@ -164,13 +165,15 @@ const classes = useStyles();
                     onFailure={() => {}}
                 />
                 </div>
+                
             </div>
-
+                  
             {user?.displayName ? (
                 <ImageUpload username={user.displayName} />
             ) : (
                 <h3 className="login__val">You need to Login to Upload</h3>
             )}
+            <Footer/>
         </>
     )
 }

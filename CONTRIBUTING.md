@@ -1,4 +1,4 @@
-# Contributing Guidelines
+﻿# Contributing Guidelines
 
 This documentation contains a set of guidelines to help you during the contribution process. 
 We are happy to welcome all the contributions from anyone willing to improve/add new scripts to this project. Thank you for helping out and remember,
@@ -59,6 +59,22 @@ $ git push -u origin Branch_Name
 - Go to your repository in browser and click on compare and pull requests. Then add a title and description to your pull request that explains your contribution.
 
 - Voila! Your Pull Request has been submitted and will be reviewed by the moderators and merged.🥳
+
+### REBASE YOUR FEATURE BRANCH WITH UPSTREAM-
+***
+It can happen that your feature takes time to complete and other contributors are constantly pushing code. After completing the feature your feature branch should be rebase on latest changes to upstream master branch.
+
+```$ git checkout <feature-branch>```
+```$ git pull --rebase upstream master```
+Now you get the latest commits from other contributors and check that your commits are compatible with the new commits. If there are any conflicts solve them.
+
+### SQUASHING YOUR COMMITS-
+***
+You have completed the feature, but you have made a number of commits which make less sense. You should squash your commits to make good commits.
+
+```$ git rebase -i HEAD~5```
+This will open an editor which will allow you to squash the commits.
+
 
 ## Need more help?🤔
 You can refer to the following articles on basics of Git and Github and also contact the Project Mentors, in case you are stuck:

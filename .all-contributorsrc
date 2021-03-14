@@ -13,6 +13,42 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "khareyash05",
+      "name": "Yash Khare",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60147732?v=4",
+      "profile": "https://khareyash05.github.io/cv-css-js/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "kanak22",
+      "name": "Kanak",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62026983?v=4",
+      "profile": "https://www.linkedin.com/in/kanak-a21384186",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "lavanya243",
+      "name": "Lavanya Narayanan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/69483128?v=4",
+      "profile": "https://www.linkedin.com/in/lavanya-narayanan-5ba797168/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "itsIapetus",
+      "name": "Kriti",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75844962?v=4",
+      "profile": "https://github.com/itsIapetus",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
