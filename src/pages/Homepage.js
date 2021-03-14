@@ -32,9 +32,7 @@ function getModalStyle() {
       },
       button:{
         marginRight: 8,
-        
-
-      },
+              },
     })
   );
 
@@ -215,7 +213,7 @@ const classes = useStyles();
                     color="primary"
                     className={classes.button}
                     >
-                    LOGIN
+                    Login
                     </Button>
                     <Button
                     onClick={() => setOpen(true)}
@@ -223,7 +221,7 @@ const classes = useStyles();
                     color="secondary"
                     className={classes.button}
                     >
-                    SIGN UP
+                    Sign Up
                     </Button>
                 </div>
                 )}
