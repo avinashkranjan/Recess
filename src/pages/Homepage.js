@@ -9,7 +9,7 @@ import { Button, TextField } from "@material-ui/core";
 import InstagramEmbed from "react-instagram-embed";
 import './Homepage.css';
 import Sidebar from "../Sidebar.js";
-
+import Footer from "./Footer";
 function getModalStyle() {
     const top = 50;
     const left = 50;
@@ -263,6 +263,44 @@ const classes = useStyles();
       )}
     </div>
   );
+            <div className="app__posts">
+                <div className="app__postsLeft">
+                {posts.map(({ id, post }) => (
+                    <Post
+                    key={id}
+                    postId={id}
+                    user={user}
+                    username={post.username}
+                    imageUrl={post.imageUrl}
+                    caption={post.caption}
+                    />
+                ))}
+                </div>
+                <div className="app__postsRight">
+                <InstagramEmbed
+                    url="https://www.instagram.com/p/CEmWM21A3wB/"
+                    maxWidth={320}
+                    hideCaption={false}
+                    containerTagName="div"
+                    protocol=""
+                    injectScript
+                    onLoading={() => {}}
+                    onSuccess={() => {}}
+                    onAfterRender={() => {}}
+                    onFailure={() => {}}
+                />
+                </div>
+                
+            </div>
+                  
+            {user?.displayName ? (
+                <ImageUpload username={user.displayName} />
+            ) : (
+                <h3 className="login__val">You need to Login to Upload</h3>
+            )}
+            <Footer/>
+        </>
+    )
 }
 
 export default Homepage;
