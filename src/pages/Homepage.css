@@ -13,6 +13,7 @@
   
   .app__headerImage {
     object-fit: contain;
+    margin-left: 50px;
   }
   
   .app__signup {
@@ -33,4 +34,27 @@
     text-align: center;
     padding: 20px;
   }
-  
+  .app__loginContainer > button{
+    background-color: #ff7779;
+    color:white;
+    text-transform: inherit;
+    margin-top: 20px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+.app__loginContainer>button:hover{
+    background-color:ivory;  
+    color: #ff7779;
+}
+.app__log > button{
+  background-color: #ff7779;
+  color:white;
+  text-transform: inherit;
+  margin-top: 20px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+.app__log>button:hover{
+  background-color:ivory;  
+  color: #ff7779;
+}

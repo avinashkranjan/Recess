@@ -63,7 +63,7 @@ function ImageUpload({ username }) {
         value={caption}
       />
       <Input type="file" onChange={handleChange} />
-      <Button onClick={handleUpload}>Upload</Button>
+      <div className="upload__app"><Button onClick={handleUpload}>UPLOAD</Button></div>
     </div>
   );
 }

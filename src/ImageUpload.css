@@ -10,8 +10,23 @@
   border-top: 1px solid lightgray; */
   /* position: fixed;
   bottom: 0; */
+  
 }
 
 .imageupload__progress {
   width: 100%;
+}
+
+.upload__app > button
+{
+  background-color: #ff7779;
+    color:white;
+    text-transform: inherit;
+    margin-top: 20px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+.upload__app>button:hover{
+    background-color:ivory;  
+    color: #ff7779;
 }

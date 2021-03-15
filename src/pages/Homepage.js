@@ -194,14 +194,16 @@ const classes = useStyles();
                 <img className="app__headerImage" src={Logo} alt="logo" />
 
                 {user ? (
+                <div className="app__log">
                 <Button
                     onClick={() => auth.signOut()}
                     variant="contained"
                     color="secondary"
                     className={classes.button}
                 >
-                    Logout
+                    LOG OUT
                 </Button>
+                </div>
                 ) : (
                 <div className="app__loginContainer">
                     <Button
@@ -210,7 +212,7 @@ const classes = useStyles();
                     color="primary"
                     className={classes.button}
                     >
-                    Sign In
+                    SIGN IN
                     </Button>
                     <Button
                     onClick={() => setOpen(true)}
@@ -218,7 +220,7 @@ const classes = useStyles();
                     color="secondary"
                     className={classes.button}
                     >
-                    Sign Up
+                    SIGN UP
                     </Button>
                 </div>
                 )}
