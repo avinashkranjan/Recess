@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Homepage from "./pages/HomePage";
 import "./App.css";
-import { lightTheme, darkTheme, ThemeProvider } from "./theme";
-
-import { Container } from "@material-ui/core";
+import { theme, ThemeProvider } from "./theme";
+import { Container, CssBaseline } from "@material-ui/core";
 
 function App() {
   const [windowResized, setWindowResized] = useState(false);
@@ -12,14 +11,12 @@ function App() {
   useEffect(() => {
     return window.addEventListener("resize", () => {
       // window.location.reload();
-      setTimeout(() => setWindowResized(!windowResized), 500);
+      setTimeout(() => setWindowResized(!windowResized), 750);
     });
   }, []);
   return (
-    <ThemeProvider
-      theme={isLightTheme ? lightTheme : darkTheme}
-      windowResized={windowResized}
-    >
+    <ThemeProvider theme={theme} windowResized={windowResized}>
+      <CssBaseline />
       <Container maxWidth="md" disableGutters={true}>
         <BrowserRouter>
           <Switch>

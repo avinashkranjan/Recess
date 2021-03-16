@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-
 :root {
   --primary-app-color: #fafafa;
   --secondary-app-color: #fff;
@@ -13,10 +11,6 @@
   font-family: Poppins, sans-serif;
   text-decoration: none;
   box-sizing: border-box;
-}
-
-body {
-  background-color: var(--primary-app-color);
 }
 
 .container {

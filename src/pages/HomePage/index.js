@@ -29,6 +29,7 @@ import {
 } from "@material-ui/icons";
 
 import styles from "./style";
+import { theme } from "../../theme";
 
 function getModalStyle() {
   const top = 50;
@@ -144,8 +145,8 @@ function Homepage({ isLightTheme, setIsLightTheme }) {
 
   const checkPage = (pathname) => {
     return window.location.pathname === pathname
-      ? "--primary-text-color"
-      : "--secondary-text-color";
+      ? theme.palette.text.primary
+      : theme.palette.text.secondary;
   };
 
   return (
@@ -248,7 +249,7 @@ function Homepage({ isLightTheme, setIsLightTheme }) {
             <Link
               to="/"
               className={classes.link}
-              style={{ color: `var(${checkPage("/home")})` }}
+              style={{ color: checkPage("/home") }}
             >
               <HomeRounded />
               <span>Home</span>
@@ -258,7 +259,7 @@ function Homepage({ isLightTheme, setIsLightTheme }) {
               <Link
                 to="/upload"
                 className={classes.link}
-                style={{ color: `var(${checkPage("/upload")})` }}
+                style={{ color: checkPage("/upload") }}
               >
                 <AddCircleRounded />
                 <span>Upload</span>
@@ -268,7 +269,7 @@ function Homepage({ isLightTheme, setIsLightTheme }) {
             <Link
               to="/explore"
               className={classes.link}
-              style={{ color: `var(${checkPage("/explore")})` }}
+              style={{ color: checkPage("/explore") }}
             >
               <ExploreRounded />
               <span>Explore</span>
@@ -278,7 +279,7 @@ function Homepage({ isLightTheme, setIsLightTheme }) {
               <Link
                 to="/profile"
                 className={classes.link}
-                style={{ color: `var(${checkPage("/profile")})` }}
+                style={{ color: checkPage("/profile") }}
               >
                 <AccountCircleRounded />
                 <span>Profile</span>

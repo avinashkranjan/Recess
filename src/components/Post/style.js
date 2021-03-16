@@ -2,7 +2,7 @@ export default function styles(theme) {
   return {
     post: {
       width: "100%",
-      color: "var(--primary-text-color)",
+      color: theme.palette.text.primary,
       borderBottom: "1px solid " + theme.palette.secondary.main,
     },
     username: {

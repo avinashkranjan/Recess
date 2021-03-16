@@ -15,7 +15,7 @@ const lightTheme = createMuiTheme({
   },
 });
 
-const darkTheme = createMuiTheme({
+const darkTheme = {
   type: "dark",
   palette: {
     primary: {
@@ -33,12 +33,15 @@ const darkTheme = createMuiTheme({
       secondary: "#41506B",
     },
     background: {
+      default: "#121823",
       paper: "#121823",
     },
   },
   typography: {
     fontFamily: '"Poppins", sans-serif',
   },
-});
+};
 
-export { lightTheme, darkTheme, ThemeProvider };
+const theme = createMuiTheme(darkTheme);
+
+export { theme, ThemeProvider };
