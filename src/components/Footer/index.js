@@ -18,6 +18,8 @@ import {
 } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
+import { darkTheme, createMuiTheme, ThemeProvider } from "../../theme";
+
 const useStyles = makeStyles(styles);
 
 function Footer() {
@@ -36,27 +38,29 @@ function Footer() {
   return (
     <Hidden smUp>
       <div className={classes.footer}>
-        <BottomNavigation
-          value={value}
-          onChange={handleChange}
-          className={classes.root}
-        >
-          <BottomNavigationAction
-            label="Home"
-            value="home"
-            icon={<HomeRounded />}
-          />
-          <BottomNavigationAction
-            label="Upload"
-            value="upload"
-            icon={<AddCircleRounded />}
-          />
-          <BottomNavigationAction
-            label="Explore"
-            value="explore"
-            icon={<ExploreRounded />}
-          />
-        </BottomNavigation>
+        <ThemeProvider theme={createMuiTheme(darkTheme)}>
+          <BottomNavigation
+            value={value}
+            onChange={handleChange}
+            className={classes.root}
+          >
+            <BottomNavigationAction
+              label="Home"
+              value="home"
+              icon={<HomeRounded />}
+            />
+            <BottomNavigationAction
+              label="Upload"
+              value="upload"
+              icon={<AddCircleRounded />}
+            />
+            <BottomNavigationAction
+              label="Explore"
+              value="explore"
+              icon={<ExploreRounded />}
+            />
+          </BottomNavigation>
+        </ThemeProvider>
       </div>
     </Hidden>
   );
