@@ -3,6 +3,8 @@ import { db, auth } from "../../firebase";
 import Logo from "../../assets/logo.png";
 import Post from "../../components/Post";
 import ImageUpload from "../../components/ImageUploader";
+import Sidebar from "../../components/Sidebar";
+import Footer from "../../components/Footer";
 
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { Button, TextField, Modal, IconButton } from "@material-ui/core";
@@ -22,7 +24,7 @@ function getModalStyle() {
   };
 }
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     paper: {
       position: "absolute",
@@ -256,6 +258,8 @@ function Homepage() {
         )}
       </div>
 
+      <Sidebar />
+
       <div className="app__posts">
         <div className="app__postsLeft">
           {posts.map(({ id, post }) => (
@@ -290,6 +294,7 @@ function Homepage() {
       ) : (
         <h3 className="login__val">You need to Login to Upload</h3>
       )}
+      <Footer />
     </>
   );
 }

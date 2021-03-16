@@ -1,6 +1,6 @@
 ![recess](https://socialify.git.ci/avinashkranjan/recess/image?description=1&forks=1&issues=1&language=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Light)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
@@ -47,6 +47,15 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/saikeshari"><img src="https://avatars.githubusercontent.com/u/68103466?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sai Keshari</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=saikeshari" title="Code">💻</a></td>
+    <td align="center"><a href="https://khareyash05.github.io/cv-css-js/"><img src="https://avatars.githubusercontent.com/u/60147732?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yash Khare</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=khareyash05" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/kanak-a21384186"><img src="https://avatars.githubusercontent.com/u/62026983?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kanak</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=kanak22" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/lavanya-narayanan-5ba797168/"><img src="https://avatars.githubusercontent.com/u/69483128?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lavanya Narayanan</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=lavanya243" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/itsIapetus"><img src="https://avatars.githubusercontent.com/u/75844962?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kriti</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=itsIapetus" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/Suvojit-roy"><img src="https://avatars.githubusercontent.com/u/56533500?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Suvojit Ray</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=Suvojit-roy" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/AnjaliSrivastava722"><img src="https://avatars.githubusercontent.com/u/43489841?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anjali_Srivastava</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=AnjaliSrivastava722" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/Sakshi0401"><img src="https://avatars.githubusercontent.com/u/64726139?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sakshi Joshi</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=Sakshi0401" title="Code">💻</a></td>
   </tr>
 </table>
 
