@@ -43,7 +43,7 @@ function getModalStyle() {
 
 const useStyles = makeStyles(styles);
 
-function Homepage() {
+function Homepage({ isLightTheme, setIsLightTheme }) {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [posts, setPosts] = useState([]);
@@ -240,7 +240,7 @@ function Homepage() {
         </div>
       </Modal>
 
-      <Header />
+      <Header isLightTheme={isLightTheme} setIsLightTheme={setIsLightTheme} />
 
       <Grid container className={classes.homeBody} disableGutters={true}>
         <Grid item xs={0} sm={4} className={classes.sidebar}>
@@ -296,9 +296,11 @@ function Homepage() {
                   <IconButton
                     className={classes.logOutBtn}
                     onClick={() => auth.signOut()}
-                    color="error"
                   >
-                    <ExitToAppRounded className={classes.logOutIcon} />
+                    <ExitToAppRounded
+                      color="error"
+                      className={classes.logOutIcon}
+                    />
                   </IconButton>
                 </>
               ) : null}

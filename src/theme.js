@@ -23,6 +23,7 @@ const darkTheme = createMuiTheme({
     },
     secondary: {
       main: "#41506B",
+      dark: "#242C3D",
     },
     error: {
       main: "#FF4D4D",

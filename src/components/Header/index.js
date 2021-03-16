@@ -11,7 +11,7 @@ import ContractedLogo from "../../assets/contracted-logo.png";
 
 const useStyles = makeStyles(styles);
 
-function Header() {
+function Header({ isLightTheme, setIsLightTheme }) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -29,8 +29,13 @@ function Header() {
             <span className={classes.pageTitle}>Home</span>
           </Grid>
           <Grid container item xs={2} sm={1}>
-            <IconButton className={classes.themeChanger} color="primary">
-              <WbSunnyRounded />
+            <IconButton
+              className={classes.themeChanger}
+              color="primary"
+              onClick={() => setIsLightTheme(!isLightTheme)}
+            >
+              {isLightTheme && <Brightness2Rounded />}
+              {!isLightTheme && <WbSunnyRounded />}
             </IconButton>
           </Grid>
           <Grid container item xs={1}>

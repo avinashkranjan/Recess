@@ -3,7 +3,7 @@ export default function styles(theme) {
     post: {
       width: "100%",
       color: "var(--primary-text-color)",
-      borderBottom: "1px solid var(--border-color)",
+      borderBottom: "1px solid " + theme.palette.secondary.main,
     },
     username: {
       margin: "auto 0",
@@ -34,17 +34,17 @@ export default function styles(theme) {
       outline: "none",
       border: 0,
       padding: "10px",
-      backgroundColor: "var(--secondary-app-color)",
-      color: "var(--primary-text-color)",
+      backgroundColor: theme.palette.secondary.dark,
+      color: theme.palette.text.primary,
       borderRadius: "7px 0 0 7px",
     },
     postCommentButton: {
       width: 60,
       outline: "none",
       border: 0,
-      borderLeft: `1px solid var(--primary-text-color)`,
-      backgroundColor: "var(--secondary-app-color)",
-      color: "var(--primary-text-color)",
+      borderLeft: "1px solid " + theme.palette.primary.main,
+      backgroundColor: theme.palette.secondary.dark,
+      color: theme.palette.text.primary,
       borderRadius: "0 7px 7px 0",
     },
     viewPostBtn: {
@@ -53,8 +53,8 @@ export default function styles(theme) {
       textAlign: "center",
       paddingTop: 10,
       margin: " 0 0 10px 0",
-      color: "var(--primary-text-color)",
-      borderTop: "1px solid var(--border-color)",
+      color: theme.palette.text.primary,
+      borderTop: "1px solid " + theme.palette.secondary.main,
     },
   };
 }

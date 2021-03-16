@@ -24,7 +24,7 @@ export default function styles(theme) {
       fontSize: 20,
       alignItems: "center",
       "&:hover": {
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: theme.palette.secondary.main + "8a",
       },
     },
     account: {
