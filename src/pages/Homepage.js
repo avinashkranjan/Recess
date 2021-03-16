@@ -10,6 +10,10 @@ import InstagramEmbed from "react-instagram-embed";
 import './Homepage.css';
 import { useToasts } from "react-toast-notifications";
 
+
+import Sidebar from "../Sidebar.js";
+import Footer from "./Footer";
+
 function getModalStyle() {
     const top = 50;
     const left = 50;
@@ -31,6 +35,9 @@ function getModalStyle() {
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
       },
+      button:{
+        marginRight: 8,
+              },
     })
   );
 
@@ -116,7 +123,7 @@ const classes = useStyles();
       };
 
     return (
-        <>
+      <div className="app">
             <Modal open={open} onClose={() => setOpen(false)}>
                 <div style={modalStyle} className={classes.paper}>
                 {/* <form className="app__signup">
@@ -226,7 +233,7 @@ const classes = useStyles();
                     color="primary"
                     className={classes.button}
                     >
-                    Sign In
+                    Login
                     </Button>
                     <Button
                     onClick={() => setOpen(true)}
@@ -239,7 +246,45 @@ const classes = useStyles();
                 </div>
                 )}
             </div>
+            <div><Sidebar/>    
+      <div className="app__posts">
+        <div className="app__postsLeft">
+          {posts.map(({ id, post }) => (
+            <Post
+              key={id}
+              postId={id}
+              user={user}
+              username={post.username}
+              imageUrl={post.imageUrl}
+              caption={post.caption}
+            />
+          ))}
+        </div>
+        
+        <div className="app__postsRight">
+          <InstagramEmbed
+            url="https://www.instagram.com/p/CEmWM21A3wB/"
+            maxWidth={320}
+            hideCaption={false}
+            containerTagName="div"
+            protocol=""
+            injectScript
+            onLoading={() => {}}
+            onSuccess={() => {}}
+            onAfterRender={() => {}}
+            onFailure={() => {}}
+          />
+        </div>
+      </div>
+      </div>
 
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ) : (
+        <h3 className="login__val">You need to Login to Upload</h3>
+      )}
+    </div>
+  );
             <div className="app__posts">
                 <div className="app__postsLeft">
                 {posts.map(({ id, post }) => (
@@ -267,15 +312,23 @@ const classes = useStyles();
                     onFailure={() => {}}
                 />
                 </div>
+                
             </div>
-
+                  
             {user?.displayName ? (
                 <ImageUpload username={user.displayName} />
             ) : (
-                <h3 className="login__val">You need to Login to Upload</h3>
+                <h3 className="login__val">You need to <Button
+                onClick={() => setOpenSignIn(true)}
+                color="primary"
+                className={classes.button}
+                >
+                Login
+                </Button> to Upload</h3>
             )}
+            <Footer/>
         </>
     )
 }
 
-export default Homepage
+export default Homepage;
