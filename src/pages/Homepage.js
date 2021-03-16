@@ -257,7 +257,13 @@ const classes = useStyles();
             {user?.displayName ? (
                 <ImageUpload username={user.displayName} />
             ) : (
-                <h3 className="login__val">You need to Login to Upload</h3>
+                <h3 className="login__val">You need to <Button
+                onClick={() => setOpenSignIn(true)}
+                color="primary"
+                className={classes.button}
+                >
+                Login
+                </Button> to Upload</h3>
             )}
             <Footer/>
         </>
