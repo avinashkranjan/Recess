@@ -2,7 +2,7 @@ export default function styles(theme) {
   return {
     root: {
       height: "55px",
-      borderBottom: "1px solid " + theme.palette.secondary.main,
+      borderBottom: "1px solid " + theme.palette.secondary.dark,
       [theme.breakpoints.up("sm")]: {
         borderLeft: "1px solid " + theme.palette.secondary.main,
         borderRight: "1px solid " + theme.palette.secondary.main,

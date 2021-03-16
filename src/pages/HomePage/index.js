@@ -29,7 +29,7 @@ import {
 } from "@material-ui/icons";
 
 import styles from "./style";
-import { theme } from "../../theme";
+import { lightTheme, darkTheme } from "../../theme";
 
 function getModalStyle() {
   const top = 50;
@@ -54,7 +54,6 @@ function Homepage({ isLightTheme, setIsLightTheme }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
-  const [darkModeOn, setDarkModeOn] = useState(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -86,38 +85,6 @@ function Homepage({ isLightTheme, setIsLightTheme }) {
       });
   }, []);
 
-  useEffect(() => {
-    if (!darkModeOn) {
-      document.documentElement.style.setProperty(
-        "--primary-app-color",
-        "#121823"
-      );
-      document.documentElement.style.setProperty(
-        "--secondary-app-color",
-        "#41506B4f"
-      );
-      document.documentElement.style.setProperty("--border-color", "#41506B");
-      document.documentElement.style.setProperty(
-        "--primary-text-color",
-        "#0cb7d3"
-      );
-      document.documentElement.style.setProperty(
-        "--secondary-text-color",
-        "#41506B"
-      );
-    } else {
-      document.documentElement.style.setProperty(
-        "--primary-app-color",
-        "#fafafa"
-      );
-      document.documentElement.style.setProperty(
-        "--secondary-app-color",
-        "#fff"
-      );
-      document.documentElement.style.setProperty("--border-color", "#d3d3d3");
-    }
-  }, [darkModeOn]);
-
   const signUp = (event) => {
     event.preventDefault();
 
@@ -144,9 +111,14 @@ function Homepage({ isLightTheme, setIsLightTheme }) {
   };
 
   const checkPage = (pathname) => {
-    return window.location.pathname === pathname
-      ? theme.palette.text.primary
-      : theme.palette.text.secondary;
+    if (isLightTheme)
+      return window.location.pathname === pathname
+        ? lightTheme.palette.text.primary
+        : lightTheme.palette.text.secondary;
+    else
+      return window.location.pathname === pathname
+        ? darkTheme.palette.text.primary
+        : darkTheme.palette.text.secondary;
   };
 
   return (

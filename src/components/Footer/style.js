@@ -7,7 +7,7 @@ export default function styles(theme) {
       bottom: 0,
       height: 55,
       width: "100%",
-      borderTop: "1px solid var(--border-color)",
+      borderTop: "1px solid " + theme.palette.secondary.dark,
       overflow: "hidden",
     },
   };

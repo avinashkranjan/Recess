@@ -1,17 +1,29 @@
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const lightTheme = createMuiTheme({
+  type: "light",
   palette: {
     primary: {
-      main: "#ff4400",
+      main: "#121823",
     },
     secondary: {
-      light: "#0066ff",
-      main: "#0044ff",
-      contrastText: "#ffcc00",
+      main: "#41506B",
+      dark: "#9dd4dbbf",
     },
-    contrastThreshold: 3,
-    tonalOffset: 0.2,
+    error: {
+      main: "#FF4D4D",
+    },
+    text: {
+      primary: "#121823",
+      secondary: "#41506B",
+    },
+    background: {
+      default: "#EEFDFF",
+      paper: "#EEFDFF",
+    },
+  },
+  typography: {
+    fontFamily: '"Poppins", sans-serif',
   },
 });
 
@@ -42,6 +54,4 @@ const darkTheme = {
   },
 };
 
-const theme = createMuiTheme(darkTheme);
-
-export { theme, ThemeProvider };
+export { lightTheme, darkTheme, createMuiTheme, ThemeProvider };
