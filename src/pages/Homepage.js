@@ -30,6 +30,9 @@ function getModalStyle() {
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
       },
+      button:{
+        marginRight: 8,
+              },
     })
   );
 
@@ -210,7 +213,7 @@ const classes = useStyles();
                     color="primary"
                     className={classes.button}
                     >
-                    Sign In
+                    Login
                     </Button>
                     <Button
                     onClick={() => setOpen(true)}
