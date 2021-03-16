@@ -2,16 +2,16 @@ export default function styles(theme) {
   return {
     homeBody: {
       [theme.breakpoints.up("sm")]: {
-        borderLeft: "1px solid var(--border-color)",
-        borderRight: "1px solid var(--border-color)",
+        borderLeft: "1px solid " + theme.palette.secondary.main,
+        borderRight: "1px solid " + theme.palette.secondary.main,
       },
     },
     posts: {
-      height: window.innerHeight - 55,
+      paddingBottom: 55,
       overflowX: "hidden",
       overflowY: "scroll",
       [theme.breakpoints.up("sm")]: {
-        borderLeft: "1px solid var(--border-color)",
+        borderLeft: "1px solid " + theme.palette.secondary.main,
       },
     },
     link: {
@@ -24,16 +24,15 @@ export default function styles(theme) {
       fontSize: 20,
       alignItems: "center",
       "&:hover": {
-        backgroundColor: "var(--secondary-app-color)",
+        backgroundColor: theme.palette.secondary.main,
       },
     },
     account: {
-      marginTop: window.innerHeight - 330,
       height: 55,
-      borderTop: "1px solid var(--border-color)",
+      borderTop: "1px solid " + theme.palette.secondary.main,
       display: "grid",
       gridTemplateColumns: "auto 1fr auto",
-      color: "var(--primary-text-color)",
+      color: theme.palette.text.primary,
       gridGap: 10,
     },
     userPhoto: {
@@ -44,7 +43,6 @@ export default function styles(theme) {
     },
     logOutIcon: {
       margin: "auto",
-      color: "#FF4D4D",
     },
   };
 }

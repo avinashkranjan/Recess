@@ -21,8 +21,10 @@ export default function styles(theme) {
       color: "#0CB7D3",
     },
     themeChanger: {
-      color: "#0CB7D3",
       marginLeft: "auto",
+    },
+    userPhoto: {
+      margin: "auto",
     },
   };
 }

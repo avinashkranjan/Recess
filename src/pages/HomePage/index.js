@@ -6,6 +6,7 @@ import Logo from "../../assets/logo.png";
 import Header from "../../components/Header";
 import Post from "../../components/Post";
 import ImageUpload from "../../components/ImageUploader";
+import Footer from "../../components/Footer";
 
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -247,7 +248,7 @@ function Homepage() {
             <Link
               to="/"
               className={classes.link}
-              style={{ color: `var(${checkPage("/")})` }}
+              style={{ color: `var(${checkPage("/home")})` }}
             >
               <HomeRounded />
               <span>Home</span>
@@ -284,7 +285,10 @@ function Homepage() {
               </Link>
             ) : null}
 
-            <div className={classes.account}>
+            <div
+              className={classes.account}
+              style={{ marginTop: window.innerHeight - 330 }}
+            >
               {user?.displayName ? (
                 <>
                   <Avatar src="" alt="User" className={classes.userPhoto} />
@@ -292,6 +296,7 @@ function Homepage() {
                   <IconButton
                     className={classes.logOutBtn}
                     onClick={() => auth.signOut()}
+                    color="error"
                   >
                     <ExitToAppRounded className={classes.logOutIcon} />
                   </IconButton>
@@ -300,7 +305,16 @@ function Homepage() {
             </div>
           </Hidden>
         </Grid>
-        <Grid container item xs={12} sm={8} className={classes.posts}>
+        <Grid
+          container
+          item
+          xs={12}
+          sm={8}
+          className={classes.posts}
+          style={{
+            height: window.innerHeight - 55,
+          }}
+        >
           {posts.map(({ id, post }) => (
             <Post
               key={id}
@@ -313,6 +327,8 @@ function Homepage() {
           ))}
         </Grid>
       </Grid>
+
+      <Footer />
     </>
   );
 }
