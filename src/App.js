@@ -42,6 +42,7 @@ function App() {
   }, [user]);
 
   useEffect(() => {
+    console.log(darkTheme);
     db.collection("posts")
       .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
@@ -85,60 +86,54 @@ function App() {
     >
       <CssBaseline />
 
-      <>
-        <SignUpForm openSignUp={openSignUp} setOpenSignUp={setOpenSignUp} />
-        <SignInForm openSignIn={openSignIn} setOpenSignIn={setOpenSignIn} />
+      <SignUpForm openSignUp={openSignUp} setOpenSignUp={setOpenSignUp} />
+      <SignInForm openSignIn={openSignIn} setOpenSignIn={setOpenSignIn} />
 
-        <BrowserRouter>
-          <Container maxWidth="md" disableGutters={true}>
-            <Header
+      <BrowserRouter>
+        <Container maxWidth="md" disableGutters={true}>
+          <Header
+            isLightTheme={isLightTheme}
+            setIsLightTheme={setIsLightTheme}
+            setOpenSignIn={setOpenSignIn}
+            setOpenSignUp={setOpenSignUp}
+          />
+
+          <Grid container className={classes.homeBody} disableGutters={true}>
+            <Sidebar
+              user={user}
               isLightTheme={isLightTheme}
               setIsLightTheme={setIsLightTheme}
               setOpenSignIn={setOpenSignIn}
               setOpenSignUp={setOpenSignUp}
             />
 
-            <Grid container className={classes.homeBody} disableGutters={true}>
-              <Sidebar
-                user={user}
-                isLightTheme={isLightTheme}
-                setIsLightTheme={setIsLightTheme}
-                setOpenSignIn={setOpenSignIn}
-                setOpenSignUp={setOpenSignUp}
-              />
+            <Grid
+              container
+              item
+              xs={12}
+              sm={8}
+              className={classes.posts}
+              style={{
+                height: window.innerHeight - 55,
+              }}
+            >
+              <Switch>
+                <Route
+                  exact
+                  path="/home"
+                  component={() => <Homepage posts={posts} user={user} />}
+                />
 
-              <Grid
-                container
-                item
-                xs={12}
-                sm={8}
-                className={classes.posts}
-                style={{
-                  height: window.innerHeight - 55,
-                }}
-              >
-                <Switch>
-                  <Route
-                    exact
-                    path="/home"
-                    component={() => <Homepage posts={posts} user={user} />}
-                  />
+                <Route exact path="/upload" component={() => <Uploadpage />} />
 
-                  <Route
-                    exact
-                    path="/upload"
-                    component={() => <Uploadpage />}
-                  />
-
-                  <Redirect to="/home" />
-                </Switch>
-              </Grid>
+                <Redirect to="/home" />
+              </Switch>
             </Grid>
+          </Grid>
 
-            <BottomNavBar user={user} />
-          </Container>
-        </BrowserRouter>
-      </>
+          <BottomNavBar user={user} />
+        </Container>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
