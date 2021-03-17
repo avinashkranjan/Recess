@@ -1,7 +1,7 @@
 import { darkTheme, createMuiTheme } from "./theme";
 
-const theme = createMuiTheme(darkTheme);
-export default function styles() {
+// const theme = createMuiTheme(darkTheme);
+export default function styles(theme) {
   return {
     "@global": {
       "*": {

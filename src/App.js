@@ -16,8 +16,7 @@ import { Container, CssBaseline, Grid } from "@material-ui/core";
 import styles from "./style";
 
 const useStyles = makeStyles(styles);
-function App() {
-  const [isLightTheme, setIsLightTheme] = useState(false);
+function Content({ isLightTheme, setIsLightTheme }) {
   const classes = useStyles();
   const [posts, setPosts] = useState([]);
   const [openSignIn, setOpenSignIn] = useState(false);
@@ -55,34 +54,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (!isLightTheme) {
-      document.documentElement.style.setProperty(
-        "--primary-app-color",
-        "#121823"
-      );
-      document.documentElement.style.setProperty(
-        "--secondary-app-color",
-        "#41506B4f"
-      );
-    } else {
-      document.documentElement.style.setProperty(
-        "--primary-app-color",
-        "#fafafa"
-      );
-      document.documentElement.style.setProperty(
-        "--secondary-app-color",
-        "#fff"
-      );
-    }
     return window.addEventListener("resize", () => {
       window.location.reload();
     });
-  }, [isLightTheme]);
+  }, []);
 
   return (
-    <ThemeProvider
-      theme={createMuiTheme(isLightTheme ? lightTheme : darkTheme)}
-    >
+    <>
       <CssBaseline />
 
       <SignUpForm openSignUp={openSignUp} setOpenSignUp={setOpenSignUp} />
@@ -133,6 +111,17 @@ function App() {
           <BottomNavBar user={user} />
         </Container>
       </BrowserRouter>
+    </>
+  );
+}
+
+function App() {
+  const [isLightTheme, setIsLightTheme] = useState(false);
+  return (
+    <ThemeProvider
+      theme={createMuiTheme(isLightTheme ? lightTheme : darkTheme)}
+    >
+      <Content isLightTheme={isLightTheme} setIsLightTheme={setIsLightTheme} />
     </ThemeProvider>
   );
 }
