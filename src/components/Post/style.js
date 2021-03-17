@@ -3,7 +3,7 @@ export default function styles(theme) {
     post: {
       width: "100%",
       color: theme.palette.text.primary,
-      borderBottom: "1px solid " + theme.palette.secondary.main,
+      borderBottom: "1px solid " + theme.palette.secondary.dark,
     },
     username: {
       margin: "auto 0",
@@ -54,7 +54,7 @@ export default function styles(theme) {
       paddingTop: 10,
       margin: " 0 0 10px 0",
       color: theme.palette.text.primary,
-      borderTop: "1px solid " + theme.palette.secondary.main,
+      borderTop: "1px solid " + theme.palette.secondary.dark,
     },
   };
 }

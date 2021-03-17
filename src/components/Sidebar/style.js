@@ -1,19 +1,5 @@
 export default function styles(theme) {
   return {
-    homeBody: {
-      [theme.breakpoints.up("sm")]: {
-        borderLeft: "1px solid " + theme.palette.secondary.main,
-        borderRight: "1px solid " + theme.palette.secondary.main,
-      },
-    },
-    posts: {
-      paddingBottom: 55,
-      overflowX: "hidden",
-      overflowY: "scroll",
-      [theme.breakpoints.up("sm")]: {
-        borderLeft: "1px solid " + theme.palette.secondary.main,
-      },
-    },
     link: {
       height: 55,
       width: "100%",
@@ -29,11 +15,25 @@ export default function styles(theme) {
     },
     account: {
       height: 55,
-      borderTop: "1px solid " + theme.palette.secondary.main,
+      borderTop: "1px solid " + theme.palette.secondary.dark,
       display: "grid",
       gridTemplateColumns: "auto 1fr auto",
       color: theme.palette.text.primary,
       gridGap: 10,
+    },
+    authBox: {
+      height: 55,
+      borderTop: "1px solid " + theme.palette.secondary.dark,
+      display: "flex",
+      justifyContent: "space-around",
+      color: theme.palette.text.primary,
+      gridGap: 10,
+    },
+    signInBtn: {
+      width: "100%",
+    },
+    signUpBtn: {
+      width: "100%",
     },
     userPhoto: {
       margin: "auto 0 auto 10px",

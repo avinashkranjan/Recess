@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import styles from "./style";
 import {
-  IconButton,
   Hidden,
   BottomNavigation,
   BottomNavigationAction,
 } from "@material-ui/core";
 import {
-  WbSunnyRounded,
-  Brightness2Rounded,
   HomeRounded,
   AddCircleRounded,
   ExploreRounded,
-  AccountCircleRounded,
-  ExitToAppRounded,
 } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -22,18 +18,19 @@ import { darkTheme, createMuiTheme, ThemeProvider } from "../../theme";
 
 const useStyles = makeStyles(styles);
 
-function Footer() {
+function BottomNavBar({ user }) {
   const classes = useStyles();
+  const history = useHistory();
   const [value, setValue] = useState("home");
 
   const handleChange = (e, newValue) => {
+    history.push(`/${newValue}`);
     setValue(newValue);
   };
 
   useEffect(() => {
-    // console.log(window.location.pathname.substring(1));
     setValue(window.location.pathname.substring(1));
-  }, [window.location.href]);
+  }, []);
 
   return (
     <Hidden smUp>
@@ -49,11 +46,13 @@ function Footer() {
               value="home"
               icon={<HomeRounded />}
             />
-            <BottomNavigationAction
-              label="Upload"
-              value="upload"
-              icon={<AddCircleRounded />}
-            />
+            {user?.displayName && (
+              <BottomNavigationAction
+                label="Upload"
+                value="upload"
+                icon={<AddCircleRounded />}
+              />
+            )}
             <BottomNavigationAction
               label="Explore"
               value="explore"
@@ -66,4 +65,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default BottomNavBar;
