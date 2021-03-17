@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { db, auth } from "./firebase";
 import Homepage from "./pages/HomePage";
 import Uploadpage from "./pages/UploadPage";
-import "./App.css";
 import { lightTheme, darkTheme, createMuiTheme, ThemeProvider } from "./theme";
 
 import Header from "./components/Header";

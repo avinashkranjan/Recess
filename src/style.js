@@ -1,4 +1,7 @@
-export default function styles(theme) {
+import { darkTheme, createMuiTheme } from "./theme";
+
+const theme = createMuiTheme(darkTheme);
+export default function styles() {
   return {
     "@global": {
       "*": {
@@ -10,7 +13,10 @@ export default function styles(theme) {
       "*::-webkit-scrollbar": {
         appearance: "none",
         width: 10,
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: theme.palette.background.paper,
+        [theme.breakpoints.down("sm")]: {
+          display: "none",
+        },
       },
       "*::-webkit-scrollbar-thumb": {
         backgroundColor: theme.palette.secondary.main,
