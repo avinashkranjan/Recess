@@ -17,6 +17,7 @@ const useStyles = makeStyles(styles);
 function Uploadpage({ username }) {
   const classes = useStyles();
   const [image, setImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
   // const [url, setUrl] = useState("");
   const [progress, setProgress] = useState(0);
   const [caption, setCaption] = useState("");
@@ -24,60 +25,87 @@ function Uploadpage({ username }) {
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
+      readURL(e.target);
     }
   };
 
   const handleUpload = () => {
-    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    if (image?.name) {
+      const uploadTask = storage.ref(`images/${image.name}`).put(image);
 
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        //progress function ...
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setProgress(progress);
-      },
-      (error) => {
-        console.log(error);
-        alert(error.message);
-      },
-      () => {
-        storage
-          .ref("images")
-          .child(image.name)
-          .getDownloadURL()
-          .then((url) => {
-            db.collection("posts").add({
-              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-              caption: caption,
-              imageUrl: url,
-              username: username,
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          //progress function ...
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(progress);
+        },
+        (error) => {
+          console.log(error);
+          alert(error.message);
+        },
+        () => {
+          storage
+            .ref("images")
+            .child(image.name)
+            .getDownloadURL()
+            .then((url) => {
+              db.collection("posts").add({
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                caption: caption,
+                imageUrl: url,
+                username: username,
+              });
+
+              setProgress(0);
+              setCaption("");
+              setImage(null);
             });
-
-            setProgress(0);
-            setCaption("");
-            setImage(null);
-          });
-      }
-    );
+        }
+      );
+    }
   };
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      console.log("Loading Image preview...");
+      reader.onload = function () {
+        var dataURL = reader.result;
+        setImagePreview(dataURL);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
 
   return (
     <div className={classes.uploadPage}>
-      <label htmlFor="contained-button-file">
+      {!image && (
+        <label htmlFor="contained-button-file">
+          <Box className={classes.uploadArea}>
+            <span className={classes.text}>Click to upload Image</span>
+          </Box>
+          <Input
+            accept="image/*"
+            id="contained-button-file"
+            multiple
+            type="file"
+            className={classes.input}
+            onChange={handleChange}
+          />
+        </label>
+      )}
+      {image && (
         <Box className={classes.uploadArea}>
-          <span>Click or Drag and Drop to upload Image</span>
+          <img
+            src={imagePreview}
+            className={classes.imagePreview}
+            alt="User uploaded file"
+          />
         </Box>
-        <Input
-          accept="image/*"
-          id="contained-button-file"
-          multiple
-          type="file"
-          className={classes.input}
-        />
-      </label>
+      )}
       <label className={classes.caption}>
         <TextField
           label="Caption"

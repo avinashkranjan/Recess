@@ -1,5 +1,8 @@
 export default function styles(theme) {
   return {
+    text: {
+      color: theme.palette.text.secondary,
+    },
     uploadPage: {
       overflow: "none",
       width: "100%",
@@ -28,9 +31,14 @@ export default function styles(theme) {
     },
     uploadBtn: {
       width: "100%",
+      borderBottom: "1px solid " + theme.palette.secondary.dark,
     },
     progressBar: {
       backgroundColor: "transparent",
+    },
+    imagePreview: {
+      maxHeight: "100%",
+      maxWidth: "100%",
     },
   };
 }
