@@ -97,6 +97,12 @@ function Content({ isLightTheme, setIsLightTheme }) {
               <Switch>
                 <Route
                   exact
+                  path="/"
+                  component={() => <Homepage posts={posts} user={user} />}
+                />
+
+                <Route
+                  exact
                   path="/home"
                   component={() => <Homepage posts={posts} user={user} />}
                 />
@@ -107,7 +113,7 @@ function Content({ isLightTheme, setIsLightTheme }) {
                   component={() => <Uploadpage username={user?.displayName} />}
                 />
 
-                <Redirect to="/home" />
+                {/* <Redirect to="/home" /> */}
               </Switch>
             </Grid>
           </Grid>
