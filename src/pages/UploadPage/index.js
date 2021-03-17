@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Button,
@@ -16,6 +17,7 @@ const useStyles = makeStyles(styles);
 
 function Uploadpage({ username }) {
   const classes = useStyles();
+  const history = useHistory();
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   // const [url, setUrl] = useState("");
@@ -41,6 +43,10 @@ function Uploadpage({ username }) {
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
           setProgress(progress);
+
+          if (snapshot.bytesTransferred === snapshot.totalBytes) {
+            history.replace("/home");
+          }
         },
         (error) => {
           console.log(error);
