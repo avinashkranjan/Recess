@@ -54,13 +54,16 @@ function Header({
   };
 
   useEffect(() => {
-    history.listen(() => {
+    const pageNamer = () => {
       let tempPageName = "";
       tempPageName =
         window.location.pathname.substring(1).charAt(0).toUpperCase() +
         window.location.pathname.substring(2);
       setPageName(tempPageName);
-    });
+    };
+
+    pageNamer();
+    history.listen(pageNamer);
   }, []);
 
   useEffect(() => {
