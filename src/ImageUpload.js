@@ -103,6 +103,7 @@ function ImageUpload({ username }) {
 
   return (
 
+    //Upload Form UI changed
     <Card className="imageupload">
       <CardContent>
         <Typography variant="h5" style={{textAlign:'center',marginBottom:'10px'}}>Add Post</Typography>
@@ -169,12 +170,3 @@ function ImageUpload({ username }) {
 }
 
 export default ImageUpload;
-
-
-
-// <Card className={classes.root}>
-//             <CardContent>
-//                 <Typography variant="h5" 
-//                 style={{ textTransform: "uppercase", textAlign:"center", fontWeight: "bold" }}>
-//                     New Post</Typography>
-                
