@@ -1,0 +1,97 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "saikeshari",
+      "name": "Sai Keshari",
+      "avatar_url": "https://avatars.githubusercontent.com/u/68103466?v=4",
+      "profile": "https://github.com/saikeshari",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "khareyash05",
+      "name": "Yash Khare",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60147732?v=4",
+      "profile": "https://khareyash05.github.io/cv-css-js/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "kanak22",
+      "name": "Kanak",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62026983?v=4",
+      "profile": "https://www.linkedin.com/in/kanak-a21384186",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "lavanya243",
+      "name": "Lavanya Narayanan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/69483128?v=4",
+      "profile": "https://www.linkedin.com/in/lavanya-narayanan-5ba797168/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "itsIapetus",
+      "name": "Kriti",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75844962?v=4",
+      "profile": "https://github.com/itsIapetus",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Suvojit-roy",
+      "name": "Suvojit Ray",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56533500?v=4",
+      "profile": "https://github.com/Suvojit-roy",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "AnjaliSrivastava722",
+      "name": "Anjali_Srivastava",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43489841?v=4",
+      "profile": "https://github.com/AnjaliSrivastava722",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Sakshi0401",
+      "name": "Sakshi Joshi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64726139?v=4",
+      "profile": "https://github.com/Sakshi0401",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Jaagrav",
+      "name": "Jaagrav",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52719271?v=4",
+      "profile": "https://xjaagrav.netlify.app",
+      "contributions": [
+        "code",
+        "design"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "Recess",
+  "projectOwner": "avinashkranjan",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

@@ -1,33 +1,68 @@
 ![recess](https://socialify.git.ci/avinashkranjan/recess/image?description=1&forks=1&issues=1&language=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Light)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-## [Visit](https://recess-it.web.app/) 
-## [VideoDemo](https://vimeo.com/455212027)
 
-### Existing Ids:
+<p align="center">
+  <a href="https://recess-it.web.app/">
+    <img src="https://forthebadge.com/images/badges/check-it-out.svg">
+   </a>
+</p>
 
-1. ID: `student.1@gmail.com`
-   password: `123456`
-   
-2. ID: `avinash@gmail.com`
-   Password: `123456`
+<h2 align=center> 👨🏻‍💻 How to get started? </h2> 
 
-### `npm start`
+You can refer to the following articles on **_basics of Git and Github and also contact the Project Mentors, in case you are stuck_**:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Forking a Repo](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
+- [Cloning a Repo](https://help.github.com/en/desktop/contributing-to-projects/creating-a-pull-request)
+- [How to create a Pull Request](https://opensource.com/article/19/7/create-pull-request-github)
+- [Getting started with Git and GitHub](https://towardsdatascience.com/getting-started-with-git-and-github-6fcd0f2d4ac6)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+<h2 align=center> 📝 How to Contribute? </h2>  
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Take a look at [Contributing Guide](https://github.com/avinashkranjan/Recess/blob/master/CONTRIBUTING.md)
+- Take a look at the Existing Issues or create your own Issues!
+- Wait for the Issue to be assigned to you after which you can start working on it.
+- Fork the Repo and create a Branch for any Issue that you are working upon.
+- Create a Pull Request which will be promptly reviewed and suggestions would be added to improve it.
+- Add Screenshots to help us know what this Script is all about.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h1 align=center> Project Admin ❤️ </h1>
+<p align="center">
+  <a href="https://github.com/avinashkranjan"><img src="https://user-images.githubusercontent.com/55796944/95675026-dab07580-0bd1-11eb-93e2-1cb1de8acf38.png" width=150px height=150px /></a> 
+    
+<p align="center">
+  <img src="https://img.shields.io/badge/avinashkranjan%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>  <img src="https://img.shields.io/badge/iavinashranjan%20-%231DA1F2.svg?&style=for-the-badge&logo=Twitter&logoColor=white"/> <img src="https://img.shields.io/badge/avinashkranjan7%20-%23E4405F.svg?&style=for-the-badge&logo=Instagram&logoColor=white"/>   
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/saikeshari"><img src="https://avatars.githubusercontent.com/u/68103466?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sai Keshari</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=saikeshari" title="Code">💻</a></td>
+    <td align="center"><a href="https://khareyash05.github.io/cv-css-js/"><img src="https://avatars.githubusercontent.com/u/60147732?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yash Khare</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=khareyash05" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/kanak-a21384186"><img src="https://avatars.githubusercontent.com/u/62026983?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kanak</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=kanak22" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/lavanya-narayanan-5ba797168/"><img src="https://avatars.githubusercontent.com/u/69483128?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lavanya Narayanan</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=lavanya243" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/itsIapetus"><img src="https://avatars.githubusercontent.com/u/75844962?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kriti</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=itsIapetus" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/Suvojit-roy"><img src="https://avatars.githubusercontent.com/u/56533500?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Suvojit Ray</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=Suvojit-roy" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/AnjaliSrivastava722"><img src="https://avatars.githubusercontent.com/u/43489841?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anjali_Srivastava</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=AnjaliSrivastava722" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/Sakshi0401"><img src="https://avatars.githubusercontent.com/u/64726139?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sakshi Joshi</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=Sakshi0401" title="Code">💻</a></td>
+    <td align="center"><a href="https://xjaagrav.netlify.app"><img src="https://avatars.githubusercontent.com/u/52719271?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jaagrav</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=Jaagrav" title="Code">💻</a> <a href="#design-Jaagrav" title="Design">🎨</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
