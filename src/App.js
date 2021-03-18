@@ -6,8 +6,11 @@ import Post from "./Post";
 import ImageUpload from "./ImageUpload";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import { Button, TextField } from "@material-ui/core";
+import { Button, TextField, Grid } from "@material-ui/core";
 import InstagramEmbed from "react-instagram-embed";
+import Avatar from "@material-ui/core/Avatar";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Profile from './pages/ProfilePage';
 
 function getModalStyle() {
   const top = 50;
@@ -33,7 +36,23 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+
+
 function App() {
+  
+  return (
+    <Router>
+      <div className="app">
+        <Switch>
+          <Route path = "/" exact component = { Home } />
+          <Route path = "/profile" component = { Profile } />
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+const Home = () => {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [posts, setPosts] = useState([]);
@@ -99,8 +118,9 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <Modal open={open} onClose={() => setOpen(false)}>
+
+  <div>
+    <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           {/* <form className="app__signup">
             <center>
@@ -193,14 +213,25 @@ function App() {
         <img className="app__headerImage" src={Logo} alt="logo" />
 
         {user ? (
-          <Button
-            onClick={() => auth.signOut()}
-            variant="contained"
-            color="secondary"
-            className={classes.button}
-          >
-            Logout
-          </Button>
+          <div>
+            <Grid container direction="row" alignItems="center">
+              <Grid item>
+                <Link to = "/profile" >
+                  <Avatar ></Avatar>
+                </Link>
+              </Grid>
+              <Grid item>
+                <Button
+                onClick={() => auth.signOut()}
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+                >
+                  Logout
+                </Button>
+              </Grid>
+            </Grid>
+          </div>
         ) : (
           <div className="app__loginContainer">
             <Button
@@ -257,8 +288,9 @@ function App() {
       ) : (
         <h3 className="login__val">You need to Login to Upload</h3>
       )}
-    </div>
+  </div>
   );
 }
 
 export default App;
+
