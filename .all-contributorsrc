@@ -76,6 +76,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Jaagrav",
+      "name": "Jaagrav",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52719271?v=4",
+      "profile": "https://xjaagrav.netlify.app",
+      "contributions": [
+        "code",
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7,
