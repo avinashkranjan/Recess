@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "./style.js";
@@ -8,10 +8,6 @@ import notFoundArt from "../../assets/not-found-art.png";
 const useStyles = makeStyles(styles);
 function Notfoundpage() {
   const classes = useStyles();
-
-  useEffect(() => {
-    console.log("This is the Not Found page");
-  }, []);
 
   return (
     <div className={classes.notFoundPage}>

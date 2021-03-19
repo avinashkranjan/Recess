@@ -6,7 +6,7 @@ import ImageUpload from "../../components/ImageUploader";
 import Sidebar from "../../components/Sidebar";
 import Footer from "../../components/Footer";
 
-import { Route, useHistory } from "react-router-dom";
+import { Route, useHistory, Switch, Redirect } from "react-router-dom";
 
 import Notfoundpage from "../NotFoundPage";
 import Underdevpage from "../UnderDevPage";
@@ -267,28 +267,31 @@ function Homepage() {
 
       <Sidebar />
 
-      <Route
-        exact
-        path="/home"
-        component={() => (
-          <div className="app__posts">
-            <div className="app__postsLeft">
-              {posts.map(({ id, post }) => (
-                <Post
-                  key={id}
-                  postId={id}
-                  user={user}
-                  username={post.username}
-                  imageUrl={post.imageUrl}
-                  caption={post.caption}
-                />
-              ))}
+      <Switch>
+        <Route
+          exact
+          path="/home"
+          component={() => (
+            <div className="app__posts">
+              <div className="app__postsLeft">
+                {posts.map(({ id, post }) => (
+                  <Post
+                    key={id}
+                    postId={id}
+                    user={user}
+                    username={post.username}
+                    imageUrl={post.imageUrl}
+                    caption={post.caption}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        )}
-      />
-      <Route exact path="/notfound" component={Notfoundpage} />
-      <Route exact path="/underdev" component={Underdevpage} />
+          )}
+        />
+        <Route exact path="/notfound" component={Notfoundpage} />
+        <Route exact path="/underdev" component={Underdevpage} />
+        <Redirect to="/notfound" />
+      </Switch>
 
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
