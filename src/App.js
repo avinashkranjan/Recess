@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { db, auth } from "./firebase";
+
 import Homepage from "./pages/HomePage";
 import Uploadpage from "./pages/UploadPage";
+import Notfoundpage from "./pages/NotFoundPage";
+
 import { lightTheme, darkTheme, createMuiTheme, ThemeProvider } from "./theme";
 
 import Header from "./components/Header";
@@ -113,7 +116,15 @@ function Content({ isLightTheme, setIsLightTheme }) {
                   component={() => <Uploadpage username={user?.displayName} />}
                 />
 
-                {/* <Redirect to="/home" /> */}
+                <Route
+                  exact
+                  path="/notfound"
+                  component={() => (
+                    <Notfoundpage username={user?.displayName} />
+                  )}
+                />
+
+                <Redirect to="/notfound" />
               </Switch>
             </Grid>
           </Grid>
