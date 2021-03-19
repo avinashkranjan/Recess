@@ -5,6 +5,7 @@ import { db, auth } from "./firebase";
 import Homepage from "./pages/HomePage";
 import Uploadpage from "./pages/UploadPage";
 import Notfoundpage from "./pages/NotFoundPage";
+import Underdevpage from "./pages/UnderDevPage";
 
 import { lightTheme, darkTheme, createMuiTheme, ThemeProvider } from "./theme";
 
@@ -119,9 +120,13 @@ function Content({ isLightTheme, setIsLightTheme }) {
                 <Route
                   exact
                   path="/notfound"
-                  component={() => (
-                    <Notfoundpage username={user?.displayName} />
-                  )}
+                  component={() => <Notfoundpage />}
+                />
+
+                <Route
+                  exact
+                  path="/underdev"
+                  component={() => <Underdevpage />}
                 />
 
                 <Redirect to="/notfound" />
