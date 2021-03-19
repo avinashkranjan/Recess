@@ -1,6 +1,6 @@
 ![recess](https://socialify.git.ci/avinashkranjan/recess/image?description=1&forks=1&issues=1&language=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Light)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
@@ -56,6 +56,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/Sakshi0401"><img src="https://avatars.githubusercontent.com/u/64726139?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sakshi Joshi</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=Sakshi0401" title="Code">💻</a></td>
+    <td align="center"><a href="https://xjaagrav.netlify.app"><img src="https://avatars.githubusercontent.com/u/52719271?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jaagrav</b></sub></a><br /><a href="https://github.com/avinashkranjan/Recess/commits?author=Jaagrav" title="Code">💻</a> <a href="#design-Jaagrav" title="Design">🎨</a></td>
   </tr>
 </table>
 
