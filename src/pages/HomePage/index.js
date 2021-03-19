@@ -290,7 +290,6 @@ function Homepage() {
         />
         <Route exact path="/notfound" component={Notfoundpage} />
         <Route exact path="/underdev" component={Underdevpage} />
-        <Redirect to="/notfound" />
       </Switch>
 
       {user?.displayName ? (

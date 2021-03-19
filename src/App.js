@@ -10,8 +10,10 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={Homepage} />
+          <Route exact path="/" component={Homepage} />
           <Route exact path="/home" component={Homepage} />
+          <Route exact path="/notfound" component={Homepage} />
+          <Route exact path="/underdev" component={Homepage} />
           <Redirect to="/notfound" />
         </Switch>
       </BrowserRouter>
