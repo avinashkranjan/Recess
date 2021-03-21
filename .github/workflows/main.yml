@@ -1,0 +1,22 @@
+name: Deploy_on_Firebase_After_Every_Commit
+
+on:
+  push:
+    tags:
+      - Auto Deploy-*
+
+jobs:
+  Deploy_on_Firebase_After_Every_Commit:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Auto Deploy on Firebase After Every Commit
+        uses: actions/checkout@master
+
+      - name: Deploy to Firebase
+        uses: FirebaseExtended/action-hosting-deploy@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
