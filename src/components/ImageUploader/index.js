@@ -1,17 +1,10 @@
 import React, { useState } from "react";
-<<<<<<< HEAD:src/ImageUpload.js
-import { Button, Input,Card, CardContent, Typography,CardMedia,CardActions,CircularProgress} from "@material-ui/core";
-import { storage, db } from "./firebase";
-import firebase from "firebase";
+import { Button, Input, Card, CardContent, Typography, CardMedia, CardActions, CircularProgress } from "@material-ui/core";
 
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import "./ImageUpload.css";
-=======
-import { Button, Input } from "@material-ui/core";
 import { storage, db } from "../../firebase";
 import firebase from "firebase";
 import "./style.css";
->>>>>>> 1bb53f746bf6407c77925c4a837db517edf3b6a8:src/components/ImageUploader/index.js
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -19,28 +12,42 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   root: {
-      width:750,
-      margin: '40px auto',
+    width: 750,
+    margin: '40px auto',
   },
   pos: {
-      marginBottom: 12,
+    marginBottom: 12,
   },
   action:
   {
-      width:109,
-      margin:"10px auto"
+    width: 109,
+    margin: "10px auto"
   },
   media: {
-      height: 0,
-      paddingTop: '56.25%',
-    },
+    height: 0,
+    paddingTop: '56.25%',
+  },
 
-  inp:{ 
-      width: "90%", 
-      margin: "10px auto", 
-      padding: "10px" 
-  }
+  inp: {
+    width: "90%",
+    margin: "10px auto",
+    padding: "10px"
+  },
+  title:
+  {
+    textAlign: 'center', marginBottom: '10px'
+  },
+  uploadBtn:
+  {
+    textTransform:'capitalize',
+    fontSize:'17px'
 
+  },
+  innerCard:
+    { 
+      width: '80%', 
+      margin: "0 auto" 
+    }
 });
 
 
@@ -49,14 +56,14 @@ function ImageUpload({ username }) {
 
   const [image, setImage] = useState(null);
   // const [url, setUrl] = useState("");
-  const [upload,setUpload]=useState(false);
+  const [upload, setUpload] = useState(false);
   const [progress, setProgress] = useState(0);
   const [caption, setCaption] = useState("");
-  const [file,setFile]=useState(null);
-  
+  const [file, setFile] = useState(null);
 
- const classes=useStyles();
-  
+
+  const classes = useStyles();
+
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -111,60 +118,65 @@ function ImageUpload({ username }) {
   return (
 
     //Upload Form UI changed
+
     <Card className="imageupload">
       <CardContent>
-        <Typography variant="h5" style={{textAlign:'center',marginBottom:'10px'}}>Add Post</Typography>
+        <Typography variant="h5" className={classes.title}>Add Post</Typography>
         <form>
-        <Input
-        type="text"
-        placeholder="Enter a caption.."
-        onChange={(e) => setCaption(e.target.value)}
-        value={caption}
-      />
-      <br/>
-        <Input style={{display:"none"}}
-                        id="contained-button-file"
-                        multiple 
-                        onChange={handleChange}
-                        type="file"
-                    /> 
-                    <label htmlFor="contained-button-file">
-                        {!image && !file?
-                        <Button variant="contained" color="primary" 
-                        component="span" startIcon={<PhotoCamera />}
-                        color="primary">
-                            Upload
-                        </Button>:<Button variant="contained" color="primary"
-                        component="span" startIcon={<PhotoCamera />}
-                        color="primary">
-                            Change
+          <Input
+            type="text"
+            placeholder="Enter a caption.."
+            onChange={(e) => setCaption(e.target.value)}
+            value={caption}
+          />
+          <br />
+          <Input style={{ display: "none" }}
+            id="contained-button-file"
+            multiple
+            onChange={handleChange}
+            type="file"
+          />
+          <label htmlFor="contained-button-file">
+            {!image && !file ?
+              <Button variant="contained" color="primary"
+                component="span" startIcon={<PhotoCamera />}
+                color="primary">
+                Upload
+                        </Button> : <Button variant="contained" color="primary"
+                component="span" startIcon={<PhotoCamera />}
+                color="primary">
+                Change
                         </Button>}
 
-                        <br/>
+            <br />
 
-                        {file?<Card style={{width:'80%',margin:"0 auto"}}>
-                            <CardMedia
-                            className={classes.media}
-                            image={file}/>
-                          </Card>:''}
-                    </label>
-                    
-                </form>
+{/* preview of uploaded image */}
+            {file ? <Card className={classes.innerCard}>
+              <CardMedia
+                className={classes.media}
+                image={file} />
+            </Card> : ''}
+          </label>
+
+        </form>
+
+        {/* Progress Bar added   */}
+
+        {upload ? <progress className="imageupload__progress" value={progress} max="100" /> : ''}
 
 
-                {upload?<progress className="imageupload__progress" value={progress} max="100" />:''}
+      </CardContent>
+      <CardActions className={classes.action}>
+        <Button type="submit"
+          className={classes.uploadBtn}
+          variant="contained" color="primary"
+          onClick={handleUpload}>
+          Add Post</Button>
+      </CardActions>
 
+    </Card>
+//Code added by Sristi Chowdhury
 
-            </CardContent>
-            <CardActions className={classes.action}>
-                <Button type="submit"
-                    style={{ textTransform: "capitalize", fontSize: "17px"}}
-                    variant="contained" color="primary"
-                    onClick={handleUpload}>
-                        Add Post</Button>
-            </CardActions>
-            
-        </Card>
 
     // <div className="imageupload">
     //   {uplaod?<progress className="imageupload__progress" value={progress} max="100" />:""}
