@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+<<<<<<< HEAD:src/ImageUpload.js
 import { Button, Input,Card, CardContent, Typography,CardMedia,CardActions,CircularProgress} from "@material-ui/core";
 import { storage, db } from "./firebase";
 import firebase from "firebase";
 
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import "./ImageUpload.css";
+=======
+import { Button, Input } from "@material-ui/core";
+import { storage, db } from "../../firebase";
+import firebase from "firebase";
+import "./style.css";
+>>>>>>> 1bb53f746bf6407c77925c4a837db517edf3b6a8:src/components/ImageUploader/index.js
 
 import { makeStyles } from '@material-ui/core/styles';
 

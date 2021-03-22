@@ -4,17 +4,21 @@
 }
 
 .post {
-  background-color: white;
+  background-color: var(--secondary-app-color);
   max-width: 500px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--border-color);
   margin-bottom: 45px;
+}
+
+.post * {
+  color: var(--text-color);
 }
 
 .post__text {
   font-weight: normal;
   padding: 20px;
-  border-top: 1px solid lightgray;
-  border-bottom: 1px solid lightgray;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .post__header {
@@ -35,7 +39,8 @@
   flex: 1;
   border: none;
   padding: 10px;
-  border-top: 1px solid lightgray;
+  background-color: var(--secondary-app-color);
+  border-top: 1px solid var(--border-color);
 }
 
 .post__comments {
@@ -47,7 +52,7 @@
   border: none;
   color: #6082a3;
   background-color: transparent;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid var(--border-color);
 }
 
 .login__button {
