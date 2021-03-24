@@ -4,6 +4,7 @@ import { db, auth } from "./firebase";
 
 import Homepage from "./pages/HomePage";
 import Uploadpage from "./pages/UploadPage";
+import Explorepage from "./pages/ExplorePage";
 import Notfoundpage from "./pages/NotFoundPage";
 import Underdevpage from "./pages/UnderDevPage";
 
@@ -116,6 +117,14 @@ function Content({ isLightTheme, setIsLightTheme }) {
                   path="/upload"
                   component={() => <Uploadpage username={user?.displayName} />}
                 />
+
+                <Route
+                  exact
+                  path="/explore"
+                  component={() => <Underdevpage />}
+                />
+
+                <Route exact path="/post" component={() => <Underdevpage />} />
 
                 <Route
                   exact
