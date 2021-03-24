@@ -70,9 +70,9 @@ function Postpage() {
         alt="PostImage"
       />
 
-      <h4 className={classes.postText}>
+      <div className={classes.postText}>
         <strong>{postData.username}</strong> {postData.caption}
-      </h4>
+      </div>
 
       <div className={classes.postComments}>
         {comments &&
