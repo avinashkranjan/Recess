@@ -55,13 +55,13 @@ function Header({
 
   useEffect(() => {
     const pageNamer = () => {
-      let tempPageName = "";
-      tempPageName =
-        window.location.pathname.substring(1).charAt(0).toUpperCase() +
-        window.location.pathname.substring(
-          2,
-          window.location.pathname.indexOf("/", 2)
-        );
+      let tempPageName = "",
+        pathname = window.location.pathname + "/",
+        mainPath = pathname.substring(1, pathname.indexOf("/", 1));
+
+      tempPageName = mainPath.charAt(0).toUpperCase() + mainPath.substring(1);
+
+      console.log(window.location);
       setPageName(tempPageName);
     };
 
