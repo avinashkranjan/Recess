@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { auth } from "../../firebase";
 
 import {
@@ -138,12 +138,14 @@ function Header({
       <div className={classes.root}>
         <Grid container>
           <Grid container item xs={1} sm={4}>
-            <Hidden xsDown>
-              <img src={Logo} alt="branding-logo" />
-            </Hidden>
-            <Hidden smUp>
-              <img src={ContractedLogo} alt="branding-logo" />
-            </Hidden>
+            <Link to="/">
+              <Hidden xsDown>
+                <img src={Logo} alt="branding-logo" />
+              </Hidden>
+              <Hidden smUp>
+                <img src={ContractedLogo} alt="branding-logo" />
+              </Hidden>
+            </Link>
           </Grid>
           <Grid container item xs={11} sm={8} className={classes.pageHeader}>
             <Grid container item xs={9} sm={11} alignItems="center">
