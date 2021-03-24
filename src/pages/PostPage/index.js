@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "./style.js";
 import { db } from "../../firebase";
 import firebase from "firebase";
@@ -8,15 +8,20 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(styles);
 
-function Post({ postId, user, username, caption, imageUrl }) {
-  const [comments, setComments] = useState([]);
-  const [comment, setComment] = useState("");
+function Postpage() {
   const classes = useStyles();
+  const { postId } = useParams();
+
+  const [user, setUser] = useState({});
+  const [postData, setPostData] = useState({});
+  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    let unsubscribe;
+    console.log(postId);
+    let unsubscribeComments, unsubscribePost;
     if (postId) {
-      unsubscribe = db
+      unsubscribeComments = db
         .collection("posts")
         .doc(postId)
         .collection("comments")
@@ -24,12 +29,22 @@ function Post({ postId, user, username, caption, imageUrl }) {
         .onSnapshot((snapshot) => {
           setComments(snapshot.docs.map((doc) => doc.data()));
         });
+
+      unsubscribePost = db
+        .collection("posts")
+        .doc(postId)
+        .onSnapshot((snapshot) => {
+          setPostData(snapshot.data());
+        });
     }
 
+    setUser(firebase.auth().currentUser);
+
     return () => {
-      unsubscribe();
+      unsubscribeComments();
+      unsubscribePost();
     };
-  }, [postId]);
+  }, []);
 
   const postComment = (event) => {
     event.preventDefault();
@@ -46,13 +61,17 @@ function Post({ postId, user, username, caption, imageUrl }) {
     <div className={classes.post}>
       <div className={classes.postHeader}>
         <Avatar className={classes.avatar} alt="Avinash" src="" />
-        <h3 className={classes.username}>{username}</h3>
+        <h3 className={classes.username}>{postData.username}</h3>
       </div>
 
-      <img className={classes.postImage} src={imageUrl} alt="PostImage" />
+      <img
+        className={classes.postImage}
+        src={postData.imageUrl}
+        alt="PostImage"
+      />
 
       <h4 className={classes.postText}>
-        <strong>{username}</strong> {caption}
+        <strong>{postData.username}</strong> {postData.caption}
       </h4>
 
       <div className={classes.postComments}>
@@ -64,7 +83,7 @@ function Post({ postId, user, username, caption, imageUrl }) {
           ))}
       </div>
 
-      {user && (
+      {postData && (
         <form className={classes.postCommentBox}>
           <input
             className={classes.postCommentInput}
@@ -83,12 +102,8 @@ function Post({ postId, user, username, caption, imageUrl }) {
           </button>
         </form>
       )}
-
-      <Link to={`/post/${postId}`} className={classes.viewPostBtn}>
-        View Post
-      </Link>
     </div>
   );
 }
 
-export default Post;
+export default Postpage;

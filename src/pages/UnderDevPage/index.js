@@ -10,6 +10,7 @@ function Underdevpage() {
   const classes = useStyles();
   return (
     <div className={classes.underDevPage}>
+      <h1 className={classes.pageTitle}>Under Development</h1>
       <img
         src={underDevArt}
         alt="under development art"

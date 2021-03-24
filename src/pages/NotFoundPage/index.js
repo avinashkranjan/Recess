@@ -10,6 +10,7 @@ function Notfoundpage() {
   const classes = useStyles();
   return (
     <div className={classes.notFoundPage}>
+      <h1 className={classes.pageTitle}>Not Found!</h1>
       <img
         src={notFoundArt}
         alt="not found art"

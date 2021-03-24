@@ -58,7 +58,10 @@ function Header({
       let tempPageName = "";
       tempPageName =
         window.location.pathname.substring(1).charAt(0).toUpperCase() +
-        window.location.pathname.substring(2);
+        window.location.pathname.substring(
+          2,
+          window.location.pathname.indexOf("/", 2)
+        );
       setPageName(tempPageName);
     };
 
