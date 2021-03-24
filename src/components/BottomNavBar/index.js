@@ -30,6 +30,9 @@ function BottomNavBar({ user }) {
 
   useEffect(() => {
     setValue(window.location.pathname.substring(1));
+    return history.listen(() => {
+      setValue(window.location.pathname.substring(1));
+    });
   }, []);
 
   return (
