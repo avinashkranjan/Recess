@@ -75,53 +75,53 @@ function Sidebar({
   return (
     <Grid item xs={0} sm={4} className={classes.sidebar}>
       <Hidden xsDown>
-        <Link
-          to="/home"
-          className={classes.link}
-          style={{ color: getSelectedStyle(pageSelected.home) }}
+        <div
+          className={classes.navLinks}
+          style={{ height: window.innerHeight - 110 }}
         >
-          <HomeRounded />
-          <span>Home</span>
-        </Link>
-
-        {user?.displayName ? (
           <Link
-            to="/upload"
+            to="/home"
             className={classes.link}
-            style={{ color: getSelectedStyle(pageSelected.upload) }}
+            style={{ color: getSelectedStyle(pageSelected.home) }}
           >
-            <AddCircleRounded />
-            <span>Upload</span>
+            <HomeRounded />
+            <span>Home</span>
           </Link>
-        ) : null}
 
-        <Link
-          to="/explore"
-          className={classes.link}
-          style={{ color: getSelectedStyle(pageSelected.explore) }}
-        >
-          <ExploreRounded />
-          <span>Explore</span>
-        </Link>
+          {user?.displayName ? (
+            <Link
+              to="/upload"
+              className={classes.link}
+              style={{ color: getSelectedStyle(pageSelected.upload) }}
+            >
+              <AddCircleRounded />
+              <span>Upload</span>
+            </Link>
+          ) : null}
 
-        {user?.displayName ? (
           <Link
-            to="/profile"
+            to="/explore"
             className={classes.link}
-            style={{ color: getSelectedStyle(pageSelected.profile) }}
+            style={{ color: getSelectedStyle(pageSelected.explore) }}
           >
-            <AccountCircleRounded />
-            <span>Profile</span>
+            <ExploreRounded />
+            <span>Explore</span>
           </Link>
-        ) : null}
+
+          {user?.displayName ? (
+            <Link
+              to="/profile"
+              className={classes.link}
+              style={{ color: getSelectedStyle(pageSelected.profile) }}
+            >
+              <AccountCircleRounded />
+              <span>Profile</span>
+            </Link>
+          ) : null}
+        </div>
 
         {user?.displayName ? (
-          <div
-            className={classes.account}
-            style={{
-              marginTop: window.innerHeight - (user?.displayName ? 330 : 220),
-            }}
-          >
+          <div className={classes.account}>
             <Avatar src="" alt="User" className={classes.userPhoto} />
             <span className={classes.username}>{user?.displayName}</span>
             <IconButton
@@ -132,12 +132,7 @@ function Sidebar({
             </IconButton>
           </div>
         ) : (
-          <div
-            className={classes.authBox}
-            style={{
-              marginTop: window.innerHeight - (user?.displayName ? 330 : 220),
-            }}
-          >
+          <div className={classes.authBox}>
             <Button
               className={classes.signInBtn}
               onClick={() => setOpenSignIn(true)}
