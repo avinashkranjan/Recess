@@ -59,12 +59,6 @@ function Content({ isLightTheme, setIsLightTheme }) {
       });
   }, []);
 
-  useEffect(() => {
-    return window.addEventListener("resize", () => {
-      window.location.reload();
-    });
-  }, []);
-
   return (
     <>
       <CssBaseline />
