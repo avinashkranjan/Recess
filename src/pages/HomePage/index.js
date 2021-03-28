@@ -37,6 +37,8 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
+const darkThemeStatus = (localStorage?.hasOwnProperty('darkThemeStatus')) ? JSON.parse(localStorage['darkThemeStatus']) : true;
+
 function Homepage() {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
@@ -47,7 +49,7 @@ function Homepage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
-  const [darkModeOn, setDarkModeOn] = useState(false);
+  const [darkModeOn, setDarkModeOn] = useState(darkThemeStatus);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -79,7 +81,7 @@ function Homepage() {
   }, []);
 
   useEffect(() => {
-    if (!darkModeOn) {
+    if (darkModeOn) {
       document.documentElement.style.setProperty("--primary-app-color", "#333");
       document.documentElement.style.setProperty(
         "--secondary-app-color",
@@ -220,8 +222,8 @@ function Homepage() {
 
       <div className="app__header">
         <img className="app__headerImage" src={Logo} alt="logo" />
-        <IconButton onClick={() => setDarkModeOn(!darkModeOn)}>
-          {darkModeOn ? (
+        <IconButton onClick={() => {setDarkModeOn(!darkModeOn); localStorage['darkThemeStatus'] = !darkModeOn}}>
+          {!darkModeOn ? (
             <Brightness2Rounded style={{ color: "#000" }} />
           ) : (
             <WbSunnyRounded style={{ color: "#fff" }} />
@@ -229,7 +231,7 @@ function Homepage() {
         </IconButton>
         {user ? (
           <Button
-            onClick={() => auth.signOut()}
+            onClick={() => {auth.signOut(); localStorage?.removeItem('darkThemeStatus')}}
             variant="contained"
             color="secondary"
             className={classes.button}
