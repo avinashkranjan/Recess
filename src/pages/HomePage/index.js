@@ -139,7 +139,9 @@ function Homepage() {
 
           <form className="app__signup" noValidate autoComplete="off">
             <center>
-              <img className="app__headerImage" src={Logo} alt="logo" />
+              <a href="/home">
+                <img className="app__headerImage" src={Logo} alt="logo" />
+              </a>
             </center>
             <br />
             <TextField
@@ -186,7 +188,9 @@ function Homepage() {
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup" noValidate autoComplete="off">
             <center>
-              <img className="app__headerImage" src={Logo} alt="logo" />
+              <a href="/home">
+                <img className="app__headerImage" src={Logo} alt="logo" />
+              </a>
             </center>
             <br />
             <TextField
@@ -221,7 +225,9 @@ function Homepage() {
       </Modal>
 
       <div className="app__header">
-        <img className="app__headerImage" src={Logo} alt="logo" />
+        <a href="/home">
+          <img className="app__headerImage" src={Logo} alt="logo" />
+        </a>
         <IconButton onClick={() => {setDarkModeOn(!darkModeOn); localStorage['darkThemeStatus'] = !darkModeOn}}>
           {!darkModeOn ? (
             <Brightness2Rounded style={{ color: "#000" }} />
