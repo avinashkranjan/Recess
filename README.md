@@ -33,8 +33,8 @@ Thanks goes to these wonderful people.
 <table>
 	<tr>
 		<td>
-			<a href="https://github.com/dscciem/Pentesting-and-Hacking-Scripts/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=dscciem/Pentesting-and-Hacking-Scripts" />
+			<a href="https://github.com/avinashkranjan/Recess/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=avinashkranjan/Recess" />
 </a>
 		</td>
 	</tr>
