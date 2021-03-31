@@ -46,7 +46,13 @@ function Post({ postId, user, username, caption, imageUrl }) {
         .collection("comments")
         .orderBy("timestamp", "desc")
         .onSnapshot((snapshot) => {
-          setComments(snapshot.docs.map((doc) => doc.data()));
+          const tempComments = [];
+          for (let doc of snapshot.docs) {
+            tempComments.unshift(doc.data());
+            console.log(doc.data());
+          }
+          setComments(tempComments);
+          // setComments(snapshot.docs.map((doc) => doc.data()));
         });
     }
 
