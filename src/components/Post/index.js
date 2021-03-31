@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./style.js";
 import { db } from "../../firebase";
@@ -9,9 +9,33 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(styles);
 
 function Post({ postId, user, username, caption, imageUrl }) {
+  const classes = useStyles();
+  const postImage = useRef();
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
-  const classes = useStyles();
+
+  const postComment = (event) => {
+    event.preventDefault();
+
+    db.collection("posts").doc(postId).collection("comments").add({
+      username: user.displayName,
+      text: comment,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    setComment("");
+  };
+
+  useEffect(() => {
+    postImage.current.onload = () => {
+      if (postImage.current.height > postImage.current.width) {
+        postImage.current.style.maxHeight = "350px";
+      } else if (postImage.current.height < postImage.current.width) {
+        postImage.current.style.maxWidth = "100%";
+      } else {
+        postImage.current.style.maxHeight = "350px";
+      }
+    };
+  }, []);
 
   useEffect(() => {
     let unsubscribe;
@@ -31,17 +55,6 @@ function Post({ postId, user, username, caption, imageUrl }) {
     };
   }, [postId]);
 
-  const postComment = (event) => {
-    event.preventDefault();
-
-    db.collection("posts").doc(postId).collection("comments").add({
-      username: user.displayName,
-      text: comment,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    });
-    setComment("");
-  };
-
   return (
     <div className={classes.post}>
       <div className={classes.postHeader}>
@@ -50,7 +63,12 @@ function Post({ postId, user, username, caption, imageUrl }) {
       </div>
 
       <div className={classes.postImageHolder}>
-        <img className={classes.postImage} src={imageUrl} alt="PostImage" />
+        <img
+          className={classes.postImage}
+          src={imageUrl}
+          alt="PostImage"
+          ref={postImage}
+        />
       </div>
 
       <div className={classes.postText}>

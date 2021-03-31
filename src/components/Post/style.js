@@ -17,12 +17,11 @@ export default function styles(theme) {
     postImageHolder: {
       margin: "auto",
       display: "flex",
-      height: 350,
+      height: "fit-content",
+      width: "100%",
     },
     postImage: {
       margin: "auto",
-      minHeight: "100%",
-      minWidth: "100%",
     },
     postText: {
       padding: "0 10px",
