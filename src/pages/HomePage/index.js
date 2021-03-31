@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import { db, auth } from "../../firebase";
 import Logo from "../../assets/logo.png";
 import Post from "../../components/Post";
-import ImageUpload from "../../components/ImageUploader";
 import Sidebar from "../../components/Sidebar";
 import Footer from "../../components/Footer";
 
-import { Route, useHistory, Switch, Redirect } from "react-router-dom";
+import { Route, useHistory, Switch } from "react-router-dom";
 
 import Notfoundpage from "../NotFoundPage";
 import Underdevpage from "../UnderDevPage";
+import ProfilePage from "../ProfilePage";
+import UploadPage from "../UploadPage";
 
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { Button, TextField, Modal, IconButton } from "@material-ui/core";
@@ -144,7 +145,9 @@ function Homepage() {
 
           <form className="app__signup" noValidate autoComplete="off">
             <center>
-              <img className="app__headerImage" src={Logo} alt="logo" />
+              <a href="/home">
+                <img className="app__headerImage" src={Logo} alt="logo" />
+              </a>
             </center>
             <br />
             <TextField
@@ -191,7 +194,9 @@ function Homepage() {
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup" noValidate autoComplete="off">
             <center>
-              <img className="app__headerImage" src={Logo} alt="logo" />
+              <a href="/home">
+                <img className="app__headerImage" src={Logo} alt="logo" />
+              </a>
             </center>
             <br />
             <TextField
@@ -226,7 +231,9 @@ function Homepage() {
       </Modal>
 
       <div className="app__header">
-        <img className="app__headerImage" src={Logo} alt="logo" />
+        <a href="/home">
+          <img className="app__headerImage" src={Logo} alt="logo" />
+        </a>
         <IconButton onClick={() => setDarkModeOn(!darkModeOn)}>
           {darkModeOn ? (
             <Brightness2Rounded style={{ color: "#000" }} />
@@ -290,13 +297,9 @@ function Homepage() {
         />
         <Route exact path="/notfound" component={Notfoundpage} />
         <Route exact path="/underdev" component={Underdevpage} />
+        <Route exact path="/upload" component={UploadPage} />
+        <Route exact path="/profile" component={ProfilePage} />
       </Switch>
-
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ) : (
-        <h3 className="login__val">You need to Login to Upload</h3>
-      )}
       <Footer />
     </>
   );
