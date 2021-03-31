@@ -1,0 +1,47 @@
+#Profile-details {
+  font-size: larger;
+  padding: 4rem;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+#Profile-details * {
+  color: var(--text-color);
+}
+
+#username {
+  margin: 0rem 3rem;
+  padding: 0rem 1rem;
+}
+
+#content-head hr {
+  width: 50rem;
+  margin: auto;
+}
+
+#content-head-list {
+  list-style: none;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+#content-head-list li {
+  display: inline;
+  padding: 1rem 3rem;
+  font-size: larger;
+  font-weight: bold;
+  margin: 0rem 2rem;
+  color: var(--border-color);
+}
+
+#content-head-list li:hover {
+  cursor: pointer;
+  background-color: rgb(212, 212, 212);
+}
+
+#content-head-list li.active {
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
+}

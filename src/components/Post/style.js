@@ -14,8 +14,15 @@ export default function styles(theme) {
       gridGap: 10,
       padding: "10px ",
     },
+    postImageHolder: {
+      margin: "auto",
+      display: "flex",
+      height: 350,
+    },
     postImage: {
-      width: "100%",
+      margin: "auto",
+      minHeight: "100%",
+      minWidth: "100%",
     },
     postText: {
       padding: "0 10px",

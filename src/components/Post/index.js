@@ -49,7 +49,9 @@ function Post({ postId, user, username, caption, imageUrl }) {
         <h3 className={classes.username}>{username}</h3>
       </div>
 
-      <img className={classes.postImage} src={imageUrl} alt="PostImage" />
+      <div className={classes.postImageHolder}>
+        <img className={classes.postImage} src={imageUrl} alt="PostImage" />
+      </div>
 
       <div className={classes.postText}>
         <strong>{username}</strong> {caption}
