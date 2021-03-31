@@ -2,15 +2,20 @@ import React, { useState, useEffect } from "react";
 import { db, auth } from "../../firebase";
 import Logo from "../../assets/logo.png";
 import Post from "../../components/Post";
-import ImageUpload from "../../components/ImageUploader";
 import Sidebar from "../../components/Sidebar";
 import Footer from "../../components/Footer";
 
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import { Route, useHistory, Switch } from "react-router-dom";
+
+import Notfoundpage from "../NotFoundPage";
+import Underdevpage from "../UnderDevPage";
+import ProfilePage from "../ProfilePage";
+import UploadPage from "../UploadPage";
+
+import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { Button, TextField, Modal, IconButton } from "@material-ui/core";
 import { WbSunnyRounded, Brightness2Rounded } from "@material-ui/icons";
 
-import InstagramEmbed from "react-instagram-embed";
 import "./style.css";
 
 function getModalStyle() {
@@ -39,6 +44,7 @@ const useStyles = makeStyles((theme) =>
 
 function Homepage() {
   const classes = useStyles();
+  const history = useHistory();
   const [modalStyle] = React.useState(getModalStyle);
   const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
@@ -76,6 +82,8 @@ function Homepage() {
           }))
         );
       });
+
+    if (history.location.pathname === "/") history.replace("/home");
   }, []);
 
   useEffect(() => {
@@ -266,40 +274,32 @@ function Homepage() {
 
       <Sidebar />
 
-      <div className="app__posts">
-        <div className="app__postsLeft">
-          {posts.map(({ id, post }) => (
-            <Post
-              key={id}
-              postId={id}
-              user={user}
-              username={post.username}
-              imageUrl={post.imageUrl}
-              caption={post.caption}
-            />
-          ))}
-        </div>
-        <div className="app__postsRight">
-          <InstagramEmbed
-            url="https://www.instagram.com/p/CEmWM21A3wB/"
-            maxWidth={320}
-            hideCaption={false}
-            containerTagName="div"
-            protocol=""
-            injectScript
-            onLoading={() => {}}
-            onSuccess={() => {}}
-            onAfterRender={() => {}}
-            onFailure={() => {}}
-          />
-        </div>
-      </div>
-
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ) : (
-        <h3 className="login__val">You need to Login to Upload</h3>
-      )}
+      <Switch>
+        <Route
+          exact
+          path="/home"
+          component={() => (
+            <div className="app__posts">
+              <div className="app__postsLeft">
+                {posts.map(({ id, post }) => (
+                  <Post
+                    key={id}
+                    postId={id}
+                    user={user}
+                    username={post.username}
+                    imageUrl={post.imageUrl}
+                    caption={post.caption}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        />
+        <Route exact path="/notfound" component={Notfoundpage} />
+        <Route exact path="/underdev" component={Underdevpage} />
+        <Route exact path="/upload" component={UploadPage} />
+        <Route exact path="/profile" component={ProfilePage} />
+      </Switch>
       <Footer />
     </>
   );
