@@ -121,6 +121,12 @@ function Content({ isLightTheme, setIsLightTheme }) {
 
                 <Route
                   exact
+                  path="/profile"
+                  component={() => <Underdevpage />}
+                />
+
+                <Route
+                  exact
                   path="/post/:postId"
                   component={() => <Postpage />}
                 />
