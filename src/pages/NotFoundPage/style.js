@@ -1,7 +1,6 @@
 export default function styles(theme) {
   return {
     notFoundPage: {
-      height: "30pc",
       width: "100%",
       display: "flex",
       alignItems: "center",
@@ -10,11 +9,10 @@ export default function styles(theme) {
     },
     notFoundArt: {
       width: "80%",
-      maxWidth: "34pc",
     },
     notFoundText: {
       textAlign: "center",
-      color: "#666",
+      color: theme.palette.text.secondary,
     },
   };
 }

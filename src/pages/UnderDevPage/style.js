@@ -1,7 +1,6 @@
 export default function styles(theme) {
   return {
     underDevPage: {
-      height: "40pc",
       width: "100%",
       display: "flex",
       alignItems: "center",
@@ -10,12 +9,11 @@ export default function styles(theme) {
     },
     underDevArt: {
       width: "80%",
-      maxWidth: "34pc",
       marginBottom: 14,
     },
     underDevText: {
       textAlign: "center",
-      color: "#666",
+      color: theme.palette.text.secondary,
     },
   };
 }

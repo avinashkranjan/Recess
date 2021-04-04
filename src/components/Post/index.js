@@ -1,30 +1,18 @@
-import React, { useState, useEffect } from "react";
-import "./style.css";
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import styles from "./style.js";
 import { db } from "../../firebase";
 import firebase from "firebase";
 import { Avatar } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(styles);
 
 function Post({ postId, user, username, caption, imageUrl }) {
+  const classes = useStyles();
+  const postImage = useRef();
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
-
-  useEffect(() => {
-    let unsubscribe;
-    if (postId) {
-      unsubscribe = db
-        .collection("posts")
-        .doc(postId)
-        .collection("comments")
-        .orderBy("timestamp", "desc")
-        .onSnapshot((snapshot) => {
-          setComments(snapshot.docs.map((doc) => doc.data()));
-        });
-    }
-
-    return () => {
-      unsubscribe();
-    };
-  }, [postId]);
 
   const postComment = (event) => {
     event.preventDefault();
@@ -37,39 +25,82 @@ function Post({ postId, user, username, caption, imageUrl }) {
     setComment("");
   };
 
+  useEffect(() => {
+    postImage.current.onload = () => {
+      if (postImage.current.height > postImage.current.width) {
+        postImage.current.style.maxHeight = "350px";
+      } else if (postImage.current.height < postImage.current.width) {
+        postImage.current.style.maxWidth = "100%";
+      } else {
+        postImage.current.style.maxHeight = "350px";
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    let unsubscribe;
+    if (postId) {
+      unsubscribe = db
+        .collection("posts")
+        .doc(postId)
+        .collection("comments")
+        .orderBy("timestamp", "desc")
+        .onSnapshot((snapshot) => {
+          const tempComments = [];
+          for (let doc of snapshot.docs) {
+            tempComments.unshift(doc.data());
+            console.log(doc.data());
+          }
+          setComments(tempComments);
+          // setComments(snapshot.docs.map((doc) => doc.data()));
+        });
+    }
+
+    return () => {
+      unsubscribe();
+    };
+  }, [postId]);
+
   return (
-    <div className="post">
-      <div className="post__header">
-        <Avatar className="post__avatar" alt="Avinash" src="" />
-        <h3>{username}</h3>
-        {/* Header --> avatar + username */}
+    <div className={classes.post}>
+      <div className={classes.postHeader}>
+        <Avatar className={classes.avatar} alt="Avinash" src="" />
+        <h3 className={classes.username}>{username}</h3>
       </div>
 
-      <img className="post__image" src={imageUrl} alt="PostImage" />
+      <div className={classes.postImageHolder}>
+        <img
+          className={classes.postImage}
+          src={imageUrl}
+          alt="PostImage"
+          ref={postImage}
+        />
+      </div>
 
-      <h4 className="post__text">
+      <div className={classes.postText}>
         <strong>{username}</strong> {caption}
-      </h4>
+      </div>
 
-      <div className="post__comments">
-        {comments.map((comment) => (
-          <p>
-            <strong> {comment.username} </strong> {comment.text}
-          </p>
-        ))}
+      <div className={classes.postComments}>
+        {comments &&
+          comments.map((comment, index) => (
+            <p key={`comment-index-${index}`}>
+              <strong> {comment.username} </strong> {comment.text}
+            </p>
+          ))}
       </div>
 
       {user && (
-        <form className="post__commentBox">
+        <form className={classes.postCommentBox}>
           <input
-            className="post__input"
+            className={classes.postCommentInput}
             type="text"
             placeholder="Add a comment.."
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
           <button
-            className="post__button"
+            className={classes.postCommentButton}
             type="submit"
             disabled={!comment}
             onClick={postComment}
@@ -78,6 +109,10 @@ function Post({ postId, user, username, caption, imageUrl }) {
           </button>
         </form>
       )}
+
+      <Link to={`/post/${postId}`} className={classes.viewPostBtn}>
+        View Post
+      </Link>
     </div>
   );
 }

@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "recess-it"
+  },
+  "targets": {
+    "recess-it": {
+      "hosting": {
+        "new-design": [
+          "recess-it-new"
+        ],
+        "prod": [
+          "recess-it"
+        ]
+      }
+    }
   }
 }
