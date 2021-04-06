@@ -13,6 +13,9 @@ function Post({ postId, user, username, caption, imageUrl }) {
   const postImage = useRef();
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
+  const [id, setId] = useState("");
+	const [modalExp, setModal] = useState(false);
+	const [value, setValue] = useState({});
 
   const postComment = (event) => {
     event.preventDefault();
@@ -62,59 +65,63 @@ function Post({ postId, user, username, caption, imageUrl }) {
   }, [postId]);
 
   return (
-    <div className={classes.post}>
-      <div className={classes.postHeader}>
-        <Avatar className={classes.avatar} alt="Avinash" src="" />
-        <h3 className={classes.username}>{username}</h3>
-      </div>
+		<div className={classes.post}>
+			<div className={classes.postHeader}>
+				<Avatar className={classes.avatar} alt="Avinash" src="" />
+				<h3 className={classes.username}>{username}</h3>
+			</div>
 
-      <div className={classes.postImageHolder}>
-        <img
-          className={classes.postImage}
-          src={imageUrl}
-          alt="PostImage"
-          ref={postImage}
-        />
-      </div>
+			<div className={classes.postImageHolder}>
+				<img
+					className={classes.postImage}
+					src={imageUrl}
+					alt="PostImage"
+					ref={postImage}
+				/>
+			</div>
 
-      <div className={classes.postText}>
-        <strong>{username}</strong> {caption}
-      </div>
+			<div className={classes.postText}>
+				<strong>{username}</strong> {caption}
+			</div>
 
-      <div className={classes.postComments}>
-        {comments &&
-          comments.map((comment, index) => (
-            <p key={`comment-index-${index}`}>
-              <strong> {comment.username} </strong> {comment.text}
-            </p>
-          ))}
-      </div>
+			<div className={classes.showComments} >
+				View all {comments.length} comments
+			</div>
 
-      {user && (
-        <form className={classes.postCommentBox}>
-          <input
-            className={classes.postCommentInput}
-            type="text"
-            placeholder="Add a comment.."
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <button
-            className={classes.postCommentButton}
-            type="submit"
-            disabled={!comment}
-            onClick={postComment}
-          >
-            Post
-          </button>
-        </form>
-      )}
+			<div className={classes.postComments}>
+				{comments &&
+					comments.map((comment, index) => (
+						<p key={`comment-index-${index}`}>
+							<strong> {comment.username} </strong> {comment.text}
+						</p>
+					))[0]}
+			</div>
 
-      <Link to={`/post/${postId}`} className={classes.viewPostBtn}>
-        View Post
-      </Link>
-    </div>
-  );
+			{user && (
+				<form className={classes.postCommentBox}>
+					<input
+						className={classes.postCommentInput}
+						type="text"
+						placeholder="Add a comment.."
+						value={comment}
+						onChange={(e) => setComment(e.target.value)}
+					/>
+					<button
+						className={classes.postCommentButton}
+						type="submit"
+						disabled={!comment}
+						onClick={postComment}
+					>
+						Post
+					</button>
+				</form>
+			)}
+
+			<Link to={`/post/${postId}`} className={classes.viewPostBtn}>
+				View Post
+			</Link>
+		</div>
+	);
 }
 
 export default Post;
