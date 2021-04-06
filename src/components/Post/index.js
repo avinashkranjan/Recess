@@ -14,8 +14,9 @@ function Post({ postId, user, username, caption, imageUrl }) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const [id, setId] = useState("");
-	const [modalExp, setModal] = useState(false);
-	const [value, setValue] = useState({});
+  const [modalExp, setModal] = useState(false);
+  const [value, setValue] = useState({});
+  const [temp, setTemp] = useState("");
 
   const postComment = (event) => {
     event.preventDefault();
@@ -84,7 +85,7 @@ function Post({ postId, user, username, caption, imageUrl }) {
 				<strong>{username}</strong> {caption}
 			</div>
 
-			<div className={classes.showComments} >
+      		<div className={temp} onMouseOver={() => setTemp(classes.showCommentsHover)} onMouseOut={() => setTemp(classes.showComments)}>
 				View all {comments.length} comments
 			</div>
 
