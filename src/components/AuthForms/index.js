@@ -5,7 +5,8 @@ import Logo from "../../assets/logo.png";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Modal, Button } from "@material-ui/core";
 
-import { auth } from "../../firebase";
+import { auth, provider } from "../../firebase";
+import GoogleButton from "react-google-button";
 
 import styles from "./style";
 
@@ -43,6 +44,28 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
 
     setOpenSignUp(false);
   };
+  const googleSignIn = (event) => {
+    auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        var credential = result.credential;
+
+        var token = credential.accessToken;
+        var user = result.user;
+        // ...
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        var email = error.email;
+        var credential = error.credential;
+        // ...
+      });
+    setOpenSignUp(false);
+  };
+
+
 
   return (
     <Modal open={openSignUp} onClose={() => setOpenSignUp(false)}>
@@ -91,10 +114,24 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
             variant="contained"
             color="primary"
             className="login__button"
+            style={{marginLeft:'36%',marginBottom:'6px'}}
+
           >
             Sign Up
           </Button>
         </form>
+        <h3 style={{ textAlign: "center" }}>
+          <span>OR</span>
+        </h3>
+
+        <GoogleButton
+          onClick={() => googleSignIn()}
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          style={{ marginLeft: "15%", marginTop: "6%" }}
+        />
+
       </div>
     </Modal>
   );
@@ -116,6 +153,27 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
 
     setOpenSignIn(false);
   };
+  const googleSignIn = (event) => {
+    auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        var credential = result.credential;
+
+        var token = credential.accessToken;
+        var user = result.user;
+        // ...
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        var email = error.email;
+        var credential = error.credential;
+        // ...
+      });
+    setOpenSignIn(false);
+  };
+
 
   return (
     <Modal open={openSignIn} onClose={() => setOpenSignIn(false)}>
@@ -153,10 +211,24 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
             variant="contained"
             color="primary"
             className="login__button"
+            style={{marginLeft:'36%',marginBottom:'6px'}}
+
           >
             Sign In
           </Button>
         </form>
+        <h3 style={{ textAlign: "center" }}>
+          <span>OR</span>
+        </h3>
+
+        <GoogleButton
+          onClick={() => googleSignIn()}
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          style={{ marginLeft: "15%", marginTop: "6%" }}
+        />
+
       </div>
     </Modal>
   );
