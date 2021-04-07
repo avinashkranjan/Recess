@@ -23,6 +23,7 @@ function Post({
 	const [comments, setComments] = useState([]);
 	const [comment, setComment] = useState("");
 	const [temp, setTemp] = useState(classes.showComments);
+	// const [x, setx] = useState("")
 
 	const postComment = (event) => {
 		event.preventDefault();
@@ -62,7 +63,6 @@ function Post({
 						// console.log(doc.data());
 					}
 					setComments(tempComments);
-					setModalComments(tempComments);
 					
 					// setComments(snapshot.docs.map((doc) => doc.data()));
 				});
@@ -76,6 +76,7 @@ function Post({
 	const handleChange = () => {
 		setId(postId);
 		setModal(true);
+		setModalComments(comments)
 	};
 
 	return (
@@ -113,7 +114,7 @@ function Post({
 						<p key={`comment-index-${index}`}>
 							<strong> {comment.username} </strong> {comment.text}
 						</p>
-					))}
+					))[0]}
 			</div>
 
 			{user && (

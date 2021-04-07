@@ -33,7 +33,7 @@ function Homepage({ posts, user }) {
 				<Modal open={modalExp}>
 					<div>
 						<h1 onClick={() => setModal(false)}>✖</h1>
-						<div>
+						<div >
 							<h1>{value.post.username}</h1>
 							<img src={value.post.imageUrl} />
 						</div>
