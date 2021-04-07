@@ -1,19 +1,16 @@
-.imageupload {
+.imageupload 
+{
   display: flex;
   flex-direction: column;
   width: 60%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
-  margin-bottom: 10px;
-  /* background-color: white;
-  border-top: 1px solid lightgray; */
-  /* position: fixed;
-  bottom: 0; */
-  
+  margin-bottom: 10px; 
 }
 
-.imageupload__progress {
+.imageupload__progress 
+{
   width: 100%;
 }
 
@@ -26,7 +23,8 @@
     font-weight: 600;
     margin-right: 10px;
 }
-.upload__app>button:hover{
+.upload__app>button:hover
+{
     background-color:ivory;  
     color: #ff7779;
 }
