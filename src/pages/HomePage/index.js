@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-
+import styles from "./style.js";
 import Post from "../../components/Post";
 import { Modal } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(styles);
 
 function Homepage({ posts, user }) {
+	const classes = useStyles();
 	const history = useHistory();
 	const [Id, setId] = useState("");
 	const [modalExp, setModal] = useState(false);
@@ -24,26 +28,43 @@ function Homepage({ posts, user }) {
 				setIsVal(true);
 			}
 		});
-		// if (isVal) console.log(value.post.username);
 	}, [Id]);
 
 	return (
 		<>
 			{isVal && (
-				<Modal open={modalExp}>
-					<div>
-						<h1 onClick={() => setModal(false)}>✖</h1>
-						<div >
-							<h1>{value.post.username}</h1>
-							<img src={value.post.imageUrl} />
+				<Modal className={classes.modal} open={modalExp}>
+					<div className={classes.modalContainer}>
+						<div className={classes.modalHeader}>
+							<h1 className={classes.modalUsername}>{value.post.username}</h1>
+							<h1
+								className={classes.closeModal}
+								onClick={() => setModal(false)}
+							>
+								✖
+							</h1>
 						</div>
-						<div>
-							{modalComments &&
-								modalComments.map((comment, index) => (
-									<p key={`comment-index-${index}`}>
-										<strong> {comment.username} </strong> {comment.text}
-									</p>
-								))}
+						<div className={classes.modalMain}>
+							<div className={classes.postImageHolder}>
+								<div className={classes.postImageContainer}>
+									<img
+										src={value.post.imageUrl}
+										className={classes.postImage}
+									/>
+								</div>
+							</div>
+
+							<aside className={classes.commentContainer}>
+								<div className={classes.postComments}>
+									{modalComments &&
+										modalComments.map((comment, index) => (
+											<p key={`comment-index-${index}`}>
+												<strong> {comment.username} </strong> <br></br>
+												{comment.text}
+											</p>
+										))}
+								</div>
+							</aside>
 						</div>
 					</div>
 				</Modal>
