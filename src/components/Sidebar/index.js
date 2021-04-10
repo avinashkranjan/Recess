@@ -126,7 +126,7 @@ function Sidebar({
             <span className={classes.username}>{user?.displayName}</span>
             <IconButton
               className={classes.logOutBtn}
-              onClick={() => auth.signOut()}
+              onClick={() => {auth.signOut(); localStorage?.removeItem('lightThemeStatus');}}
             >
               <ExitToAppRounded color="error" className={classes.logOutIcon} />
             </IconButton>
