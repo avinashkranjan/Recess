@@ -5,7 +5,7 @@ import Logo from "../../assets/logo.png";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Modal, Button } from "@material-ui/core";
 
-import { auth, provider } from "../../firebase";
+import { auth, GoogleAuthProvider } from "../../firebase";
 import GoogleButton from "react-google-button";
 
 import styles from "./style";
@@ -46,7 +46,7 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
   };
   const googleSignIn = (event) => {
     auth
-      .signInWithPopup(provider)
+      .signInWithPopup(GoogleAuthProvider)
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
         var credential = result.credential;
@@ -113,14 +113,13 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
             onClick={signUp}
             variant="contained"
             color="primary"
-            className="login__button"
-            style={{marginLeft:'36%',marginBottom:'6px'}}
-
+            className={classes.loginButton}
+        
           >
             Sign Up
           </Button>
         </form>
-        <h3 style={{ textAlign: "center" }}>
+        <h3 className={classes.orSpan}>
           <span>OR</span>
         </h3>
 
@@ -128,8 +127,8 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
           onClick={() => googleSignIn()}
           variant="contained"
           color="primary"
-          className={classes.button}
-          style={{ marginLeft: "15%", marginTop: "6%" }}
+          className={classes.googleButton}
+        
         />
 
       </div>
@@ -155,7 +154,7 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
   };
   const googleSignIn = (event) => {
     auth
-      .signInWithPopup(provider)
+      .signInWithPopup(GoogleAuthProvider)
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
         var credential = result.credential;
@@ -210,14 +209,13 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
             onClick={signIn}
             variant="contained"
             color="primary"
-            className="login__button"
-            style={{marginLeft:'36%',marginBottom:'6px'}}
+            className={classes.loginButton}
 
           >
             Sign In
           </Button>
         </form>
-        <h3 style={{ textAlign: "center" }}>
+        <h3 className={classes.orSpan}>
           <span>OR</span>
         </h3>
 
@@ -225,8 +223,8 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
           onClick={() => googleSignIn()}
           variant="contained"
           color="primary"
-          className={classes.button}
-          style={{ marginLeft: "15%", marginTop: "6%" }}
+          className={classes.googleButton}
+      
         />
 
       </div>
