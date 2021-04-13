@@ -13,5 +13,17 @@ export default function styles(theme) {
       width: "100%",
       marginBottom: 20,
     },
+    orSpan:{
+      textAlign:"center"
+    },
+    loginButton:{
+      marginLeft:'36%',
+      marginBottom:'6px'
+    },
+    googleButton:{
+     marginLeft: "15%",
+     marginTop: "6%" 
+
+    }
   };
 }

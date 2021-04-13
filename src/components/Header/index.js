@@ -104,6 +104,7 @@ function Header({
           onClick={() => {
             auth.signOut();
             closeAuthMenu();
+            localStorage?.removeItem('lightThemeStatus');
           }}
         >
           Sign Out
@@ -155,7 +156,7 @@ function Header({
               <IconButton
                 className={classes.themeChanger}
                 color="primary"
-                onClick={() => setIsLightTheme(!isLightTheme)}
+                onClick={() => {setIsLightTheme(!isLightTheme); localStorage['lightThemeStatus'] = !isLightTheme}}
               >
                 {isLightTheme && <Brightness2Rounded />}
                 {!isLightTheme && <WbSunnyRounded />}
