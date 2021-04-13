@@ -4,17 +4,19 @@ export default function styles(theme) {
 			margin: "auto",
 			width: "975px",
 			maxHeight: "600px",
-			// transform: "translateY(15%)",
+			outline: "none",
 		},
 		modalContainer: {
 			display: "flex",
 			flexDirection: "column",
-			backgroundColor: theme.palette.secondary.main,
+			backgroundColor: theme.palette.background.default,
 			color: theme.palette.text.primary,
 			border: "1px solid " + theme.palette.background,
+			borderRadius: ".8rem",
 			width: "975px",
 			height: "600px",
 			maxHeight: "600px",
+			outline: "none",
 		},
 		modalHeader: {
 			width: "100%",
@@ -32,7 +34,7 @@ export default function styles(theme) {
 			top: ".5rem",
 			right: "1.5rem",
 			cursor: "pointer",
-			fontSize: "1.5rem"
+			fontSize: "1.5rem",
 		},
 		modalMain: {
 			display: "flex",
