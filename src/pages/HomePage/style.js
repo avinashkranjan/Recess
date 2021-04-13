@@ -28,10 +28,11 @@ export default function styles(theme) {
 			fontSize: "20px",
 		},
 		closeModal: {
-			position: "fixed",
-			top: "1.5rem",
+			position: "absolute",
+			top: ".5rem",
 			right: "1.5rem",
 			cursor: "pointer",
+			fontSize: "1.5rem"
 		},
 		modalMain: {
 			display: "flex",
