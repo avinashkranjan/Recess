@@ -14,16 +14,13 @@ function Post({
 	username,
 	caption,
 	imageUrl,
-	setId,
-	setModal,
-	setModalComments,
+	setId
 }) {
 	const classes = useStyles();
 	const postImage = useRef();
 	const [comments, setComments] = useState([]);
 	const [comment, setComment] = useState("");
 	const [temp, setTemp] = useState(classes.showComments);
-	// const [x, setx] = useState("")
 
 	const postComment = (event) => {
 		event.preventDefault();
@@ -60,11 +57,8 @@ function Post({
 					const tempComments = [];
 					for (let doc of snapshot.docs) {
 						tempComments.unshift(doc.data());
-						// console.log(doc.data());
 					}
 					setComments(tempComments);
-					
-					// setComments(snapshot.docs.map((doc) => doc.data()));
 				});
 		}
 
@@ -74,10 +68,8 @@ function Post({
 	}, [postId]);
 
 	const handleChange = () => {
-		setId(postId);
-		setModal(true);
-		setModalComments(comments)
-	};
+		setId(postId);	
+	}
 
 	return (
 		<div className={classes.post}>

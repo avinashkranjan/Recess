@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styles from "./style.js";
+import { db } from "../../firebase";
+import firebase from "firebase";
 import Post from "../../components/Post";
 import { Modal } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,6 +17,38 @@ function Homepage({ posts, user }) {
 	const [value, setValue] = useState({});
 	const [isVal, setIsVal] = useState(false);
 	const [modalComments, setModalComments] = useState([]);
+	const [comment, setComment] = useState("");
+
+	const postComment = (event) => {
+		event.preventDefault();
+
+		db.collection("posts").doc(Id).collection("comments").add({
+			username: user.displayName,
+			text: comment,
+			timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+		});
+		setComment("");
+	};
+
+	useEffect(() => {
+		let unsubscribe;
+		if (Id) {
+			unsubscribe = db
+				.collection("posts")
+				.doc(Id)
+				.collection("comments")
+				.orderBy("timestamp", "desc")
+				.onSnapshot((snapshot) => {
+					const tempComments = [];
+					for (let doc of snapshot.docs) {
+						tempComments.unshift(doc.data());
+					}
+					setModalComments(tempComments);
+					
+				});
+		}
+		setModal(true);
+	}, [Id]);
 
 	useEffect(() => {
 		if (history.location.pathname === "/") history.replace("/home");
@@ -55,7 +89,7 @@ function Homepage({ posts, user }) {
 							</div>
 
 							<aside className={classes.commentContainer}>
-								<div className={classes.postComments}>
+								<div className={classes.postedComments}>
 									{modalComments &&
 										modalComments.map((comment, index) => (
 											<p key={`comment-index-${index}`}>
@@ -63,6 +97,27 @@ function Homepage({ posts, user }) {
 												{comment.text}
 											</p>
 										))}
+								</div>
+								<div className={classes.postCommentsContainer}>
+									{user && (
+										<form className={classes.postCommentBox}>
+											<input
+												className={classes.postCommentInput}
+												type="text"
+												placeholder="Add a comment.."
+												value={comment}
+												onChange={(e) => setComment(e.target.value)}
+											/>
+											<button
+												className={classes.postCommentButton}
+												type="submit"
+												disabled={!comment}
+												onClick={postComment}
+											>
+												Post
+											</button>
+										</form>
+									)}
 								</div>
 							</aside>
 						</div>
@@ -73,8 +128,6 @@ function Homepage({ posts, user }) {
 			{posts.map(({ id, post }) => (
 				<Post
 					setId={setId}
-					setModal={setModal}
-					setModalComments={setModalComments}
 					key={id}
 					postId={id}
 					user={user}
