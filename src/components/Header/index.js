@@ -153,6 +153,9 @@ function Header({
               <span className={classes.pageTitle}>{pageName}</span>
             </Grid>
             <Grid container item xs={2} sm={1}>
+              {/* 
+              Place Where code should be applied
+              */}
               <IconButton
                 className={classes.themeChanger}
                 color="primary"
