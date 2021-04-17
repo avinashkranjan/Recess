@@ -6,6 +6,7 @@ import firebase from "firebase";
 import Post from "../../components/Post";
 import { Modal } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { Snackbar, SnackbarContent } from '@material-ui/core';
 
 const useStyles = makeStyles(styles);
 
@@ -18,6 +19,8 @@ function Homepage({ posts, user }) {
 	const [isVal, setIsVal] = useState(false);
 	const [modalComments, setModalComments] = useState([]);
 	const [comment, setComment] = useState("");
+    const [open, setOpen] = useState(true);
+
 
 	const postComment = (event) => {
 		event.preventDefault();
@@ -29,6 +32,13 @@ function Homepage({ posts, user }) {
 		});
 		setComment("");
 	};
+    
+    useEffect(() => {
+        setTimeout(()=>{
+         setOpen(false)
+        }, 5000)
+    
+      }, [])
 
 	useEffect(() => {
 		let unsubscribe;
@@ -65,7 +75,33 @@ function Homepage({ posts, user }) {
 	}, [Id]);
 
 	return (
-		<>
+		<>  
+             <> 
+            <Snackbar 
+                open={open}
+                anchorOrigin={{
+                    vertical: 'center',
+                    horizontal: 'top',
+                }}
+                //message="Login or Signup to post and comment!"
+            >
+            <SnackbarContent style={{
+                    backgroundColor:'teal',
+                    }}
+                    message={<h2>Login or Signup to post and comment!</h2>}
+            />
+            </Snackbar>
+            {posts.map(({ id, post }) => (
+                <Post
+                key={id}
+                postId={id}
+                user={user}
+                username={post.username}
+                imageUrl={post.imageUrl}
+                caption={post.caption}
+                />
+            ))}
+            </>
 			{isVal && (
 				<Modal className={classes.modal} open={modalExp}>
 					<div className={classes.modalContainer}>
