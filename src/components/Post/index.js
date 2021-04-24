@@ -8,7 +8,31 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(styles);
 
-function Post({ postId, user, username, caption, imageUrl }) {
+function computeAge(postDate) {
+	const currDate = new Date();
+	const diffmSec = currDate - postDate;
+	const diffSecs = Math.ceil(diffmSec / 1000);
+	if (diffSecs < 60) {
+		return `${diffSecs} seconds ago`;
+	} else {
+		const diffMins = Math.ceil(diffSecs / 60);
+		if (diffMins < 60) {
+			return `${diffMins} minutes ago`;
+		} else {
+			const diffHours = Math.ceil(diffMins / 60);
+			if (diffHours < 24) {
+				return `${diffHours} hours ago`;
+			} else if(Math.ceil(diffHours / 24)<10){
+				return `${Math.ceil(diffHours / 24)} days ago`;
+
+			}else{
+        return `on ${postDate.toLocaleDateString()}`;
+      }
+		}
+	}
+}
+
+function Post({ postId, user, username, caption, imageUrl, timestamp }) {
   const classes = useStyles();
   const postImage = useRef();
   const [comments, setComments] = useState([]);
@@ -69,6 +93,7 @@ function Post({ postId, user, username, caption, imageUrl }) {
 			<div className={classes.postHeader}>
 				<Avatar className={classes.avatar} alt="Avinash" src="" />
 				<h3 className={classes.username}>{username}</h3>
+        {timestamp && <div className={classes.timestamp}>{`Posted ${computeAge(timestamp.toDate())}`}</div>}
 			</div>
 
 			<div className={classes.postImageHolder}>

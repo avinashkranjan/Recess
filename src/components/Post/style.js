@@ -1,5 +1,14 @@
 export default function styles(theme) {
   return {
+    avatar: {
+			gridColumn: 1,
+			gridRow: 'span 2',
+			alignSelf: "center",
+		},
+    timestamp: {
+			margin: "auto 0",
+			color: "gray"
+		},
 		post: {
 			width: "100%",
 			color: theme.palette.text.primary,
@@ -11,7 +20,7 @@ export default function styles(theme) {
 		postHeader: {
 			display: "grid",
 			gridTemplateColumns: "auto 1fr",
-			gridGap: 10,
+      gridGap: "2px 10px",
 			padding: "10px ",
 		},
 		postImageHolder: {

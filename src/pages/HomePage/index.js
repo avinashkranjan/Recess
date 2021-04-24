@@ -20,6 +20,7 @@ function Homepage({ posts, user }) {
           username={post.username}
           imageUrl={post.imageUrl}
           caption={post.caption}
+          timestamp={post.timestamp}
         />
       ))}
     </>
