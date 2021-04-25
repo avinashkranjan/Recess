@@ -43,6 +43,11 @@ export default function styles(theme) {
 			color: "gray",
 			cursor: "pointer",
 		},
+		showCommentsHover: {
+			padding: "10px",
+			color: "var(--text-color)",
+			cursor: "pointer",
+		},
 		postCommentBox: {
 			padding: "0 10px 10px 10px",
 			margin: "10px 0 0 0",

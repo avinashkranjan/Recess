@@ -89,6 +89,70 @@ function Post({ postId, user, username, caption, imageUrl, timestamp }) {
   }, [postId]);
 
   return (
+function Post({
+	postId,
+	user,
+	username,
+	caption,
+	imageUrl,
+	setId
+}) {
+	const classes = useStyles();
+	const postImage = useRef();
+	const [comments, setComments] = useState([]);
+	const [comment, setComment] = useState("");
+	const [temp, setTemp] = useState(classes.showComments);
+
+	const postComment = (event) => {
+		event.preventDefault();
+
+		db.collection("posts").doc(postId).collection("comments").add({
+			username: user.displayName,
+			text: comment,
+			timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+		});
+		setComment("");
+	};
+
+	useEffect(() => {
+		postImage.current.onload = () => {
+			if (postImage.current.height > postImage.current.width) {
+				postImage.current.style.maxHeight = "350px";
+			} else if (postImage.current.height < postImage.current.width) {
+				postImage.current.style.maxWidth = "100%";
+			} else {
+				postImage.current.style.maxHeight = "350px";
+			}
+		};
+	}, []);
+
+	useEffect(() => {
+		let unsubscribe;
+		if (postId) {
+			unsubscribe = db
+				.collection("posts")
+				.doc(postId)
+				.collection("comments")
+				.orderBy("timestamp", "desc")
+				.onSnapshot((snapshot) => {
+					const tempComments = [];
+					for (let doc of snapshot.docs) {
+						tempComments.unshift(doc.data());
+					}
+					setComments(tempComments);
+				});
+		}
+
+		return () => {
+			unsubscribe();
+		};
+	}, [postId]);
+
+	const handleChange = () => {
+		setId(postId);
+	}
+
+	return (
 		<div className={classes.post}>
 			<div className={classes.postHeader}>
 				<Avatar className={classes.avatar} alt="Avinash" src="" />
@@ -109,7 +173,12 @@ function Post({ postId, user, username, caption, imageUrl, timestamp }) {
 				<strong>{username}</strong> {caption}
 			</div>
 
-			<div className={classes.showComments} >
+			<div
+				className={temp}
+				onMouseOver={() => setTemp(classes.showCommentsHover)}
+				onMouseOut={() => setTemp(classes.showComments)}
+				onClick={handleChange}
+			>
 				View all {comments.length} comments
 			</div>
 
