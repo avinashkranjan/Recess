@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { db, auth } from "./firebase";
 
 import Homepage from "./pages/HomePage";
+import Aboutpage from "./pages/AboutPage";
 import Uploadpage from "./pages/UploadPage";
 import Explorepage from "./pages/ExplorePage";
 import Postpage from "./pages/PostPage";
@@ -106,6 +107,12 @@ function Content({ isLightTheme, setIsLightTheme }) {
                   path="/home"
                   component={() => <Homepage posts={posts} user={user} />}
                 />
+
+                <Route
+                  exact
+                  path="/about"
+                  component={() => <Aboutpage />}
+                />      
 
                 <Route
                   exact
