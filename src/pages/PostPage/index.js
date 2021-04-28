@@ -5,6 +5,7 @@ import { db } from "../../firebase";
 import firebase from "firebase";
 import { Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import CommentInput from "../../components/CommentInput";
 
 const useStyles = makeStyles(styles);
 
@@ -14,9 +15,7 @@ function Postpage() {
 
   const [user, setUser] = useState({});
   const [postData, setPostData] = useState({});
-  const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
-
   useEffect(() => {
     console.log(postId);
     let unsubscribeComments, unsubscribePost;
@@ -46,15 +45,12 @@ function Postpage() {
     };
   }, []);
 
-  const postComment = (event) => {
-    event.preventDefault();
-
+  const postComment = (comment) => {
     db.collection("posts").doc(postId).collection("comments").add({
       username: user.displayName,
       text: comment,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
-    setComment("");
   };
 
   return (
@@ -83,25 +79,7 @@ function Postpage() {
           ))}
       </div>
 
-      {postData && (
-        <form className={classes.postCommentBox}>
-          <input
-            className={classes.postCommentInput}
-            type="text"
-            placeholder="Add a comment.."
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <button
-            className={classes.postCommentButton}
-            type="submit"
-            disabled={!comment}
-            onClick={postComment}
-          >
-            Post
-          </button>
-        </form>
-      )}
+      {postData && <CommentInput postComment={postComment} />}
     </div>
   );
 }
