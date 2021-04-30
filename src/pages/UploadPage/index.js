@@ -6,7 +6,7 @@ import {
   Input,
   TextField,
   Box,
-  LinearProgress,
+  LinearProgress
 } from "@material-ui/core";
 import { storage, db } from "../../firebase";
 import firebase from "firebase";
@@ -15,12 +15,25 @@ import styles from "./style";
 
 const useStyles = makeStyles(styles);
 
+function makeid(length) {
+  var result = [];
+  var characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result.push(
+      characters.charAt(Math.floor(Math.random() * charactersLength))
+    );
+  }
+  return result.join("");
+}
+
 function Uploadpage({ username }) {
   const classes = useStyles();
   const history = useHistory();
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
-  // const [url, setUrl] = useState("");
+  const [URL, setUrl] = useState("");
   const [progress, setProgress] = useState(0);
   const [caption, setCaption] = useState("");
 
@@ -32,13 +45,16 @@ function Uploadpage({ username }) {
   };
 
   const handleUpload = () => {
+    //console.log(storage.ref);
+    //console.log(" is storage");
+
     if (image?.name) {
       const uploadTask = storage.ref(`images/${image.name}`).put(image);
 
       uploadTask.on(
         "state_changed",
         (snapshot) => {
-          //progress function ...
+          //progress function ...2
           const progress = Math.round(
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
@@ -62,7 +78,47 @@ function Uploadpage({ username }) {
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                 caption: caption,
                 imageUrl: url,
-                username: username,
+                username: username
+              });
+
+              setProgress(0);
+              setCaption("");
+              setImage(null);
+            });
+        }
+      );
+    } else {
+      const name = makeid(5);
+      const uploadTask = storage.ref(`images/${name}`).put(name);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          //progress function ...2
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(progress);
+
+          if (snapshot.bytesTransferred === snapshot.totalBytes) {
+            history.replace("/home");
+          }
+        },
+        (error) => {
+          console.log(error);
+          alert(error.message);
+        },
+        () => {
+          storage
+            .ref("images")
+            .child(name)
+            .getDownloadURL()
+            .then((url) => {
+              db.collection("posts").add({
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                caption: caption,
+                imageUrl: URL,
+                username: username
               });
 
               setProgress(0);
@@ -112,6 +168,16 @@ function Uploadpage({ username }) {
           />
         </Box>
       )}
+      <label className={classes.caption}>
+        <TextField
+          label="URL"
+          variant="filled"
+          placeholder="Paste a URL ..."
+          onChange={(e) => setUrl(e.target.value)}
+          value={URL}
+          className={classes.captionInput}
+        />
+      </label>
       <label className={classes.caption}>
         <TextField
           label="Caption"
