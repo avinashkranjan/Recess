@@ -5,9 +5,9 @@ import Logo from "../../assets/logo.png";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Modal, Button } from "@material-ui/core";
 
-import { auth, GoogleAuthProvider } from "../../firebase";
+import { auth, GoogleAuthProvider,FacebookAuthProvider } from "../../firebase";
 import GoogleButton from "react-google-button";
-
+import FacebookIcon from '@material-ui/icons/Facebook';
 import styles from "./style";
 
 const useStyles = makeStyles(styles);
@@ -64,7 +64,31 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
       });
     setOpenSignUp(false);
   };
+ 
+  const facebookSignIn = (event) =>{
+  auth
+  .signInWithPopup(FacebookAuthProvider)
+  .then((result) => {
+    /** @type {firebase.auth.OAuthCredential} */
+    var credential = result.credential;
 
+    var user = result.user;
+
+    var accessToken = credential.accessToken;
+
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    var email = error.email;
+    var credential = error.credential;
+
+    // ...
+  });
+  setOpenSignUp(false);
+
+  }
 
 
   return (
@@ -130,6 +154,18 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
           className={classes.googleButton}
         
         />
+                <br/>
+          <Button
+            type="submit"
+            onClick={() => facebookSignIn()}
+            variant="contained"
+            color="primary"
+            className={classes.facebookButton}
+
+          >
+            <FacebookIcon color="secondary" /> Sign in with Facebook
+          </Button>
+
 
       </div>
     </Modal>
@@ -172,8 +208,31 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
       });
     setOpenSignIn(false);
   };
-
-
+  const facebookSignIn = (event) =>{
+    auth
+    .signInWithPopup(FacebookAuthProvider)
+    .then((result) => {
+      /** @type {firebase.auth.OAuthCredential} */
+      var credential = result.credential;
+  
+      var user = result.user;
+  
+      var accessToken = credential.accessToken;
+  
+      // ...
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+  
+      // ...
+    });
+    setOpenSignIn(false);
+  
+    }
+  
   return (
     <Modal open={openSignIn} onClose={() => setOpenSignIn(false)}>
       <div style={modalStyle} className={classes.auth}>
@@ -226,6 +285,18 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
           className={classes.googleButton}
       
         />
+      <br/>
+      <Button
+            type="submit"
+            onClick={() => facebookSignIn()}
+            variant="contained"
+            color="primary"
+            className={classes.facebookButton}
+
+          >
+            <FacebookIcon color="secondary" /> Sign in with Facebook
+          </Button>
+
 
       </div>
     </Modal>
