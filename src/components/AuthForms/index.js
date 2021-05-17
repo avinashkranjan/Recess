@@ -22,6 +22,25 @@ function getModalStyle() {
     transform: `translate(-${top}%, -${left}%)`,
   };
 }
+const facebookSignIn = (event) =>{
+  auth
+  .signInWithPopup(FacebookAuthProvider)
+  .then((result) => {
+    /** @type {firebase.auth.OAuthCredential} */
+    var credential = result.credential;
+
+    var user = result.user;
+
+    var accessToken = credential.accessToken;
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    var email = error.email;
+    var credential = error.credential;
+  });
+
+  }
 
 function SignUpForm({ openSignUp, setOpenSignUp }) {
   const classes = useStyles();
@@ -65,31 +84,10 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
     setOpenSignUp(false);
   };
  
-  const facebookSignIn = (event) =>{
-  auth
-  .signInWithPopup(FacebookAuthProvider)
-  .then((result) => {
-    /** @type {firebase.auth.OAuthCredential} */
-    var credential = result.credential;
-
-    var user = result.user;
-
-    var accessToken = credential.accessToken;
-
-    // ...
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    var email = error.email;
-    var credential = error.credential;
-
-    // ...
-  });
-  setOpenSignUp(false);
-
+  const facebookSignUp=(event)=>{
+    facebookSignIn();
+    setOpenSignUp(false);
   }
-
 
   return (
     <Modal open={openSignUp} onClose={() => setOpenSignUp(false)}>
@@ -157,7 +155,7 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
                 <br/>
           <Button
             type="submit"
-            onClick={() => facebookSignIn()}
+            onClick={() => facebookSignUp()}
             variant="contained"
             color="primary"
             className={classes.facebookButton}
@@ -165,8 +163,6 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
           >
             <FacebookIcon color="secondary" /> Sign in with Facebook
           </Button>
-
-
       </div>
     </Modal>
   );
@@ -208,30 +204,10 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
       });
     setOpenSignIn(false);
   };
-  const facebookSignIn = (event) =>{
-    auth
-    .signInWithPopup(FacebookAuthProvider)
-    .then((result) => {
-      /** @type {firebase.auth.OAuthCredential} */
-      var credential = result.credential;
-  
-      var user = result.user;
-  
-      var accessToken = credential.accessToken;
-  
-      // ...
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      var email = error.email;
-      var credential = error.credential;
-  
-      // ...
-    });
+  const facebookSignUp=(event)=>{
+    facebookSignIn();
     setOpenSignIn(false);
-  
-    }
+  }
   
   return (
     <Modal open={openSignIn} onClose={() => setOpenSignIn(false)}>
@@ -288,11 +264,10 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
       <br/>
       <Button
             type="submit"
-            onClick={() => facebookSignIn()}
+            onClick={() => facebookSignUp()}
             variant="contained"
             color="primary"
             className={classes.facebookButton}
-
           >
             <FacebookIcon color="secondary" /> Sign in with Facebook
           </Button>
