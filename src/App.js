@@ -193,7 +193,8 @@ function Content({ isLightTheme, setIsLightTheme }) {
 }
 
 function App() {
-  const [isLightTheme, setIsLightTheme] = useState(false);
+  const lightThemeStatus = (localStorage?.hasOwnProperty('lightThemeStatus')) ? JSON.parse(localStorage['lightThemeStatus']) : false;
+  const [isLightTheme, setIsLightTheme] = useState(lightThemeStatus);
   return (
     <ThemeProvider
       theme={createMuiTheme(isLightTheme ? lightTheme : darkTheme)}
