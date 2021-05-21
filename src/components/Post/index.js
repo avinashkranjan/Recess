@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import styles from "./style.js";
 import { db } from "../../firebase";
 import firebase from "firebase";
-import { Avatar } from "@material-ui/core";
+import { Avatar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const useStyles = makeStyles(styles);
 
@@ -21,6 +23,8 @@ function Post({
 	const [comments, setComments] = useState([]);
 	const [comment, setComment] = useState("");
 	const [temp, setTemp] = useState(classes.showComments);
+  const [like, setLike] = useState(false);
+  const [likeCounter, setLikeCounter] = useState(0);
 
 	const postComment = (event) => {
 		event.preventDefault();
@@ -33,6 +37,40 @@ function Post({
 		setComment("");
 	};
 
+  const onLike = (e) => {
+    e.preventDefault();
+    if (user) {
+      db.collection("posts")
+        .doc(postId)
+        .collection("likes")
+        .doc(user.uid)
+        .set({
+          username: user.displayName,
+        })
+        .then(() => {
+          setLike(true);
+          setLikeCounter(likeCounter + 1);
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
+  const onDislike = (e) => {
+    e.preventDefault();
+    if (user) {
+      db.collection("posts")
+        .doc(postId)
+        .collection("likes")
+        .doc(user.uid)
+        .delete()
+        .then(() => {
+          setLike(false);
+          setLikeCounter(likeCounter - 1);
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
 	useEffect(() => {
 		postImage.current.onload = () => {
 			if (postImage.current.height > postImage.current.width) {
@@ -43,6 +81,24 @@ function Post({
 				postImage.current.style.maxHeight = "350px";
 			}
 		};
+    // Getting Post's like data and updating like state
+    db.collection("posts")
+    .doc(postId)
+    .collection("likes")
+    .onSnapshot((snap) => {
+      let documents = [];
+      snap.forEach((doc) => {
+        documents.push({ userLiked: doc.id });
+      });
+      setLikeCounter(documents.length);
+      if (user) {
+        documents.map((u) => {
+          if (u.userLiked === user.uid) {
+            setLike(true);
+          }
+        });
+      }
+    });    
 	}, []);
 
 	useEffect(() => {
@@ -86,6 +142,17 @@ function Post({
 					ref={postImage}
 				/>
 			</div>
+
+      <div className={classes.likeContainer}>
+        {like ? (
+          <FavoriteIcon onClick={onDislike} />
+        ) : (
+          <FavoriteBorderIcon onClick={onLike} />
+        )}
+        {likeCounter ? (
+          <Typography>{likeCounter}</Typography>
+        ) : null}
+      </div>
 
 			<div className={classes.postText}>
 				<strong>{username}</strong> {caption}

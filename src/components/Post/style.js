@@ -72,5 +72,10 @@ export default function styles(theme) {
 			color: theme.palette.text.primary,
 			borderTop: "1px solid " + theme.palette.secondary.dark,
 		},
+    likeContainer: {
+      display: "flex",
+      alignItems: "center",
+      padding: "0.5rem",
+    },
 	};
 }
