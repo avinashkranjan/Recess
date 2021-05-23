@@ -120,7 +120,7 @@ function LikePanel({ postId, user }) {
       >
         <Fade in={likeModal}>
           <div className={classes.paper}>
-            <h2>User's Liked:</h2>
+            <h2>Users Liked:</h2>
             <Divider />
             <List className={classes.likelist}>
               {usersLiked.map((user) => (
