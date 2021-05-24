@@ -1,3 +1,4 @@
+
 export default function styles(theme) {
   return {
     auth: {
@@ -24,6 +25,12 @@ export default function styles(theme) {
      marginLeft: "15%",
      marginTop: "6%" 
 
+    },
+    githubButton:{
+      border:"3px solid  white",
+      backgroundColor:"white",
+      borderRadius:"10px",
+      marginLeft: "20%"
     }
   };
 }

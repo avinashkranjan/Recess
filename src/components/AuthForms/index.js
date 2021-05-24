@@ -5,9 +5,9 @@ import Logo from "../../assets/logo.png";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Modal, Button } from "@material-ui/core";
 
-import { auth, GoogleAuthProvider } from "../../firebase";
+import { auth, GoogleAuthProvider,GithubAuthProvider } from "../../firebase";
 import GoogleButton from "react-google-button";
-
+import GitHubIcon from '@material-ui/icons/GitHub';
 import styles from "./style";
 
 const useStyles = makeStyles(styles);
@@ -65,6 +65,26 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
     setOpenSignUp(false);
   };
 
+  const githubSignIn = (event) =>{
+    auth
+    .signInWithPopup(GithubAuthProvider)
+    .then((result) => {
+      /** @type {firebase.auth.OAuthCredential} */
+      var credential = result.credential;
+  
+      var token = credential.accessToken;
+  
+      var user = result.user;
+      // ...
+    }).catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+      // ...
+    });
+    setOpenSignUp(false);
+  }
 
 
   return (
@@ -130,7 +150,18 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
           className={classes.googleButton}
         
         />
-
+        <br/>
+          <Button
+            type="submit"
+            onClick={() => githubSignIn()}
+            variant="contained"
+            color="primary"
+            className={classes.githubButton}
+        
+          >
+            <GitHubIcon/> Sign in with Github
+          </Button>
+       
       </div>
     </Modal>
   );
@@ -173,6 +204,26 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
     setOpenSignIn(false);
   };
 
+  const githubSignIn =(event) =>{
+    auth
+    .signInWithPopup(GithubAuthProvider)
+    .then((result) => {
+      /** @type {firebase.auth.OAuthCredential} */
+      var credential = result.credential;
+  
+      var token = credential.accessToken;
+  
+      var user = result.user;
+    }).catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+      // ...
+    });
+    setOpenSignIn(false);
+
+  }
 
   return (
     <Modal open={openSignIn} onClose={() => setOpenSignIn(false)}>
@@ -225,8 +276,18 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
           color="primary"
           className={classes.googleButton}
       
-        />
-
+        /><br/>
+         <Button
+            type="submit"
+            onClick={() =>githubSignIn()}
+            variant="contained"
+            color="primary"
+            className={classes.githubButton}
+        
+          >
+            <GitHubIcon/> Sign in with Github
+          </Button>
+       
       </div>
     </Modal>
   );
