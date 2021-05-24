@@ -31,6 +31,13 @@ export default function styles(theme) {
       backgroundColor:"white",
       borderRadius:"10px",
       marginLeft: "20%"
+
+    },
+    facebookButton:{
+      border:"3px solid  white",
+      backgroundColor:"white",
+      borderRadius:"10px",
+      marginLeft: "20%"
     }
   };
 }
