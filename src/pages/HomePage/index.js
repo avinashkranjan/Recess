@@ -19,7 +19,7 @@ function Homepage({ posts, user }) {
 	const [isVal, setIsVal] = useState(false);
 	const [modalComments, setModalComments] = useState([]);
 	const [comment, setComment] = useState("");
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(!user);
 
 
 	const postComment = (event) => {
@@ -35,7 +35,7 @@ function Homepage({ posts, user }) {
     
     useEffect(() => {
         setTimeout(()=>{
-         setOpen(false)
+         setOpen(user)
         }, 5000)
     
       }, [])
@@ -77,7 +77,7 @@ function Homepage({ posts, user }) {
 	return (
 		<>  
              <> 
-            <Snackbar 
+             {!user && ( <Snackbar 
                 open={open}
                 anchorOrigin={{
                     vertical: 'center',
@@ -90,7 +90,7 @@ function Homepage({ posts, user }) {
                     }}
                     message={<h2>Login or Signup to post and comment!</h2>}
             />
-            </Snackbar>
+            </Snackbar> )}
             {posts.map(({ id, post }) => (
                 <Post
                 key={id}
