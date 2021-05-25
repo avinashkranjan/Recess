@@ -5,10 +5,12 @@ import Logo from "../../assets/logo.png";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Modal, Button } from "@material-ui/core";
 
-import { auth, GoogleAuthProvider,FacebookAuthProvider } from "../../firebase";
+import { auth, GoogleAuthProvider,FacebookAuthProvider,GithubAuthProvider, TwitterAuthProvider} from "../../firebase";
 import GoogleButton from "react-google-button";
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import TwitterIcon from '@material-ui/icons/Twitter';
+
 
 import styles from "./style";
 
@@ -43,6 +45,27 @@ const facebookSignIn = (event) =>{
   });
 
   }
+
+const twitterSignIn =(event) =>{
+  auth
+  .signInWithPopup(TwitterAuthProvider)
+  .then((result) => {
+    /** @type {firebase.auth.OAuthCredential} */
+    var credential = result.credential;
+
+    var token = credential.accessToken;
+    var secret = credential.secret;
+
+    var user = result.user;
+  }).catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    var email = error.email;
+    var credential = error.credential;
+    // ...
+  });
+
+}
 
 function SignUpForm({ openSignUp, setOpenSignUp }) {
   const classes = useStyles();
@@ -110,6 +133,12 @@ const facebookSignUp=(event)=>{
     facebookSignIn();
     setOpenSignUp(false);
   }
+ 
+const twitterSignUp=(event)=>{
+    twitterSignIn();
+    setOpenSignUp(false);
+  }
+  
 
   return (
     <Modal open={openSignUp} onClose={() => setOpenSignUp(false)}>
@@ -197,7 +226,18 @@ const facebookSignUp=(event)=>{
           >
             <GitHubIcon/> Sign in with Github
           </Button>
+          <br/>
+          <Button
+            type="submit"
+            onClick={() => twitterSignUp()}
+            variant="contained"
+            color="primary"
+            className={classes.twitterButton}
+          >
+            <TwitterIcon /> Sign in with Twitter
+          </Button>
    
+
      </div>
     </Modal>
   );
@@ -245,6 +285,12 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
     setOpenSignIn(false);
   }
   
+  const twitterSignUp=(event)=>{
+    twitterSignIn();
+    setOpenSignIn(false);
+  }
+
+
   const githubSignIn =(event) =>{
     auth
     .signInWithPopup(GithubAuthProvider)
@@ -340,7 +386,17 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
           >
             <GitHubIcon/> Sign in with Github
           </Button>
-       
+          <br/>
+         <Button
+            type="submit"
+            onClick={() =>twitterSignUp()}
+            variant="contained"
+            color="primary"
+            className={classes.twitterButton}
+          >
+            <TwitterIcon color="secondary"/> Sign in with Twitter
+          </Button>
+
       </div>
     </Modal>
   );
