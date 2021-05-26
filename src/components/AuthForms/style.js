@@ -30,14 +30,22 @@ export default function styles(theme) {
       border:"3px solid  white",
       backgroundColor:"white",
       borderRadius:"10px",
-      marginLeft: "20%"
-
+      marginLeft: "20%",
+      marginTop:'5%'
     },
     facebookButton:{
       border:"3px solid  white",
       backgroundColor:"white",
       borderRadius:"10px",
-      marginLeft: "20%"
+      marginLeft: "18%",
+    },
+    twitterButton:{
+      border:"3px solid  white",
+      backgroundColor:"white",
+      borderRadius:"10px",
+      marginLeft: "20%",
+      marginTop:'5%'
     }
+
   };
 }
