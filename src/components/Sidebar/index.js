@@ -122,11 +122,18 @@ function Sidebar({
 
         {user?.displayName ? (
           <div className={classes.account}>
-            <Avatar src="" alt="User" className={classes.userPhoto} />
+            <Avatar
+              src={user?.photoURL}
+              alt={user?.displayName}
+              className={classes.userPhoto}
+            />
             <span className={classes.username}>{user?.displayName}</span>
             <IconButton
               className={classes.logOutBtn}
-              onClick={() => {auth.signOut(); localStorage?.removeItem('lightThemeStatus');}}
+              onClick={() => {
+                auth.signOut();
+                localStorage?.removeItem("lightThemeStatus");
+              }}
             >
               <ExitToAppRounded color="error" className={classes.logOutIcon} />
             </IconButton>

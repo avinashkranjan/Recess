@@ -6,7 +6,7 @@ import {
   Input,
   TextField,
   Box,
-  LinearProgress
+  LinearProgress,
 } from "@material-ui/core";
 import { storage, db } from "../../firebase";
 import firebase from "firebase";
@@ -28,7 +28,7 @@ function makeid(length) {
   return result.join("");
 }
 
-function Uploadpage({ username }) {
+function Uploadpage({ user }) {
   const classes = useStyles();
   const history = useHistory();
   const [image, setImage] = useState(null);
@@ -78,7 +78,8 @@ function Uploadpage({ username }) {
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                 caption: caption,
                 imageUrl: url,
-                username: username
+                username: user?.username,
+                photoURL: user?.photoURL,
               });
 
               setProgress(0);
@@ -118,7 +119,8 @@ function Uploadpage({ username }) {
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                 caption: caption,
                 imageUrl: URL,
-                username: username
+                username: user?.username,
+                photoURL: user?.photoURL,
               });
 
               setProgress(0);
