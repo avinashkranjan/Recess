@@ -110,7 +110,7 @@ function Content({ isLightTheme, setIsLightTheme }) {
                 <Route
                   exact
                   path="/upload"
-                  component={() => <Uploadpage username={user} />}
+                  component={() => <Uploadpage user={user} />}
                 />
 
                 <Route

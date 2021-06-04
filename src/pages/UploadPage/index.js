@@ -78,8 +78,8 @@ function Uploadpage({ user }) {
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                 caption: caption,
                 imageUrl: url,
-                username: user?.username,
-                photoURL: user?.photoURL,
+                username: user?.displayName,
+                avatarURL: user?.photoURL,
               });
 
               setProgress(0);
@@ -118,9 +118,9 @@ function Uploadpage({ user }) {
               db.collection("posts").add({
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                 caption: caption,
-                imageUrl: URL,
-                username: user?.username,
-                photoURL: user?.photoURL,
+                imageUrl: url,
+                username: user?.displayName,
+                avatarURL: user?.photoURL,
               });
 
               setProgress(0);

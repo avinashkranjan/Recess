@@ -133,7 +133,7 @@ function LikePanel({ postId, user }) {
                   <ListItemAvatar>
                     <Avatar
                       className={classes.avatar}
-                      alt="Avinash"
+                      alt={user.userName}
                       src={user?.photoURL}
                     />
                   </ListItemAvatar>

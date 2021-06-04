@@ -63,8 +63,8 @@ function Postpage() {
       <div className={classes.postHeader}>
         <Avatar
           className={classes.avatar}
-          alt={user?.displayName}
-          src={user?.photoURL}
+          src={postData.avatarURL}
+          alt={postData.username}
         />
         <h3 className={classes.username}>{postData.username}</h3>
       </div>
