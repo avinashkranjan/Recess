@@ -4,6 +4,7 @@ import { Button, IconButton, Grid, Hidden, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   HomeRounded,
+  AssistantRounded,
   AddCircleRounded,
   ExploreRounded,
   AccountCircleRounded,
@@ -26,6 +27,7 @@ function Sidebar({
   const history = useHistory();
   const [pageSelected, setPageSelected] = useState({
     home: false,
+    about: false,
     upload: false,
     explore: false,
     profile: false,
@@ -49,6 +51,9 @@ function Sidebar({
     switch (window.location.pathname) {
       case "/home":
         tempSelected.home = true;
+        break;
+      case "/about":
+        tempSelected.about = true;
         break;
       case "/upload":
         tempSelected.upload = true;
@@ -88,6 +93,15 @@ function Sidebar({
             <span>Home</span>
           </Link>
 
+          <Link
+            to="/about"
+            className={classes.link}
+            style={{ color: getSelectedStyle(pageSelected.about) }}
+          >
+            <AssistantRounded />
+            <span>About</span>
+          </Link>
+
           {user?.displayName ? (
             <Link
               to="/upload"
@@ -122,18 +136,11 @@ function Sidebar({
 
         {user?.displayName ? (
           <div className={classes.account}>
-            <Avatar
-              src={user?.photoURL}
-              alt={user?.displayName}
-              className={classes.userPhoto}
-            />
+            <Avatar src="" alt="User" className={classes.userPhoto} />
             <span className={classes.username}>{user?.displayName}</span>
             <IconButton
               className={classes.logOutBtn}
-              onClick={() => {
-                auth.signOut();
-                localStorage?.removeItem("lightThemeStatus");
-              }}
+              onClick={() => {auth.signOut(); localStorage?.removeItem('lightThemeStatus');}}
             >
               <ExitToAppRounded color="error" className={classes.logOutIcon} />
             </IconButton>

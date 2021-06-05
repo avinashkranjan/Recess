@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { db, auth } from "./firebase";
 
 import Homepage from "./pages/HomePage";
+import Aboutpage from "./pages/AboutPage";
 import Uploadpage from "./pages/UploadPage";
 import Explorepage from "./pages/ExplorePage";
 import Postpage from "./pages/PostPage";
@@ -18,11 +19,8 @@ import Sidebar from "./components/Sidebar";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Container, CssBaseline, Grid } from "@material-ui/core";
-import pic from "./assets/logo.png";
-import pic2 from "./assets/img.png";
-import ClipLoader from "react-spinners/PropagateLoader";
+
 import styles from "./style";
-import './App.css';
 
 const useStyles = makeStyles(styles);
 function Content({ isLightTheme, setIsLightTheme }) {
@@ -61,41 +59,9 @@ function Content({ isLightTheme, setIsLightTheme }) {
         setPosts(tempPosts);
       });
   }, []);
-  const [firstTextStatus, setFirstTextStatus] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setFirstTextStatus(false);
-    }, 2500);
-  });
-  const [loading, setloading] = useState(false);
-  useEffect(() => {
-    setloading(true);
-    setTimeout(() => {
-      setloading(false);
-    }, 5000);
-  }, []);
-  
+
   return (
     <>
-    {loading ? (
-        <div className="heading">
-          
-          <img src={pic} className="image"></img>
-
-
-
-         <div className="typewriter">
-         <h1> A New World is loading .Think, Explore and Meet
-          </h1>
-        </div>
-        <div class="spinnerclass">
-        <ClipLoader color={"#e9f1f3"} loading={loading} size={40} />
-        </div>
-        </div>
-      ) : (
-        <>
-
-
       <CssBaseline />
 
       <SignUpForm openSignUp={openSignUp} setOpenSignUp={setOpenSignUp} />
@@ -144,8 +110,14 @@ function Content({ isLightTheme, setIsLightTheme }) {
 
                 <Route
                   exact
+                  path="/about"
+                  component={() => <Aboutpage />}
+                />      
+
+                <Route
+                  exact
                   path="/upload"
-                  component={() => <Uploadpage user={user} />}
+                  component={() => <Uploadpage username={user?.displayName} />}
                 />
 
                 <Route
@@ -187,15 +159,11 @@ function Content({ isLightTheme, setIsLightTheme }) {
         </Container>
       </BrowserRouter>
     </>
-      )}
-      </>
   );
 }
 
 function App() {
-  const lightThemeStatus = localStorage?.hasOwnProperty("lightThemeStatus")
-    ? JSON.parse(localStorage["lightThemeStatus"])
-    : false;
+  const lightThemeStatus = (localStorage?.hasOwnProperty('lightThemeStatus')) ? JSON.parse(localStorage['lightThemeStatus']) : false;
   const [isLightTheme, setIsLightTheme] = useState(lightThemeStatus);
   return (
     <ThemeProvider
