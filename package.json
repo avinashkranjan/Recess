@@ -14,7 +14,8 @@
     "react-google-button": "^0.7.2",
     "react-instagram-embed": "^2.0.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3"
+    "react-scripts": "4.0.3",
+    "react-spinners": "^0.10.6"
   },
   "scripts": {
     "start": "react-scripts start",
