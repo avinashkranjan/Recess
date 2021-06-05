@@ -5,6 +5,7 @@ import { db } from "../../firebase";
 import firebase from "firebase";
 import { Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import LikePanel from "../../components/LikePanel/index.js";
 
 const useStyles = makeStyles(styles);
 
@@ -60,7 +61,11 @@ function Postpage() {
   return (
     <div className={classes.post}>
       <div className={classes.postHeader}>
-        <Avatar className={classes.avatar} alt="Avinash" src="" />
+        <Avatar
+          className={classes.avatar}
+          src={postData.avatarURL}
+          alt={postData.username}
+        />
         <h3 className={classes.username}>{postData.username}</h3>
       </div>
 
@@ -69,6 +74,8 @@ function Postpage() {
         src={postData.imageUrl}
         alt="PostImage"
       />
+
+      <LikePanel postId={postId} user={user} />
 
       <div className={classes.postText}>
         <strong>{postData.username}</strong> {postData.caption}
