@@ -37,6 +37,7 @@ function LikePanel({ postId, user }) {
         .doc(user.uid)
         .set({
           username: user.displayName,
+          photoURL: user.photoURL,
         })
         .then(() => {
           setLike(true);
@@ -70,7 +71,11 @@ function LikePanel({ postId, user }) {
       .onSnapshot((snap) => {
         let documents = [];
         snap.forEach((doc) => {
-          documents.push({ userName: doc.data().username, userId: doc.id });
+          documents.push({
+            userName: doc.data().username,
+            photoURL: doc.data().photoURL,
+            userId: doc.id,
+          });
         });
         setUsersLiked(documents);
         setLikeCounter(documents.length);
@@ -126,7 +131,11 @@ function LikePanel({ postId, user }) {
               {usersLiked.map((user) => (
                 <ListItem button key={user.userId}>
                   <ListItemAvatar>
-                    <Avatar className={classes.avatar} alt="Avinash" src="" />
+                    <Avatar
+                      className={classes.avatar}
+                      alt={user.userName}
+                      src={user?.photoURL}
+                    />
                   </ListItemAvatar>
                   <ListItemText primary={user.userName} />
                 </ListItem>

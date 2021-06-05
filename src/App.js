@@ -110,7 +110,7 @@ function Content({ isLightTheme, setIsLightTheme }) {
                 <Route
                   exact
                   path="/upload"
-                  component={() => <Uploadpage username={user?.displayName} />}
+                  component={() => <Uploadpage user={user} />}
                 />
 
                 <Route
@@ -156,7 +156,9 @@ function Content({ isLightTheme, setIsLightTheme }) {
 }
 
 function App() {
-  const lightThemeStatus = (localStorage?.hasOwnProperty('lightThemeStatus')) ? JSON.parse(localStorage['lightThemeStatus']) : false;
+  const lightThemeStatus = localStorage?.hasOwnProperty("lightThemeStatus")
+    ? JSON.parse(localStorage["lightThemeStatus"])
+    : false;
   const [isLightTheme, setIsLightTheme] = useState(lightThemeStatus);
   return (
     <ThemeProvider

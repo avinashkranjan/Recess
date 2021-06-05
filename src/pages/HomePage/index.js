@@ -100,6 +100,7 @@ function Homepage({ posts, user }) {
           user={user}
           username={post.username}
           imageUrl={post.imageUrl}
+          avatarURL={post.avatarURL}
           caption={post.caption}
         />
       ))}

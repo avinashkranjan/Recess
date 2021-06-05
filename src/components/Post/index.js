@@ -9,7 +9,7 @@ import LikePanel from "../LikePanel/index.js";
 
 const useStyles = makeStyles(styles);
 
-function Post({ postId, user, username, caption, imageUrl, setId }) {
+function Post({ postId, user, username, caption, imageUrl, avatarURL, setId }) {
   const classes = useStyles();
   const postImage = useRef();
   const [comments, setComments] = useState([]);
@@ -68,7 +68,7 @@ function Post({ postId, user, username, caption, imageUrl, setId }) {
   return (
     <div className={classes.post}>
       <div className={classes.postHeader}>
-        <Avatar className={classes.avatar} alt="Avinash" src="" />
+        <Avatar className={classes.avatar} alt={username} src={avatarURL} />
         <h3 className={classes.username}>{username}</h3>
       </div>
 
