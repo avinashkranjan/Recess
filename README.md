@@ -43,7 +43,7 @@ Thanks goes to these wonderful people.
 
 Contributions of any kind welcome!
 
-<h1 align=center> Project Mentors [GSSOC'21] 👨🏻‍💻 </h1>
+<h1 align=center> Project Mentors [GSSOC'21] 👨🏻‍💻</h1>
 <table>
 <tr>
 <td align="center"><a href="https://github.com/Utkarsh1999"><img src="https://avatars.githubusercontent.com/u/30589139?v=4" width=150px height=150px /></a></br> <h4 style="color:red;">Utkarsh Singh</h4>
