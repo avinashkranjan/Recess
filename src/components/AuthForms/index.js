@@ -143,6 +143,7 @@ const twitterSignUp=(event)=>{
   return (
     <Modal open={openSignUp} onClose={() => setOpenSignUp(false)}>
       <div style={modalStyle} className={classes.auth}>
+        <p className={classes.close} onClick={() => setOpenSignUp(false)}>&#10006;</p>
         <form noValidate autoComplete="off">
           <center>
             <img src={Logo} alt="logo" />
@@ -315,6 +316,7 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
   return (
     <Modal open={openSignIn} onClose={() => setOpenSignIn(false)}>
       <div style={modalStyle} className={classes.auth}>
+        <p className={classes.close} onClick={() => setOpenSignIn(false)}>&#10006;</p>
         <form noValidate autoComplete="off">
           <center>
             <img src={Logo} alt="logo" />
