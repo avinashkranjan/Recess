@@ -10,10 +10,6 @@ export default function styles(theme) {
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
     },
-    close: {
-      textAlign: 'right',
-      cursor: 'pointer'
-    },
     field: {
       width: "100%",
       marginBottom: 20,
