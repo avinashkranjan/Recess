@@ -40,7 +40,7 @@ $ git checkout -b branch_name
 $ git add .
 ```
 ## Step 5 : Commit
-- To commit give a descriptive message for the convenience of reveiwer by:
+- To commit give a descriptive message for the convenience of reviewer by:
 ```
 # This message get associated with all files you have changed
 $ git commit -m 'message
