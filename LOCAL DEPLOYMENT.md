@@ -23,6 +23,5 @@ If you want to deploy it on **HEROKU** or **NETLIFY**
 $ npm run build
 or
 $ yarn build
-
 ```
 Builds the app for production to the **BUILD** folder. It correctly bundles React in production mode and optimizes the build for the best performance.
