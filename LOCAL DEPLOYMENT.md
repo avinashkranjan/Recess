@@ -14,4 +14,4 @@ If you've previously installed **create-react-app** globally via **npm install -
 
 ## Running environment
 
-<p><img src='https://cdn.jsdelivr.net/gh/facebook/create-react-app@27b42ac7efa018f2541153ab30d63180f5fa39e0/screencast.svg></p>
+<p><img src='https://cdn.jsdelivr.net/gh/facebook/create-react-app@27b42ac7efa018f2541153ab30d63180f5fa39e0/screencast.svg'></p>
