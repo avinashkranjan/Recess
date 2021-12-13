@@ -13,6 +13,10 @@ export default function styles(theme) {
       width: "100%",
       marginBottom: 20,
     },
+    close: {
+      textAlign: 'right',
+      cursor: 'pointer'
+    },
     orSpan: {
       textAlign: "center",
       marginRight: 10,
