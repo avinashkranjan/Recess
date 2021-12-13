@@ -90,7 +90,7 @@ function Postpage() {
           ))}
       </div>
 
-      {postData && (
+      {user && (
         <form className={classes.postCommentBox}>
           <input
             className={classes.postCommentInput}
