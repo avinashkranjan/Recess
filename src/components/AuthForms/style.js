@@ -1,4 +1,3 @@
-
 export default function styles(theme) {
   return {
     auth: {
@@ -14,38 +13,50 @@ export default function styles(theme) {
       width: "100%",
       marginBottom: 20,
     },
-    orSpan:{
-      textAlign:"center"
+    orSpan: {
+      textAlign: "center",
+      marginRight: 10,
     },
-    loginButton:{
-      marginLeft:'36%',
-      marginBottom:'6px'
+    loginButton: {
+      marginLeft: "36%",
+      marginBottom: "6px",
     },
-    googleButton:{
-     marginLeft: "15%",
-     marginTop: "6%" 
-
+    googleButton: {
+      marginLeft: "15%",
+      marginTop: "6%",
     },
-    githubButton:{
-      border:"3px solid  white",
-      backgroundColor:"white",
-      borderRadius:"10px",
-      marginLeft: "20%",
-      marginTop:'5%'
+    socialLogin: {
+      display: "flex",
+      width: "-webkit-calc(100% - 50px)",
+      justifyContent: "space-evenly",
+      marginLeft: "6%",
+      marginTop: "6%",
     },
-    facebookButton:{
-      border:"3px solid  white",
-      backgroundColor:"white",
-      borderRadius:"10px",
-      marginLeft: "18%",
+    socialLoginText: {
+      display: "flex",
+      width: "-webkit-calc(100% - 50px)",
+      justifyContent: "space-around",
+      marginLeft: "6%",
     },
-    twitterButton:{
-      border:"3px solid  white",
-      backgroundColor:"white",
-      borderRadius:"10px",
-      marginLeft: "20%",
-      marginTop:'5%'
-    }
-
+    // githubButton: {
+    //   border: "3px solid  white",
+    //   backgroundColor: "white",
+    //   borderRadius: "10px",
+    //   marginLeft: "20%",
+    //   marginTop: "5%",
+    // },
+    // facebookButton: {
+    //   border: "3px solid  white",
+    //   backgroundColor: "white",
+    //   borderRadius: "10px",
+    //   marginLeft: "18%",
+    // },
+    // twitterButton: {
+    //   border: "3px solid  white",
+    //   backgroundColor: "white",
+    //   borderRadius: "10px",
+    //   marginLeft: "20%",
+    //   marginTop: "5%",
+    // },
   };
 }

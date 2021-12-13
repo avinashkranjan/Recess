@@ -1,6 +1,7 @@
 import firebase from "firebase";
+import 'firebase/firestore';
 
-const firebaseApp = firebase.initializeApp({
+firebase.initializeApp({
   apiKey: "AIzaSyAmv2ggHpNJiZBeRX5SzRelMq1aZ2Azxb8",
   authDomain: "recess-it.firebaseapp.com",
   databaseURL: "https://recess-it.firebaseio.com",
@@ -11,13 +12,13 @@ const firebaseApp = firebase.initializeApp({
   measurementId: "G-B3QL0CLZX9",
 });
 
-const db = firebaseApp.firestore();
+const db = firebase.firestore();
 const auth = firebase.auth();
 const storage = firebase.storage();
 const GoogleAuthProvider = new firebase.auth.GoogleAuthProvider();
-const FacebookAuthProvider =new firebase.auth.FacebookAuthProvider();
-const GithubAuthProvider  =new firebase.auth.GithubAuthProvider();
-const TwitterAuthProvider =new firebase.auth.TwitterAuthProvider();
+const FacebookAuthProvider = new firebase.auth.FacebookAuthProvider();
+const GithubAuthProvider  = new firebase.auth.GithubAuthProvider();
+const TwitterAuthProvider = new firebase.auth.TwitterAuthProvider();
 
 export { db, auth, storage,GoogleAuthProvider,GithubAuthProvider,FacebookAuthProvider,TwitterAuthProvider };
 

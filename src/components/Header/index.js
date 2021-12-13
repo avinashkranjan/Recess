@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { auth } from "../../firebase";
 import ReactAnime from "react-animejs";
-
 import {
   Grid,
   Hidden,
@@ -98,153 +97,157 @@ function Header({
   };
 
   return (
-		<>
-			<Menu
-				id="simple-menu"
-				anchorEl={authMenu}
-				keepMounted
-				open={Boolean(authMenu)}
-				onClose={closeAuthMenu}
-			>
-				<MenuItem
-					onClick={() => {
-						closeAuthMenu();
-					}}
-				>
-					Profile
-				</MenuItem>
-				<MenuItem
-					onClick={() => {
-						auth.signOut();
-						closeAuthMenu();
-						localStorage?.removeItem("lightThemeStatus");
-					}}
-				>
-					Sign Out
-				</MenuItem>
-			</Menu>
+    <>
+      <Menu
+        id="simple-menu"
+        anchorEl={authMenu}
+        keepMounted
+        open={Boolean(authMenu)}
+        onClose={closeAuthMenu}
+      >
+        <MenuItem
+          onClick={() => {
+            closeAuthMenu();
+          }}
+        >
+          Profile
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            auth.signOut();
+            closeAuthMenu();
+            localStorage?.removeItem("lightThemeStatus");
+          }}
+        >
+          Sign Out
+        </MenuItem>
+      </Menu>
 
-			<Menu
-				id="simple-menu"
-				anchorEl={noAuthMenu}
-				keepMounted
-				open={Boolean(noAuthMenu)}
-				onClose={closeNoAuthMenu}
-			>
-				<MenuItem
-					onClick={() => {
-						setOpenSignIn(true);
-						closeNoAuthMenu();
-					}}
-				>
-					Sign In
-				</MenuItem>
-				<MenuItem
-					onClick={() => {
-						setOpenSignUp(true);
-						closeNoAuthMenu();
-					}}
-				>
-					Sign Up
-				</MenuItem>
-			</Menu>
+      <Menu
+        id="simple-menu"
+        anchorEl={noAuthMenu}
+        keepMounted
+        open={Boolean(noAuthMenu)}
+        onClose={closeNoAuthMenu}
+      >
+        <MenuItem
+          onClick={() => {
+            setOpenSignIn(true);
+            closeNoAuthMenu();
+          }}
+        >
+          Sign In
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            setOpenSignUp(true);
+            closeNoAuthMenu();
+          }}
+        >
+          Sign Up
+        </MenuItem>
+      </Menu>
 
-			<div className={classes.root}>
-				<Grid container>
-					<Grid container item xs={1} sm={4}>
-						<Link to="/">
-							<Hidden xsDown>
-								<img src={Logo} alt="branding-logo" />
-							</Hidden>
-							<Hidden smUp>
-								<img src={ContractedLogo} alt="branding-logo" />
-							</Hidden>
-						</Link>
-					</Grid>
-					<Grid container item xs={11} sm={8} className={classes.pageHeader}>
-						<Grid container item xs={9} sm={11} alignItems="center">
-							<span className={classes.pageTitle}>{pageName}</span>
-						</Grid>
-						<Grid container item xs={2} sm={1}>
-							{/* 
+      <div className={classes.root}>
+        <Grid container>
+          <Grid container item xs={1} sm={4}>
+            <Link to="/">
+              <Hidden xsDown>
+                <img src={Logo} alt="branding-logo" />
+              </Hidden>
+              <Hidden smUp>
+                <img src={ContractedLogo} alt="branding-logo" />
+              </Hidden>
+            </Link>
+          </Grid>
+          <Grid container item xs={11} sm={8} className={classes.pageHeader}>
+            <Grid container item xs={9} sm={11} alignItems="center">
+              <span className={classes.pageTitle}>{pageName}</span>
+            </Grid>
+            <Grid container item xs={2} sm={1}>
+              {/* 
               Place Where code should be applied
               */}
-							{/* <IconButton
+              <IconButton
                 className={classes.themeChanger}
                 color="primary"
-                onClick={() => {setIsLightTheme(!isLightTheme); localStorage['lightThemeStatus'] = !isLightTheme}}
+                onClick={() => {
+                  setIsLightTheme(!isLightTheme);
+                  localStorage["lightThemeStatus"] = !isLightTheme;
+                }}
               >
                 {isLightTheme && <Brightness2Rounded />}
                 {!isLightTheme && <WbSunnyRounded />}
-              </IconButton> */}
-							<Anime
-								animeConfig={{
-									autoplay: false,
-									duration: 750,
-									easing: "easeOutExpo",
-								}}
-								initial={[
-									{
-										targets: ".sun",
-										d: [{ value: !isLightTheme ? sunPath : moonPath }],
-									},
-								]}
-								// _onClick={[
-								// 	{
-								// 		targets: ".sun",
-								// 		d: [{ value: isLightTheme ? sunPath : moonPath }],
-								// 	},
-								// 	{
-								// 		targets: "#darkMode",
-								// 		rotate: 320,
-								// 		delay: 350,
-								// 	},
-								// 	{
-								// 		targets: "section",
-								// 		backgroundColor: !isLightTheme
-								// 			? "rgb(225,225,225)"
-								// 			: "rgb(22,22,22)",
-								// 		color: !isLightTheme ? "rgb(22,22,22)" : "rgb(225,225,225)",
-								// 		delay: 700,
-								// 	},
-								// ]}
-							>
-								<svg
-									className={classes.themeChanger}
-									id="darkMode"
-									width="55"
-									height="55"
-									viewBox="0 0 55 55"
-									color="primary"
-									fill="primary"
-									onClick={svgMorphing}
-								>
-									<path class="sun" d={sunPath} fill="#ffd600" />
-								</svg>
-							</Anime>
-						</Grid>
-						<Grid container item xs={1}>
-							<Hidden smUp>
-								{user?.displayName && (
-									<Avatar
-										src=""
-										alt="User"
-										className={classes.userPhoto}
-										onClick={openAuthMenu}
-									/>
-								)}
-								{!user?.displayName && (
-									<IconButton color="primary" onClick={openNoAuthMenu}>
-										<DonutLargeRounded />
-									</IconButton>
-								)}
-							</Hidden>
-						</Grid>
-					</Grid>
-				</Grid>
-			</div>
-		</>
-	);
+              </IconButton>
+              <Anime
+                animeConfig={{
+                  autoplay: false,
+                  duration: 750,
+                  easing: "easeOutExpo",
+                }}
+                initial={[
+                  {
+                    targets: ".sun",
+                    d: [{ value: !isLightTheme ? sunPath : moonPath }],
+                  },
+                ]}
+                _onClick={[
+                  {
+                    targets: ".sun",
+                    d: [{ value: isLightTheme ? sunPath : moonPath }],
+                  },
+                  {
+                    targets: "#darkMode",
+                    rotate: 320,
+                    delay: 350,
+                  },
+                  {
+                    targets: "section",
+                    backgroundColor: !isLightTheme
+                      ? "rgb(225,225,225)"
+                      : "rgb(22,22,22)",
+                    color: !isLightTheme ? "rgb(22,22,22)" : "rgb(225,225,225)",
+                    delay: 700,
+                  },
+                ]}
+              >
+                {/* <svg
+                  className={classes.themeChanger}
+                  id="darkMode"
+                  width="55"
+                  height="55"
+                  // style={{ paddingTop: "15px" }}
+                  viewBox="0 0 80 80"
+                  color="primary"
+                  fill="primary"
+                  onClick={svgMorphing}
+                >
+                  <path class="sun" d={sunPath} fill="#ffd600" />
+                </svg> */}
+              </Anime>
+            </Grid>
+            <Grid container item xs={1}>
+              <Hidden smUp>
+                {user?.displayName && (
+                  <Avatar
+                    src=""
+                    alt="User"
+                    className={classes.userPhoto}
+                    onClick={openAuthMenu}
+                  />
+                )}
+                {!user?.displayName && (
+                  <IconButton color="primary" onClick={openNoAuthMenu}>
+                    <DonutLargeRounded />
+                  </IconButton>
+                )}
+              </Hidden>
+            </Grid>
+          </Grid>
+        </Grid>
+      </div>
+    </>
+  );
 }
 
 export default Header;

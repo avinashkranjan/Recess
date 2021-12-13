@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./style.js";
 import { db } from "../../firebase";
-import firebase from "firebase";
+import { initializeApp } from 'firebase/app';
 import { Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import LikePanel from "../LikePanel/index.js";
@@ -22,7 +22,7 @@ function Post({ postId, user, username, caption, imageUrl, avatarURL, setId }) {
     db.collection("posts").doc(postId).collection("comments").add({
       username: user.displayName,
       text: comment,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      timestamp: initializeApp.firestore.FieldValue.serverTimestamp(),
     });
     setComment("");
   };

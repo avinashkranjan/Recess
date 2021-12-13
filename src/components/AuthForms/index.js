@@ -5,12 +5,17 @@ import Logo from "../../assets/logo.png";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Modal, Button } from "@material-ui/core";
 
-import { auth, GoogleAuthProvider,FacebookAuthProvider,GithubAuthProvider, TwitterAuthProvider} from "../../firebase";
+import {
+  auth,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  GithubAuthProvider,
+  TwitterAuthProvider,
+} from "../../firebase";
 import GoogleButton from "react-google-button";
-import FacebookIcon from '@material-ui/icons/Facebook';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import TwitterIcon from '@material-ui/icons/Twitter';
-
+import FacebookIcon from "@material-ui/icons/Facebook";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import TwitterIcon from "@material-ui/icons/Twitter";
 
 import styles from "./style";
 
@@ -26,46 +31,45 @@ function getModalStyle() {
     transform: `translate(-${top}%, -${left}%)`,
   };
 }
-const facebookSignIn = (event) =>{
+const facebookSignIn = (event) => {
   auth
-  .signInWithPopup(FacebookAuthProvider)
-  .then((result) => {
-    /** @type {firebase.auth.OAuthCredential} */
-    var credential = result.credential;
+    .signInWithPopup(FacebookAuthProvider)
+    .then((result) => {
+      /** @type {firebase.auth.OAuthCredential} */
+      var credential = result.credential;
 
-    var user = result.user;
+      var user = result.user;
 
-    var accessToken = credential.accessToken;
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    var email = error.email;
-    var credential = error.credential;
-  });
+      var accessToken = credential.accessToken;
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+    });
+};
 
-  }
-
-const twitterSignIn =(event) =>{
+const twitterSignIn = (event) => {
   auth
-  .signInWithPopup(TwitterAuthProvider)
-  .then((result) => {
-    /** @type {firebase.auth.OAuthCredential} */
-    var credential = result.credential;
+    .signInWithPopup(TwitterAuthProvider)
+    .then((result) => {
+      /** @type {firebase.auth.OAuthCredential} */
+      var credential = result.credential;
 
-    var token = credential.accessToken;
-    var secret = credential.secret;
+      var token = credential.accessToken;
+      var secret = credential.secret;
 
-    var user = result.user;
-  }).catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    var email = error.email;
-    var credential = error.credential;
-    // ...
-  });
-
-}
+      var user = result.user;
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+      // ...
+    });
+};
 
 function SignUpForm({ openSignUp, setOpenSignUp }) {
   const classes = useStyles();
@@ -108,37 +112,37 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
       });
     setOpenSignUp(false);
   };
-  const githubSignIn = (event) =>{
+  const githubSignIn = (event) => {
     auth
-    .signInWithPopup(GithubAuthProvider)
-    .then((result) => {
-      /** @type {firebase.auth.OAuthCredential} */
-      var credential = result.credential;
-  
-      var token = credential.accessToken;
-  
-      var user = result.user;
-      // ...
-    }).catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      var email = error.email;
-      var credential = error.credential;
-      // ...
-    });
+      .signInWithPopup(GithubAuthProvider)
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        var credential = result.credential;
+
+        var token = credential.accessToken;
+
+        var user = result.user;
+        // ...
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        var email = error.email;
+        var credential = error.credential;
+        // ...
+      });
     setOpenSignUp(false);
-  }
-  
-const facebookSignUp=(event)=>{
+  };
+
+  const facebookSignUp = (event) => {
     facebookSignIn();
     setOpenSignUp(false);
-  }
- 
-const twitterSignUp=(event)=>{
+  };
+
+  const twitterSignUp = (event) => {
     twitterSignIn();
     setOpenSignUp(false);
-  }
-  
+  };
 
   return (
     <Modal open={openSignUp} onClose={() => setOpenSignUp(false)}>
@@ -187,7 +191,6 @@ const twitterSignUp=(event)=>{
             variant="contained"
             color="primary"
             className={classes.loginButton}
-        
           >
             Sign Up
           </Button>
@@ -201,32 +204,32 @@ const twitterSignUp=(event)=>{
           variant="contained"
           color="primary"
           className={classes.googleButton}
-        
         />
-        <br/>
+        <br />
+        <div className={classes.socialLogin}>
+          <br />
           <Button
             type="submit"
             onClick={() => facebookSignUp()}
             variant="contained"
             color="primary"
             className={classes.facebookButton}
-
           >
-            <FacebookIcon color="secondary" /> Sign in with Facebook
+            <FacebookIcon color="secondary" />
           </Button>
+          <br />
 
-        <br/>
+          <br />
           <Button
             type="submit"
             onClick={() => githubSignIn()}
             variant="contained"
             color="primary"
             className={classes.githubButton}
-        
           >
-            <GitHubIcon/> Sign in with Github
+            <GitHubIcon />
           </Button>
-          <br/>
+          <br />
           <Button
             type="submit"
             onClick={() => twitterSignUp()}
@@ -234,11 +237,15 @@ const twitterSignUp=(event)=>{
             color="primary"
             className={classes.twitterButton}
           >
-            <TwitterIcon /> Sign in with Twitter
+            <TwitterIcon color="secondary" />
           </Button>
-   
-
-     </div>
+        </div>
+        <div className={classes.socialLoginText}>
+          <p>Facebook</p>
+          <p>Github</p>
+          <p>Twitter</p>
+        </div>
+      </div>
     </Modal>
   );
 }
@@ -280,37 +287,36 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
     setOpenSignIn(false);
   };
 
-  const facebookSignUp=(event)=>{
+  const facebookSignUp = (event) => {
     facebookSignIn();
     setOpenSignIn(false);
-  }
-  
-  const twitterSignUp=(event)=>{
+  };
+
+  const twitterSignUp = (event) => {
     twitterSignIn();
     setOpenSignIn(false);
-  }
+  };
 
-
-  const githubSignIn =(event) =>{
+  const githubSignIn = (event) => {
     auth
-    .signInWithPopup(GithubAuthProvider)
-    .then((result) => {
-      /** @type {firebase.auth.OAuthCredential} */
-      var credential = result.credential;
-  
-      var token = credential.accessToken;
-  
-      var user = result.user;
-    }).catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      var email = error.email;
-      var credential = error.credential;
-      // ...
-    });
-    setOpenSignIn(false);
+      .signInWithPopup(GithubAuthProvider)
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        var credential = result.credential;
 
-  }
+        var token = credential.accessToken;
+
+        var user = result.user;
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        var email = error.email;
+        var credential = error.credential;
+        // ...
+      });
+    setOpenSignIn(false);
+  };
 
   return (
     <Modal open={openSignIn} onClose={() => setOpenSignIn(false)}>
@@ -348,7 +354,6 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
             variant="contained"
             color="primary"
             className={classes.loginButton}
-
           >
             Sign In
           </Button>
@@ -362,41 +367,46 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
           variant="contained"
           color="primary"
           className={classes.googleButton}
-      
         />
-      <br/>
-      <Button
+        <div className={classes.socialLogin}>
+          <br />
+          <Button
             type="submit"
             onClick={() => facebookSignUp()}
             variant="contained"
             color="primary"
             className={classes.facebookButton}
           >
-           <FacebookIcon color="secondary" /> Sign in with Facebook
+            <FacebookIcon color="secondary" />
           </Button>
+          <br />
 
-        <br/>
-         <Button
+          <br />
+          <Button
             type="submit"
-            onClick={() =>githubSignIn()}
+            onClick={() => githubSignIn()}
             variant="contained"
             color="primary"
             className={classes.githubButton}
-        
           >
-            <GitHubIcon/> Sign in with Github
+            <GitHubIcon />
           </Button>
-          <br/>
-         <Button
+          <br />
+          <Button
             type="submit"
-            onClick={() =>twitterSignUp()}
+            onClick={() => twitterSignUp()}
             variant="contained"
             color="primary"
             className={classes.twitterButton}
           >
-            <TwitterIcon color="secondary"/> Sign in with Twitter
+            <TwitterIcon color="secondary" />
           </Button>
-
+        </div>
+        <div className={classes.socialLoginText}>
+          <p>Facebook</p>
+          <p>Github</p>
+          <p>Twitter</p>
+        </div>
       </div>
     </Modal>
   );
