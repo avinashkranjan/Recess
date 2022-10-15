@@ -4,7 +4,6 @@ export default function styles(theme) {
       width: "100%",
       display: "flex",
       alignItems: "center",
-      justifyContent: "center",
       flexFlow: "column wrap",
     },
     aboutArt: {
@@ -15,5 +14,19 @@ export default function styles(theme) {
       textAlign: "center",
       color: theme.palette.text.secondary,
     },
+    aboutdiv: {
+      display: "flex",
+      flexDirection: "column",
+      padding: "0 5rem",
+    },
+    aboutHeading: {
+      fontSize: "2rem",
+      fontWeight: "bold",
+      marginBottom: "1rem",
+    },
+    aboutText: {
+      fontSize: "1rem",
+      marginBottom: "1rem",
+    }
   };
 }
