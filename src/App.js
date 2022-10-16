@@ -21,6 +21,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Container, CssBaseline, Grid } from "@material-ui/core";
 
 import styles from "./style";
+import ProfilePage from "./pages/ProfilePage";
 
 const useStyles = makeStyles(styles);
 function Content({ isLightTheme, setIsLightTheme }) {
@@ -129,7 +130,7 @@ function Content({ isLightTheme, setIsLightTheme }) {
                 <Route
                   exact
                   path="/profile"
-                  component={() => <Underdevpage />}
+                  component={() => <ProfilePage />}
                 />
 
                 <Route
