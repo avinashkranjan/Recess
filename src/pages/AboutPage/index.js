@@ -10,16 +10,21 @@ function Explorepage() {
   const classes = useStyles();
   return (
     <div className={classes.underAboutPage}>
-      <h1 className={classes.pageTitle}>About Page</h1>
       <img
         src={about}
         alt="about art"
         className={classes.aboutArt}
       />
-      <span className={classes.underAboutText}>
-        This is about page.<br />
-        But the page you’re looking for is under development.
-      </span>
+      {/* About Page */}
+      <div className={classes.aboutdiv}>
+        <h2 className={classes.aboutHeading}>About Recess</h2>
+        <p className={classes.aboutText}>
+          A Social Media Platform for students to share their experience/knowledge they gained in their free time.
+          This platform is created to help students to share their knowledge and experience with other students.
+
+        </p>
+      </div>
+
     </div>
   );
 }
