@@ -5,7 +5,6 @@ import { db, auth } from "./firebase";
 import Homepage from "./pages/HomePage";
 import Aboutpage from "./pages/AboutPage";
 import Uploadpage from "./pages/UploadPage";
-import Explorepage from "./pages/ExplorePage";
 import Postpage from "./pages/PostPage";
 import Notfoundpage from "./pages/NotFoundPage";
 import Underdevpage from "./pages/UnderDevPage";
@@ -109,11 +108,7 @@ function Content({ isLightTheme, setIsLightTheme }) {
                   component={() => <Homepage posts={posts} user={user} />}
                 />
 
-                <Route
-                  exact
-                  path="/about"
-                  component={() => <Aboutpage />}
-                />      
+                <Route exact path="/about" component={() => <Aboutpage />} />
 
                 <Route
                   exact
@@ -164,7 +159,9 @@ function Content({ isLightTheme, setIsLightTheme }) {
 }
 
 function App() {
-  const lightThemeStatus = (localStorage?.hasOwnProperty('lightThemeStatus')) ? JSON.parse(localStorage['lightThemeStatus']) : false;
+  const lightThemeStatus = localStorage?.hasOwnProperty("lightThemeStatus")
+    ? JSON.parse(localStorage["lightThemeStatus"])
+    : false;
   const [isLightTheme, setIsLightTheme] = useState(lightThemeStatus);
   return (
     <ThemeProvider

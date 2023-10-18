@@ -19,6 +19,7 @@
     "react-spinners": "^0.12.0"
   },
   "scripts": {
+    "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "CI=false && react-scripts build",
     "test": "react-scripts test --env=jsdom --passWithNoTests",
