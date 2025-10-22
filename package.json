@@ -16,7 +16,7 @@
     "react-instagram-embed": "^3.0.0",
     "react-router-dom": "^6.17.0",
     "react-scripts": "5.0.1",
-    "react-spinners": "^0.12.0"
+    "react-spinners": "^0.17.0"
   },
   "scripts": {
     "dev": "react-scripts start",
